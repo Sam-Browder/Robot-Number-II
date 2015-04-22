@@ -7,7 +7,7 @@ public class Player : MonoBehaviour, ICharacter {
 	public float maxSpeed = 3;
 	public float speed = 50f;
 	public float jumpPower = 200f;
-	public float climbPower = 1;
+	public float climbPower = 5;
 	
 	//booleans
 	public bool grounded;
@@ -27,7 +27,7 @@ public class Player : MonoBehaviour, ICharacter {
 	
 	// Use this for initialization
 	void Start () {
-		
+		this.canClimb = false;
 		rb2d = gameObject.GetComponent<Rigidbody2D> ();
 		anim = gameObject.GetComponent<Animator> ();
 		this.projspawner = gameObject.GetComponentInChildren<ProjSpawner> ();
@@ -63,7 +63,7 @@ public class Player : MonoBehaviour, ICharacter {
 		easeVelocity.y = rb2d.velocity.y;
 		easeVelocity.z = 0.0f;
 		easeVelocity.x *= 0.80f;
-		Physics2D.IgnoreLayerCollision (LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Ground"), canClimb && ((Input.GetAxis("Vertical") > 0.1f) || (Input.GetAxis("Vertical") < -0.1f)) );
+		Physics2D.IgnoreLayerCollision (LayerMask.NameToLayer ("Player"), LayerMask.NameToLayer ("Ground"), canClimb && ((Input.GetAxis("Vertical") > 0.1f) || (Input.GetAxis("Vertical") < -0.1f)) );
 		//fake friction
 		if (grounded) {
 			rb2d.velocity = easeVelocity;
@@ -81,7 +81,7 @@ public class Player : MonoBehaviour, ICharacter {
 			rb2d.velocity = new Vector2 (-maxSpeed, rb2d.velocity.y);
 		}
 		
-		float v = Input.GetAxis ("Vertical");
+
 		Climb ();
 		
 		if (!canClimb) {
@@ -99,7 +99,7 @@ public class Player : MonoBehaviour, ICharacter {
 			if (canDoubleJump){
 				canDoubleJump = false;
 				rb2d.velocity = new Vector2(rb2d.velocity.x, 0);
-				rb2d.AddForce(Vector2.up * jumpPower * Input.GetAxis("Horizontal"));
+				rb2d.AddForce(Vector2.up * jumpPower);
 			}			
 		}
 	}
@@ -107,7 +107,7 @@ public class Player : MonoBehaviour, ICharacter {
 	void Climb(){
 		if (canClimb) {
 			rb2d.gravityScale = 0;
-			rb2d.velocity = new Vector2 (0, 5 * Input.GetAxis ("Vertical"));
+			rb2d.velocity = new Vector2 (0, this.climbPower * Input.GetAxis ("Vertical"));
 		}
 	}
 	

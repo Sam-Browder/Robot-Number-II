@@ -55,6 +55,7 @@
      <Compile Include="Assets\Scripts\Player.cs" />
      <Compile Include="Assets\Scripts\ProjSpawner.cs" />
      <Compile Include="Assets\Scripts\ProjectileMovment.cs" />
+     <Compile Include="Assets\Scripts\RopeCheck.cs" />
      <Compile Include="Assets\Scripts\TestMenu.cs" />
      <Compile Include="Assets\Scripts\WeaponBehavior.cs" />
  <Reference Include="UnityEngine.UI">
