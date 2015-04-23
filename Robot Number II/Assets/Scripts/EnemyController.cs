@@ -206,6 +206,10 @@ public class EnemyController : MonoBehaviour, ICharacter {
 	public bool GetCanClimb() {
 		return false;
 	}
+
+	public void SetGravity(float grav) {
+		rb2d.gravityScale = grav;
+	}
 	
 	void Jump(){
 		if (this.numOfJumps>0 && this.jumpTime < this.time-.3){
@@ -254,7 +258,7 @@ public class EnemyController : MonoBehaviour, ICharacter {
 		Debug.DrawLine(currentPos, endPos,Color.green);
 		this.standingOnPlayer = Physics2D.Linecast (currentPos, endPos, 1 << LayerMask.NameToLayer ("Player"));
 	}
-	
+
 	
 	
 	

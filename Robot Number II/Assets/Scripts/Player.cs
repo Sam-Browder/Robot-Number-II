@@ -83,10 +83,7 @@ public class Player : MonoBehaviour, ICharacter {
 		
 
 		Climb ();
-		
-		if (!canClimb) {
-			rb2d.gravityScale = 1;
-		}
+
 	}
 	
 	
@@ -106,7 +103,6 @@ public class Player : MonoBehaviour, ICharacter {
 	
 	void Climb(){
 		if (canClimb) {
-			rb2d.gravityScale = 0;
 			if(this.grounded){
 				rb2d.velocity = new Vector2 (rb2d.velocity.x, this.climbPower * Input.GetAxis ("Vertical"));
 			}else{
@@ -143,7 +139,6 @@ public class Player : MonoBehaviour, ICharacter {
 	
 	public void SetGrounded(bool grd){
 		this.grounded = grd;
-		
 	}
 	
 	public int GetDirection(){
@@ -161,7 +156,10 @@ public class Player : MonoBehaviour, ICharacter {
 	public bool GetCanClimb(){
 		return this.canClimb;
 	}
-	
+
+	public void SetGravity(float grav) {
+			rb2d.gravityScale = grav;
+	}
 }
 
 

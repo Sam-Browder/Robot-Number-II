@@ -14,6 +14,7 @@ public class RopeCheck : MonoBehaviour {
 	{
 		if (col.tag == "Rope") {
 			parent.SetCanClimb (true);
+			parent.SetGravity(0);
 		} 
 	}
 
@@ -21,6 +22,7 @@ public class RopeCheck : MonoBehaviour {
 	{
 		if (col.tag == "Rope") {
 			parent.SetCanClimb (true);
+			parent.SetGravity(0);
 		}
 	}
 
@@ -28,6 +30,7 @@ public class RopeCheck : MonoBehaviour {
 	{
 		if (col.tag == "Rope") {
 			parent.SetCanClimb (false);
+			parent.SetGravity(1);
 		}
 	}
 }
