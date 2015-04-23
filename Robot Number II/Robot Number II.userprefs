@@ -1,11 +1,9 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Player.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\EnemyController.cs">
     <Files>
-      <File FileName="Assets\Scripts\GroundCheck.cs" Line="23" Column="1" />
-      <File FileName="Assets\Scripts\Player.cs" Line="93" Column="14" />
-      <File FileName="Assets\Scripts\RopeCheck.cs" Line="29" Column="19" />
-      <File FileName="Assets\Scripts\ProjectileMovment.cs" Line="52" Column="6" />
+      <File FileName="Assets\Scripts\Interfaces.cs" Line="9" Column="23" />
+      <File FileName="Assets\Scripts\EnemyController.cs" Line="210" Column="9" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
