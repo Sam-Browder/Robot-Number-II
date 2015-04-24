@@ -37,7 +37,8 @@ public class EnemyController : MonoBehaviour, ICharacter {
 	private ICharacter player;
 	private float distanceToPlayer;
 	private float directionToPlayer;
-	private ProjSpawner projspawner;
+	//private ProjSpawner projspawner;
+	private CharacterAttack enemyAttack;
 	
 	
 	
@@ -47,7 +48,12 @@ public class EnemyController : MonoBehaviour, ICharacter {
 		player =(ICharacter) FindObjectOfType (typeof(Player));
 		rb2d = gameObject.GetComponent<Rigidbody2D> ();
 		anim = gameObject.GetComponent<Animator> ();
-		this.projspawner = gameObject.GetComponentInChildren<ProjSpawner> ();
+		//this.projspawner = gameObject.GetComponentInChildren<ProjSpawner> ();
+		this.enemyAttack = gameObject.GetComponentInChildren<CharacterAttack> ();
+		IAttack projectile = new ProjectileAttack ();
+		IAttack lazer = new LazerAttack ();
+		this.enemyAttack.setPrimaryAttack (projectile);
+		this.enemyAttack.setSecondaryAttack (lazer);
 		this.canClimb = false;
 	}
 	
@@ -149,7 +155,8 @@ public class EnemyController : MonoBehaviour, ICharacter {
 		if (this.distanceToPlayer < this.visionDistance){
 			if (attackTimer > this.attackSpeed) {
 				attackTimer = 0;
-				this.projspawner.ShootProjTwo ();
+				//this.projspawner.ShootProjTwo ();
+				this.enemyAttack.doAttack();
 			}
 		}
 	}

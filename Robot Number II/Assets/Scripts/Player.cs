@@ -20,7 +20,7 @@ public class Player : MonoBehaviour, ICharacter {
 	private Rigidbody2D rb2d;
 	private Animator anim;
 	//private ProjSpawner projspawner;
-	private PlayerAttack playerAttack;
+	private CharacterAttack playerAttack;
 	
 	//Game values
 	private float health =100.0f;
@@ -32,7 +32,7 @@ public class Player : MonoBehaviour, ICharacter {
 		rb2d = gameObject.GetComponent<Rigidbody2D> ();
 		anim = gameObject.GetComponent<Animator> ();
 		//this.projspawner = gameObject.GetComponentInChildren<ProjSpawner> ();
-		this.playerAttack = gameObject.GetComponentInChildren<PlayerAttack> ();
+		this.playerAttack = gameObject.GetComponentInChildren<CharacterAttack> ();
 		IAttack projectile = new ProjectileAttack ();
 		IAttack lazer = new LazerAttack ();
 		this.playerAttack.setPrimaryAttack (projectile);
