@@ -19,7 +19,8 @@ public class Player : MonoBehaviour, ICharacter {
 	//refrences
 	private Rigidbody2D rb2d;
 	private Animator anim;
-	private ProjSpawner projspawner;
+	//private ProjSpawner projspawner;
+	private PlayerAttack playerAttack;
 	
 	//Game values
 	private float health =100.0f;
@@ -30,7 +31,12 @@ public class Player : MonoBehaviour, ICharacter {
 		this.canClimb = false;
 		rb2d = gameObject.GetComponent<Rigidbody2D> ();
 		anim = gameObject.GetComponent<Animator> ();
-		this.projspawner = gameObject.GetComponentInChildren<ProjSpawner> ();
+		//this.projspawner = gameObject.GetComponentInChildren<ProjSpawner> ();
+		this.playerAttack = gameObject.GetComponentInChildren<PlayerAttack> ();
+		IAttack projectile = new ProjectileAttack ();
+		IAttack lazer = new LazerAttack ();
+		this.playerAttack.setPrimaryAttack (projectile);
+		this.playerAttack.setSecondaryAttack (lazer);
 	}
 	
 	// Update is called once per frame
@@ -49,10 +55,12 @@ public class Player : MonoBehaviour, ICharacter {
 			Jump();		
 		}
 		if (Input.GetButtonDown ("Fire1")) {
-			this.projspawner.ShootProjOne();
+			//this.projspawner.ShootProjOne();
+			this.playerAttack.doAttack();
 		}
 		if (Input.GetButtonDown ("Fire2")) {
-			this.projspawner.ShootProjTwo();
+			//this.projspawner.ShootProjTwo();
+			this.playerAttack.swapAttack();
 		}
 	}
 	

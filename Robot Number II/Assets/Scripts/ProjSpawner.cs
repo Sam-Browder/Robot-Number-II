@@ -17,7 +17,6 @@ public class ProjSpawner : MonoBehaviour {
 		
 		proj.transform.position = this.transform.position;
 		proj.SendMessage("SetCharacter", gameObject.GetComponentInParent<ICharacter> ());
-		
 	}
 	
 	public void ShootProjTwo(){
