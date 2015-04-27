@@ -3,10 +3,12 @@ using System.Collections;
 
 public interface IDefenseBehavior{
 	
-	void DoDefense(IAttack attack, ICharacter character);
-	void AddDefenseEffect(IDefense defense);
+	void DoDefense(IAttack attack);
+	void ApplyDefenseEffect(IDefense defense);
 	void RemoveDefenseEffect(IDefense defense);
     float DamageCalculation(IAttack attack);
-	
+	void ChargeShield(float shieldAmount);
+	void ApplyDamage(float damage);
+	float GetHealth();
 }
 

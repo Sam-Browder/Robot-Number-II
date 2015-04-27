@@ -8,7 +8,7 @@ public class LazerAttack : IAttack {
 	private float ThermalDamage = 5f;
 	private float KineticDamage = 0f;
 	private float ExplosiveDamage = 0f;
-	
+
 	public string GetAttack() {
 		return this.attack;
 	}

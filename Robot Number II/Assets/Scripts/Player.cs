@@ -19,12 +19,8 @@ public class Player : MonoBehaviour, ICharacter {
 	//refrences
 	private Rigidbody2D rb2d;
 	private Animator anim;
-	//private ProjSpawner projspawner;
 	private CharacterAttack playerAttack;
 	private CharacterDefense playerDefense;
-	
-	//Game values
-	private float health =100.0f;
 	
 	
 	// Use this for initialization
@@ -32,7 +28,6 @@ public class Player : MonoBehaviour, ICharacter {
 		this.canClimb = false;
 		rb2d = gameObject.GetComponent<Rigidbody2D> ();
 		anim = gameObject.GetComponent<Animator> ();
-		//this.projspawner = gameObject.GetComponentInChildren<ProjSpawner> ();
 		this.playerAttack = gameObject.GetComponentInChildren<CharacterAttack> ();
 		this.playerDefense = gameObject.GetComponentInChildren<CharacterDefense> ();
 		IAttack projectile = new ProjectileAttack ();
@@ -48,7 +43,7 @@ public class Player : MonoBehaviour, ICharacter {
 		anim.SetBool ("Grounded", grounded);
 		anim.SetFloat ("Speed", Mathf.Abs (rb2d.velocity.x));
 		
-		if (health <= 0.0) {
+		if (this.playerDefense.GetHealth() <= 0.0) {
 			Die ();
 		}
 		
@@ -64,6 +59,7 @@ public class Player : MonoBehaviour, ICharacter {
 			//this.projspawner.ShootProjTwo();
 			this.playerAttack.SwapAttack();
 		}
+
 	}
 	
 	// do all physics in here
@@ -140,14 +136,11 @@ public class Player : MonoBehaviour, ICharacter {
 	}
 
 	public void ApplyDefense(IAttack attack) {
-		this.playerDefense.DoDefense (attack, this);
+		this.playerDefense.DoDefense (attack);
 	}
 
 	
-	public void ApplyDamage(float damage){
-		this.health = this.health - damage;
-		print ("Apply damage, remaining health: " + this.health + " Damage applied: " + damage);
-	}
+
 	
 	public void SetCanClimb(bool canClmb){
 		this.canClimb = canClmb;
