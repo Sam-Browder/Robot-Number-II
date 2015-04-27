@@ -3,6 +3,10 @@ using System.Collections;
 
 public interface IAttack{
 
-	string getAttack();
+	string GetAttack();
+	float GetEMDamage();
+	float GetThermalDamage();
+	float GetKineticDamage();
+	float GetExplosiveDamage();
 
 }

@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class EnemyController : MonoBehaviour, ICharacter {
@@ -52,8 +52,8 @@ public class EnemyController : MonoBehaviour, ICharacter {
 		this.enemyAttack = gameObject.GetComponentInChildren<CharacterAttack> ();
 		IAttack projectile = new ProjectileAttack ();
 		IAttack lazer = new LazerAttack ();
-		this.enemyAttack.setPrimaryAttack (projectile);
-		this.enemyAttack.setSecondaryAttack (lazer);
+		this.enemyAttack.SetPrimaryAttack (projectile);
+		this.enemyAttack.SetSecondaryAttack (lazer);
 		this.canClimb = false;
 	}
 	
@@ -156,7 +156,7 @@ public class EnemyController : MonoBehaviour, ICharacter {
 			if (attackTimer > this.attackSpeed) {
 				attackTimer = 0;
 				//this.projspawner.ShootProjTwo ();
-				this.enemyAttack.doAttack();
+				this.enemyAttack.DoAttack();
 			}
 		}
 	}
@@ -183,7 +183,10 @@ public class EnemyController : MonoBehaviour, ICharacter {
 			direction = 1;
 		}
 	}
-	
+
+	public void ApplyDefense(IAttack attack) {
+		//this.playerDefense.doDefense (attack, this);
+	}
 	
 	
 	public void ApplyDamage(float damage){

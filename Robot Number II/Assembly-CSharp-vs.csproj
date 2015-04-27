@@ -54,17 +54,21 @@
      <Compile Include="Assets\Scripts\AttackSpawner.cs" />
      <Compile Include="Assets\Scripts\CameraFollow.cs" />
      <Compile Include="Assets\Scripts\DeathTrigger.cs" />
+     <Compile Include="Assets\Scripts\Defense\CharacterDefense.cs" />
+     <Compile Include="Assets\Scripts\Defense\IDefense.cs" />
+     <Compile Include="Assets\Scripts\Defense\IDefenseBehavior.cs" />
      <Compile Include="Assets\Scripts\EnemyController.cs" />
      <Compile Include="Assets\Scripts\GroundCheck.cs" />
-     <Compile Include="Assets\Scripts\Interfaces.cs" />
+     <Compile Include="Assets\Scripts\Interface\Interfaces.cs" />
      <Compile Include="Assets\Scripts\ObjectiveHandler.cs" />
      <Compile Include="Assets\Scripts\Player.cs" />
+     <Compile Include="Assets\Scripts\PlayerAttack.cs" />
      <Compile Include="Assets\Scripts\ProjectileMovment.cs" />
      <Compile Include="Assets\Scripts\RopeCheck.cs" />
      <Compile Include="Assets\Scripts\TestMenu.cs" />
      <Compile Include="Assets\Scripts\WeaponBehavior.cs" />
  <Reference Include="UnityEngine.UI">
- <HintPath>d:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
+ <HintPath>D:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

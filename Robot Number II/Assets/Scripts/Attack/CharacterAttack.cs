@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class CharacterAttack : MonoBehaviour,IAttackBehavior {
@@ -12,21 +12,22 @@ public class CharacterAttack : MonoBehaviour,IAttackBehavior {
 	// Update is called once per frame
 	void Update () {}
 
-	public void doAttack(){
-		GameObject proj = (GameObject) Instantiate(Resources.Load(this.primaryAttack.getAttack()));
+	public void DoAttack(){
+		GameObject proj = (GameObject) Instantiate(Resources.Load(this.primaryAttack.GetAttack()));
 		
 		proj.transform.position = this.transform.position;
 		proj.SendMessage("SetCharacter", gameObject.GetComponentInParent<ICharacter> ());
+		proj.SendMessage ("SetAttack", this.primaryAttack);
 	}
-	public void swapAttack(){
+	public void SwapAttack(){
 		IAttack tempSwapper = this.primaryAttack;
 		this.primaryAttack = this.secondaryAttack;
 		this.secondaryAttack = tempSwapper;
 	}
-	public void setPrimaryAttack(IAttack attack){
+	public void SetPrimaryAttack(IAttack attack){
 		this.primaryAttack = attack;
 	}
-	public void setSecondaryAttack(IAttack attack){
+	public void SetSecondaryAttack(IAttack attack){
 		this.secondaryAttack = attack;
 	}
 }

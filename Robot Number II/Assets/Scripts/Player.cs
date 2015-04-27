@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class Player : MonoBehaviour, ICharacter {
@@ -21,6 +21,7 @@ public class Player : MonoBehaviour, ICharacter {
 	private Animator anim;
 	//private ProjSpawner projspawner;
 	private CharacterAttack playerAttack;
+	private CharacterDefense playerDefense;
 	
 	//Game values
 	private float health =100.0f;
@@ -33,10 +34,11 @@ public class Player : MonoBehaviour, ICharacter {
 		anim = gameObject.GetComponent<Animator> ();
 		//this.projspawner = gameObject.GetComponentInChildren<ProjSpawner> ();
 		this.playerAttack = gameObject.GetComponentInChildren<CharacterAttack> ();
+		this.playerDefense = gameObject.GetComponentInChildren<CharacterDefense> ();
 		IAttack projectile = new ProjectileAttack ();
 		IAttack lazer = new LazerAttack ();
-		this.playerAttack.setPrimaryAttack (projectile);
-		this.playerAttack.setSecondaryAttack (lazer);
+		this.playerAttack.SetPrimaryAttack (projectile);
+		this.playerAttack.SetSecondaryAttack (lazer);
 	}
 	
 	// Update is called once per frame
@@ -56,11 +58,11 @@ public class Player : MonoBehaviour, ICharacter {
 		}
 		if (Input.GetButtonDown ("Fire1")) {
 			//this.projspawner.ShootProjOne();
-			this.playerAttack.doAttack();
+			this.playerAttack.DoAttack();
 		}
 		if (Input.GetButtonDown ("Fire2")) {
 			//this.projspawner.ShootProjTwo();
-			this.playerAttack.swapAttack();
+			this.playerAttack.SwapAttack();
 		}
 	}
 	
@@ -136,9 +138,15 @@ public class Player : MonoBehaviour, ICharacter {
 	public void Die(){
 		Application.LoadLevel(Application.loadedLevel);
 	}
+
+	public void ApplyDefense(IAttack attack) {
+		this.playerDefense.DoDefense (attack, this);
+	}
+
 	
 	public void ApplyDamage(float damage){
 		this.health = this.health - damage;
+		print ("Apply damage, remaining health: " + this.health + " Damage applied: " + damage);
 	}
 	
 	public void SetCanClimb(bool canClmb){

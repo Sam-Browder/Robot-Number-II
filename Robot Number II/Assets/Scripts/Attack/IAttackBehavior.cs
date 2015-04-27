@@ -3,9 +3,9 @@ using System.Collections;
 
 public interface IAttackBehavior{
 
-	void doAttack();
-	void swapAttack();
-	void setPrimaryAttack(IAttack attack);
-	void setSecondaryAttack(IAttack attack);
+	void DoAttack();
+	void SwapAttack();
+	void SetPrimaryAttack(IAttack attack);
+	void SetSecondaryAttack(IAttack attack);
 
 }
