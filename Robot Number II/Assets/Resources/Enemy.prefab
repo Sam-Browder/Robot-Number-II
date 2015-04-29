@@ -175,7 +175,7 @@ MonoBehaviour:
   direction: 1
   attackSpeed: 1
   jumpTime: 0
-  visionDistance: 10
+  visionDistance: 5
 --- !u!114 &11490432
 MonoBehaviour:
   m_ObjectHideFlags: 1
