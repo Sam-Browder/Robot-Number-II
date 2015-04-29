@@ -23,8 +23,8 @@ public class ObjectiveHandler : MonoBehaviour {
 		if (other.gameObject.CompareTag ("Player")) {
 			int i = Application.loadedLevel;
 
-			if(Application.loadedLevelName == "SecondaryTesting Ground"){
-				Application.LoadLevel(i-1);
+			if(Application.loadedLevel == 4){
+				Application.LoadLevel(1);
 			}else{
 			Application.LoadLevel(i+1);
 			}
