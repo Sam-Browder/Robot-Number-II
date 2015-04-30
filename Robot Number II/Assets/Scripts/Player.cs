@@ -69,7 +69,7 @@ public class Player : MonoBehaviour, ICharacter {
 		easeVelocity.y = rb2d.velocity.y;
 		easeVelocity.z = 0.0f;
 		easeVelocity.x *= 0.80f;
-		Physics2D.IgnoreLayerCollision (LayerMask.NameToLayer ("Player"), LayerMask.NameToLayer ("Ground"), false);// && ((Input.GetAxis("Vertical") > 0.1f) || (Input.GetAxis("Vertical") < -0.1f)) );
+		//Physics2D.IgnoreLayerCollision (LayerMask.NameToLayer ("Player"), LayerMask.NameToLayer ("Ground"), false);// && ((Input.GetAxis("Vertical") > 0.1f) || (Input.GetAxis("Vertical") < -0.1f)) );
 		//fake friction
 		if (grounded) {
 			rb2d.velocity = easeVelocity;
