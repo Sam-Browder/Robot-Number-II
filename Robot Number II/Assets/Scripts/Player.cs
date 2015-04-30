@@ -39,7 +39,8 @@ public class Player : MonoBehaviour, ICharacter {
 	// Update is called once per frame
 	//public Transform testProj;
 	void Update () {
-		
+		Grounded ();
+
 		anim.SetBool ("Grounded", grounded);
 		anim.SetFloat ("Speed", Mathf.Abs (rb2d.velocity.x));
 		
@@ -96,7 +97,6 @@ public class Player : MonoBehaviour, ICharacter {
 	void Jump(){
 		if (grounded){
 			rb2d.AddForce(Vector2.up * jumpPower);	
-			canDoubleJump = true;
 		}else{
 			
 			if (canDoubleJump){
@@ -168,6 +168,26 @@ public class Player : MonoBehaviour, ICharacter {
 
 	public void SetGravity(float grav) {
 			rb2d.gravityScale = grav;
+	}
+
+	void Grounded(){
+		Vector3 currentPos = this.transform.position;
+		Vector3 startPos = new Vector3 (currentPos.x - .3f, currentPos.y - .5f, currentPos.z);
+		Vector3 endPos = new Vector3 (currentPos.x + .3f, currentPos.y-.5f, currentPos.z);
+		Debug.DrawLine(startPos, endPos,Color.green);
+		bool tempGround = Physics2D.Linecast (startPos, endPos, 1 << LayerMask.NameToLayer ("Ground"));
+		bool tempEnemy = Physics2D.Linecast (startPos, endPos, 1 << LayerMask.NameToLayer ("Enemy"));
+
+
+
+
+		if (tempEnemy || tempGround) {
+			this.grounded = true;
+			this.canDoubleJump = true;
+		} else {
+			this.grounded = false;
+		}
+
 	}
 }
 
