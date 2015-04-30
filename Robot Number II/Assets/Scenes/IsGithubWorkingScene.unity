@@ -130,7 +130,8 @@ Prefab:
       propertyPath: minCameraPos.y
       value: .5
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: a3ae31decb19a104fb60f5f274b56676, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &386463533

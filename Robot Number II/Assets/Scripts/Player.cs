@@ -40,6 +40,7 @@ public class Player : MonoBehaviour, ICharacter {
 	//public Transform testProj;
 	void Update () {
 		Grounded ();
+		Rope ();
 
 		anim.SetBool ("Grounded", grounded);
 		anim.SetFloat ("Speed", Mathf.Abs (rb2d.velocity.x));
@@ -178,9 +179,6 @@ public class Player : MonoBehaviour, ICharacter {
 		bool tempGround = Physics2D.Linecast (startPos, endPos, 1 << LayerMask.NameToLayer ("Ground"));
 		bool tempEnemy = Physics2D.Linecast (startPos, endPos, 1 << LayerMask.NameToLayer ("Enemy"));
 
-
-
-
 		if (tempEnemy || tempGround) {
 			this.grounded = true;
 			this.canDoubleJump = true;
@@ -189,29 +187,23 @@ public class Player : MonoBehaviour, ICharacter {
 		}
 
 	}
+
+	void Rope(){
+		Vector3 currentPos = this.transform.position;
+		Vector3 startPos = new Vector3 (currentPos.x - .3f, currentPos.y + .2f, currentPos.z);
+		Vector3 endPos = new Vector3 (currentPos.x + .3f, currentPos.y + .2f, currentPos.z);
+		Debug.DrawLine (startPos, endPos, Color.green);
+		bool touchingRope = Physics2D.Linecast (startPos, endPos, 1 << LayerMask.NameToLayer ("Rope"));
+
+		if (touchingRope) {
+			this.SetCanClimb (true);
+			this.SetGravity (0);
+		} else {
+			this.SetCanClimb (false);
+			this.SetGravity (1);
+		}
+	}
+
+
+
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -13,7 +13,6 @@ GameObject:
   - 124: {fileID: 12499634}
   - 81: {fileID: 8119272}
   - 114: {fileID: 11492624}
-  - 114: {fileID: 11495596}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -96,18 +95,6 @@ MonoBehaviour:
   bounds: 1
   minCameraPos: {x: -100, y: 3.78999996, z: -10}
   maxCameraPos: {x: 100, y: 100, z: -10}
---- !u!114 &11495596
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 179576}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab4b076678dad994786e418b87e02809, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  paused: 0
 --- !u!124 &12499634
 Behaviour:
   m_ObjectHideFlags: 1

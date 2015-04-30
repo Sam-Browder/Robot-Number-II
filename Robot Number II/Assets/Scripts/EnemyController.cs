@@ -18,6 +18,7 @@ public class EnemyController : MonoBehaviour, ICharacter {
 	public bool noGroundLeft;
 	public bool noGroundRight;
 	public bool standingOnPlayer;
+	public bool playerInLineOfSight;
 	
 	public int direction = 1;
 	
@@ -67,6 +68,7 @@ public class EnemyController : MonoBehaviour, ICharacter {
 		NoGroundLeft ();
 		NoGroundRight ();
 		StandinOnPlayer ();
+		LineOfSight ();
 		
 		time += Time.deltaTime;
 		attackTimer += Time.deltaTime;
@@ -152,7 +154,7 @@ public class EnemyController : MonoBehaviour, ICharacter {
 			this.Jump ();
 		}
 		
-		if (this.distanceToPlayer < this.visionDistance){
+		if (this.playerInLineOfSight){
 			if (attackTimer > this.attackSpeed) {
 				attackTimer = 0;
 				//this.projspawner.ShootProjTwo ();
@@ -264,10 +266,18 @@ public class EnemyController : MonoBehaviour, ICharacter {
 	
 	void StandinOnPlayer(){
 		Vector3 currentPos = this.transform.position;
-		Vector3 startPos = new Vector3 (currentPos.x - .5f, currentPos.y - 1, currentPos.z);
-		Vector3 endPos = new Vector3 (currentPos.x + .5f, currentPos.y-1, currentPos.z);
+		Vector3 startPos = new Vector3 (currentPos.x - .5f, currentPos.y - .6f, currentPos.z);
+		Vector3 endPos = new Vector3 (currentPos.x + .5f, currentPos.y-.6f, currentPos.z);
 		Debug.DrawLine(startPos, endPos,Color.green);
 		this.standingOnPlayer = Physics2D.Linecast (startPos, endPos, 1 << LayerMask.NameToLayer ("Player"));
+	}
+
+	void LineOfSight(){
+		Vector3 currentPos = this.transform.position;
+		Vector3 startPos = new Vector3 (currentPos.x, currentPos.y +.25f, currentPos.z);
+		Vector3 endPos = new Vector3 (currentPos.x+visionDistance * this.direction, currentPos.y+.25f, currentPos.z);
+		Debug.DrawLine(startPos, endPos,Color.green);
+		this.playerInLineOfSight = Physics2D.Linecast (startPos, endPos, 1 << LayerMask.NameToLayer ("Player"));
 	}
 
 	
