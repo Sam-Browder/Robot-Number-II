@@ -264,9 +264,10 @@ public class EnemyController : MonoBehaviour, ICharacter {
 	
 	void StandinOnPlayer(){
 		Vector3 currentPos = this.transform.position;
-		Vector3 endPos = new Vector3 (currentPos.x, currentPos.y-1, currentPos.z);
-		Debug.DrawLine(currentPos, endPos,Color.green);
-		this.standingOnPlayer = Physics2D.Linecast (currentPos, endPos, 1 << LayerMask.NameToLayer ("Player"));
+		Vector3 startPos = new Vector3 (currentPos.x - .5f, currentPos.y - 1, currentPos.z);
+		Vector3 endPos = new Vector3 (currentPos.x + .5f, currentPos.y-1, currentPos.z);
+		Debug.DrawLine(startPos, endPos,Color.green);
+		this.standingOnPlayer = Physics2D.Linecast (startPos, endPos, 1 << LayerMask.NameToLayer ("Player"));
 	}
 
 	
