@@ -8,23 +8,26 @@ public class EnemyController : MonoBehaviour, ICharacter {
 	public float speed = 50f;
 	public float jumpPower = 200f;
 	public int numOfJumps = 2;
+	public float minDistFromPlayer = 1.5f;
 	
 	//booleans
 	public bool grounded;
 	public bool canDoubleJump;
 	public bool canClimb;
-	public bool obstacleOnLeft;
-	public bool obstacleOnRight;
-	public bool noGroundLeft;
-	public bool noGroundRight;
+	public bool facingObsticle;
+	public bool noGround;
 	public bool standingOnPlayer;
 	public bool standingUnderPlayer;
 	public bool playerInLineOfSight;
+	public bool canMakeJump;
 	public bool shouldMove;
-	public bool canJumpLeft;
-	public bool canJumpRight;
+	public bool tooCloseToPlayer;
+	public bool isPatroling;
+	public bool facingLeft;
+	public bool facingRight;
 	
-	public int direction = 1;
+	//control case in AI method
+	public int controlCase;
 	
 	//refrences
 	private Rigidbody2D rb2d;
@@ -38,10 +41,11 @@ public class EnemyController : MonoBehaviour, ICharacter {
 	public float jumpTime;
 	
 	public float visionDistance;
-	
+
+	public int direction = 1;
 	private ICharacter player;
 	private float distanceToPlayer;
-	private float directionToPlayer;
+	private int directionToPlayer;
 	//private ProjSpawner projspawner;
 	private CharacterAttack enemyAttack;
 	
@@ -65,7 +69,11 @@ public class EnemyController : MonoBehaviour, ICharacter {
 	
 	void Update () {
 
-		this.distanceToPlayer = Mathf.Abs( this.transform.position.x - this.player.GetPosition ().x);
+
+		float xDistToPlayer = Mathf.Abs (this.transform.position.x - this.player.GetPosition ().x);
+		float yDistToPlayer = Mathf.Abs (this.transform.position.x - this.player.GetPosition ().x);
+		this.distanceToPlayer = Mathf.Sqrt(Mathf.Pow(2, xDistToPlayer) + Mathf.Pow(2, yDistToPlayer));
+
 
 		anim.SetBool("Grounded", grounded);
 		anim.SetFloat ("Speed", Mathf.Abs(rb2d.velocity.x));
@@ -73,15 +81,14 @@ public class EnemyController : MonoBehaviour, ICharacter {
 		time += Time.deltaTime;
 		attackTimer += Time.deltaTime;
 		
-		ObstacleOnLeft ();
-		ObstacleOnRight ();
-		NoGroundLeft ();
-		NoGroundRight ();
+		Grounded ();
+		FacingObstacle ();
+		NoGround ();
 		StandinOnPlayer ();
 		StandingUnderPlayer ();
 		LineOfSight ();
-		CanJumpLeft ();
-		CanJumpRight ();
+		CanMakeJump();
+		TooCloseToPlayer ();
 				
 		
 		if (health <= 0.0) {
@@ -124,61 +131,82 @@ public class EnemyController : MonoBehaviour, ICharacter {
 	}
 	
 	void AI(){
+		// these are the control bool's made by the line casts
+
+		//public bool noGroundLeft;
+		//public bool noGroundRight;
+		//public bool standingOnPlayer;
+		//public bool standingUnderPlayer;
+		//public bool playerInLineOfSight;
+		//public bool canMakeJump;
+		//public bool facingObsticle;
+
+
+		// these are control bool's made by if logic
+		//public bool shouldMove;		
+		//public bool tooCloseToPlayer;
+		//public bool isPatroling;
 
 		//determines the direction to the player
-		if (this.transform.position.x < this.player.GetPosition ().x) {
-			this.directionToPlayer = 1;
-		} else {
-			this.directionToPlayer = -1;
-		}
+		this.controlCase = 0;
 
-		//walk back and forth if you are to far from the player
-		if (this.distanceToPlayer > this.visionDistance) {
-			if (time > 2) {
-				time = 0;
-				this.direction = this.direction * -1;
+
+		if (this.grounded) {
+			this.canDoubleJump = true;
+			if (this.transform.position.x < this.player.GetPosition ().x) {
+				this.directionToPlayer = 1;
+				this.facingRight = true;
+				this.facingLeft = false;
+			} else {
+				this.directionToPlayer = -1;
+				this.facingRight = false;
+				this.facingLeft = true;
 			}
-		} else {
-			this.direction = (int)this.directionToPlayer;
-		}
 
-		if (this.distanceToPlayer < .8 && !this.standingOnPlayer && !this.standingUnderPlayer) {
-			this.shouldMove = false;
-		} else {
-			this.shouldMove = true;
-		}
-
-
-		if(this.standingOnPlayer){
-			this.direction = this.direction;
-		}
-
-		if (this.standingUnderPlayer) {
-			this.direction = this.direction;
-		}
-			
-
-		if (this.direction < 0 && this.obstacleOnLeft ||this.direction > 0 && this.obstacleOnRight) {
-			if(this.grounded){
-				this.numOfJumps = 1;
+			if (this.distanceToPlayer > this.visionDistance) {
+				Patrol ();
+			} else {
+				this.isPatroling = false;
+				this.direction = this.directionToPlayer;
 			}
-			this.Jump ();
-		}
-		if (this.direction<0 && this.noGroundLeft && this.canJumpLeft || this.direction>0 && this.noGroundRight && this.canJumpRight){
-			if(this.grounded){
-				this.numOfJumps = 1;
+
+
+
+			if (this.tooCloseToPlayer) {
+				this.shouldMove = false;
+			} else {
+				this.shouldMove = true;
 			}
-			this.Jump ();
 		}
 
 
-		
+		if (this.facingObsticle) {
+
+
+			this.Jump();
+		}
+
+
 		if (this.playerInLineOfSight){
 			if (attackTimer > this.attackSpeed) {
 				attackTimer = 0;
 				this.enemyAttack.DoAttack();
 			}
 		}
+
+		if (this.noGround && this.canMakeJump) {
+			this.Jump ();
+		} else if (this.noGround && !this.canMakeJump) {
+			this.shouldMove = false;
+		}
+		
+
+
+
+
+
+
+	
 	}
 	
 	void UpdateSprite(){
@@ -241,60 +269,60 @@ public class EnemyController : MonoBehaviour, ICharacter {
 	}
 	
 	void Jump(){
-		if (this.numOfJumps>0 && this.jumpTime < this.time-.3){
+	
+
+		if (this.grounded){
 			rb2d.velocity = new Vector2(rb2d.velocity.x, 0);
 			rb2d.AddForce(Vector2.up * jumpPower);	
 			this.numOfJumps= this.numOfJumps-1;
 			this.jumpTime= this.time;
 			
-		}			
+		}else if (this.canDoubleJump && this.jumpTime < this.time-.3){
+			rb2d.velocity = new Vector2(rb2d.velocity.x, 0);
+			rb2d.AddForce(Vector2.up * jumpPower);
+			this.canDoubleJump = false;
+			this.jumpTime = this.time;
+		}
+	}
+	void Patrol(){
+		if (time > 2) {
+			time = 0;
+			this.direction = this.direction * -1;
+			this.isPatroling = true;
+		}
 	}
 	
 	
 	
-	void ObstacleOnLeft(){
+
+
+	void FacingObstacle(){
 		Vector3 currentPos = this.transform.position;
-		Vector3 endPos = new Vector3 (currentPos.x - 1, currentPos.y-.3f, currentPos.z);
+		Vector3 endPos = new Vector3 (currentPos.x + 1*this.direction, currentPos.y-.3f, currentPos.z);
 		Debug.DrawLine(currentPos, endPos,Color.green);
-		this.obstacleOnLeft = Physics2D.Linecast (currentPos, endPos, 1 << LayerMask.NameToLayer ("Ground"));
-	}
-	
-	void ObstacleOnRight(){
-		Vector3 currentPos = this.transform.position;
-		Vector3 endPos = new Vector3 (currentPos.x + 1, currentPos.y-.3f, currentPos.z);
-		Debug.DrawLine(currentPos, endPos,Color.green);
-		this.obstacleOnRight = Physics2D.Linecast (currentPos, endPos, 1 << LayerMask.NameToLayer ("Ground"));
+		this.facingObsticle = Physics2D.Linecast (currentPos, endPos, 1 << LayerMask.NameToLayer ("Ground"));
 	}
 	
 	
-	void NoGroundLeft(){
-		Vector3 currentPos = new Vector3(this.transform.position.x-.5f,this.transform.position.y, this.transform.position.z);
+	
+
+	void NoGround(){
+		Vector3 currentPos = new Vector3(this.transform.position.x+.5f*this.direction,this.transform.position.y, this.transform.position.z);
 		Vector3 endPos = new Vector3 (currentPos.x, currentPos.y-3f, currentPos.z);
 		Debug.DrawLine(currentPos, endPos,Color.green);
-		this.noGroundLeft = !Physics2D.Linecast (currentPos, endPos, 1 << LayerMask.NameToLayer ("Ground"));
-	}
-	
-	void NoGroundRight(){
-		Vector3 currentPos = new Vector3(this.transform.position.x+.5f,this.transform.position.y, this.transform.position.z);
-		Vector3 endPos = new Vector3 (currentPos.x, currentPos.y-3f, currentPos.z);
-		Debug.DrawLine(currentPos, endPos,Color.green);
-		this.noGroundRight = !Physics2D.Linecast (currentPos, endPos, 1 << LayerMask.NameToLayer ("Ground"));
+		this.noGround= !Physics2D.Linecast (currentPos, endPos, 1 << LayerMask.NameToLayer ("Ground"));
 	}
 
-	void CanJumpLeft(){
-		Vector3 currentPos = new Vector3(this.transform.position.x-.5f,this.transform.position.y, this.transform.position.z);
-		Vector3 endPos = new Vector3 (currentPos.x - 4, currentPos.y-1f, currentPos.z);
-		Debug.DrawLine(currentPos, endPos,Color.green);
-		this.canJumpLeft = Physics2D.Linecast (currentPos, endPos, 1 << LayerMask.NameToLayer ("Ground"));
-	}
-	
-	void CanJumpRight(){
-		Vector3 currentPos = new Vector3(this.transform.position.x+.5f,this.transform.position.y, this.transform.position.z);
-		Vector3 endPos = new Vector3 (currentPos.x+4, currentPos.y-1f, currentPos.z);
-		Debug.DrawLine(currentPos, endPos,Color.green);
-		this.canJumpRight = Physics2D.Linecast (currentPos, endPos, 1 << LayerMask.NameToLayer ("Ground"));
-	}
 
+
+	void CanMakeJump(){
+		Vector3 currentPos = new Vector3(this.transform.position.x+.5f *this.direction,this.transform.position.y, this.transform.position.z);
+		Vector3 endPos = new Vector3 (this.transform.position.x + 4.5f * this.direction, currentPos.y-1f, currentPos.z);
+		Debug.DrawLine(currentPos, endPos,Color.green);
+		if (this.grounded) {
+			this.canMakeJump = Physics2D.Linecast (currentPos, endPos, 1 << LayerMask.NameToLayer ("Ground"));
+		}
+	}
 
 	
 	void StandinOnPlayer(){
@@ -321,24 +349,52 @@ public class EnemyController : MonoBehaviour, ICharacter {
 		this.playerInLineOfSight = Physics2D.Linecast (startPos, endPos, 1 << LayerMask.NameToLayer ("Player"));
 	}
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	void TooCloseToPlayer(){
+		if (this.distanceToPlayer < this.minDistFromPlayer){
+			this.tooCloseToPlayer = true;
+		}else {
+			this.tooCloseToPlayer = false;
+		}
+	}
+
+	void Grounded(){
+		Vector3 currentPos = this.transform.position;
+		Vector3 startPos = new Vector3 (currentPos.x - .3f, currentPos.y - .5f, currentPos.z);
+		Vector3 endPos = new Vector3 (currentPos.x + .3f, currentPos.y-.5f, currentPos.z);
+		Debug.DrawLine(startPos, endPos,Color.green);
+		bool tempGround = Physics2D.Linecast (startPos, endPos, 1 << LayerMask.NameToLayer ("Ground"));
+		bool tempEnemy = Physics2D.Linecast (startPos, endPos, 1 << LayerMask.NameToLayer ("Enemy"));
+		
+		if (tempEnemy || tempGround) {
+			this.grounded = true;
+			this.canDoubleJump = true;
+		} else {
+			this.grounded = false;
+		}
+		
+	}
+
 	
 	
 	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
