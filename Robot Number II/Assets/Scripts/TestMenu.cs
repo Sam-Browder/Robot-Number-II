@@ -8,6 +8,7 @@ public class TestMenu : MonoBehaviour {
 	public string[] availableWeapons;
 	public string[] weaponData;
 	private int[] buttonTracker;
+	public double[] armorData;
 
 	// Use this for initialization
 	void Start () {
@@ -16,6 +17,7 @@ public class TestMenu : MonoBehaviour {
 		availableWeapons = new string[] {"Projectile", "Lazer"};
 		weaponData = new string[] {availableWeapons [0], availableWeapons [0], availableWeapons [0], availableWeapons [0]};
 		buttonTracker = new int[] {0, 0, 0, 0};
+		armorData = new double[] {1.0, 1.0, 1.0, 1.0};
 	}
 	
 	public void startGame() {
@@ -28,5 +30,19 @@ public class TestMenu : MonoBehaviour {
 		string newText = availableWeapons [buttonTracker [buttonID] % availableWeapons.Length];
 		weaponData [buttonID] = newText;
 		button.GetComponentInChildren<Text> ().text = newText;
+	}
+
+	public void pressedUpArmor(Text armorText) {
+		double armorValue = double.Parse (armorText.text);
+		armorValue += 0.1;
+		armorText.text = armorValue.ToString ();
+	}
+
+	public void pressedDownArmor(Text armorText) {
+		double armorValue = double.Parse (armorText.text);
+		int armorID = int.Parse (armorText.name) % 4;
+		armorValue -= 0.1;
+		armorText.text = armorValue.ToString ();
+		armorData [armorID] = armorValue;
 	}
 }
