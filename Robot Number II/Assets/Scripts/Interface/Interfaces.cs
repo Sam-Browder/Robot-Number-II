@@ -13,3 +13,10 @@ public interface ICharacter{
 	Vector3 GetPosition();
 	bool GetCanClimb();
 }
+
+abstract public class Nondamageable{
+
+
+
+
+}

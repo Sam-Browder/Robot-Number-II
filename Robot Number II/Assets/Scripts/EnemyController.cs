@@ -8,7 +8,7 @@ public class EnemyController : MonoBehaviour, ICharacter {
 	public float speed = 50f;
 	public float jumpPower = 200f;
 	public int numOfJumps = 2;
-	public float minDistFromPlayer = 1.5f;
+	public float minDistFromPlayer = 2f;
 	
 	//booleans
 	public bool grounded;
@@ -89,6 +89,7 @@ public class EnemyController : MonoBehaviour, ICharacter {
 		LineOfSight ();
 		CanMakeJump();
 		TooCloseToPlayer ();
+
 				
 		
 		if (health <= 0.0) {
@@ -165,14 +166,14 @@ public class EnemyController : MonoBehaviour, ICharacter {
 
 			if (this.distanceToPlayer > this.visionDistance) {
 				Patrol ();
-			} else {
+			} else if (!this.standingOnPlayer && !this.standingUnderPlayer){
 				this.isPatroling = false;
 				this.direction = this.directionToPlayer;
 			}
 
 
 
-			if (this.tooCloseToPlayer) {
+			if (this.tooCloseToPlayer && !this.standingOnPlayer && !this.standingUnderPlayer) {
 				this.shouldMove = false;
 			} else {
 				this.shouldMove = true;
@@ -181,8 +182,6 @@ public class EnemyController : MonoBehaviour, ICharacter {
 
 
 		if (this.facingObsticle) {
-
-
 			this.Jump();
 		}
 
@@ -274,7 +273,7 @@ public class EnemyController : MonoBehaviour, ICharacter {
 		if (this.grounded){
 			rb2d.velocity = new Vector2(rb2d.velocity.x, 0);
 			rb2d.AddForce(Vector2.up * jumpPower);	
-			this.numOfJumps= this.numOfJumps-1;
+			this.canDoubleJump = true;
 			this.jumpTime= this.time;
 			
 		}else if (this.canDoubleJump && this.jumpTime < this.time-.3){
@@ -302,9 +301,7 @@ public class EnemyController : MonoBehaviour, ICharacter {
 		Debug.DrawLine(currentPos, endPos,Color.green);
 		this.facingObsticle = Physics2D.Linecast (currentPos, endPos, 1 << LayerMask.NameToLayer ("Ground"));
 	}
-	
-	
-	
+
 
 	void NoGround(){
 		Vector3 currentPos = new Vector3(this.transform.position.x+.5f*this.direction,this.transform.position.y, this.transform.position.z);
@@ -312,8 +309,6 @@ public class EnemyController : MonoBehaviour, ICharacter {
 		Debug.DrawLine(currentPos, endPos,Color.green);
 		this.noGround= !Physics2D.Linecast (currentPos, endPos, 1 << LayerMask.NameToLayer ("Ground"));
 	}
-
-
 
 	void CanMakeJump(){
 		Vector3 currentPos = new Vector3(this.transform.position.x+.5f *this.direction,this.transform.position.y, this.transform.position.z);
@@ -359,13 +354,14 @@ public class EnemyController : MonoBehaviour, ICharacter {
 
 	void Grounded(){
 		Vector3 currentPos = this.transform.position;
-		Vector3 startPos = new Vector3 (currentPos.x - .3f, currentPos.y - .5f, currentPos.z);
-		Vector3 endPos = new Vector3 (currentPos.x + .3f, currentPos.y-.5f, currentPos.z);
+		Vector3 startPos = new Vector3 (currentPos.x - .2f, currentPos.y - .5f, currentPos.z);
+		Vector3 endPos = new Vector3 (currentPos.x + .2f, currentPos.y-.5f, currentPos.z);
 		Debug.DrawLine(startPos, endPos,Color.green);
 		bool tempGround = Physics2D.Linecast (startPos, endPos, 1 << LayerMask.NameToLayer ("Ground"));
 		bool tempEnemy = Physics2D.Linecast (startPos, endPos, 1 << LayerMask.NameToLayer ("Enemy"));
-		
-		if (tempEnemy || tempGround) {
+		bool tempPlayer = Physics2D.Linecast (startPos, endPos, 1 << LayerMask.NameToLayer ("Player"));
+
+		if (tempEnemy || tempGround || tempPlayer) {
 			this.grounded = true;
 			this.canDoubleJump = true;
 		} else {
