@@ -5,9 +5,12 @@ public class ObjectiveHandler : MonoBehaviour {
 
 	public string nextLevel;
 	public float rotationSpeed = 1.0f;
+	public int numberOfLevels;
+	public int maxLevel;
 	// Use this for initialization
 	void Start () {
-
+		this.numberOfLevels = Application.levelCount;
+		this.maxLevel = this.numberOfLevels - 1;
 	}
 	
 	// Update is called once per frame
@@ -23,7 +26,7 @@ public class ObjectiveHandler : MonoBehaviour {
 		if (other.gameObject.CompareTag ("Player")) {
 			int i = Application.loadedLevel;
 
-			if(Application.loadedLevel == 4){
+			if(Application.loadedLevel == this.maxLevel){
 				Application.LoadLevel(1);
 			}else{
 			Application.LoadLevel(i+1);

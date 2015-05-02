@@ -1,5 +1,22 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &149598
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 485520}
+  - 33: {fileID: 3310716}
+  - 23: {fileID: 2399148}
+  m_Layer: 0
+  m_Name: Background
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &179576
 GameObject:
   m_ObjectHideFlags: 0
@@ -27,10 +44,23 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 179576}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.1500001, y: 3.78999996, z: -10}
+  m_LocalPosition: {x: .75, y: 4, z: -10}
   m_LocalScale: {x: 1.27469301, y: .793887913, z: .894521534}
-  m_Children: []
+  m_Children:
+  - {fileID: 485520}
   m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!4 &485520
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 149598}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: .109830365, y: -.277117193, z: 16.7687416}
+  m_LocalScale: {x: 20, y: 14, z: 1.11791611}
+  m_Children: []
+  m_Father: {fileID: 476524}
   m_RootOrder: 0
 --- !u!20 &2009928
 Camera:
@@ -52,7 +82,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 3.7592268
+  orthographic size: 5.1277256
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -64,6 +94,37 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: .0219999999
+--- !u!23 &2399148
+MeshRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 149598}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 4fb0527076e72df4396a1b129ff251a3, type: 2}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 1
+  m_ReflectionProbeUsage: 1
+  m_ProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 1
+  m_ImportantGI: 0
+  m_AutoUVMaxDistance: .5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+--- !u!33 &3310716
+MeshFilter:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 149598}
+  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!81 &8119272
 AudioListener:
   m_ObjectHideFlags: 1
@@ -93,7 +154,7 @@ MonoBehaviour:
   smoothTimex: .0500000007
   player: {fileID: 0}
   bounds: 1
-  minCameraPos: {x: -100, y: 3.78999996, z: -10}
+  minCameraPos: {x: -100, y: 4, z: -10}
   maxCameraPos: {x: 100, y: 100, z: -10}
 --- !u!124 &12499634
 Behaviour:

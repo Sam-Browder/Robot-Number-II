@@ -15,3 +15,5 @@ EditorBuildSettings:
     path: Assets/Scenes/SecondaryTesting Ground.unity
   - enabled: 1
     path: Assets/Scenes/ThirdTestingGround.unity
+  - enabled: 1
+    path: Assets/Scenes/AI_Testing.unity
