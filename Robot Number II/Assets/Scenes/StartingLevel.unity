@@ -255,6 +255,48 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0a6ec4c23663c4f4c8a17aa9b9acdbdd, type: 2}
   m_IsPrefabParent: 0
+--- !u!1001 &391280646
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 433678, guid: 9db3510909207734195de22d52a940a2, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -5.74558926
+      objectReference: {fileID: 0}
+    - target: {fileID: 433678, guid: 9db3510909207734195de22d52a940a2, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 1.46165895
+      objectReference: {fileID: 0}
+    - target: {fileID: 433678, guid: 9db3510909207734195de22d52a940a2, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 433678, guid: 9db3510909207734195de22d52a940a2, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 433678, guid: 9db3510909207734195de22d52a940a2, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 433678, guid: 9db3510909207734195de22d52a940a2, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 433678, guid: 9db3510909207734195de22d52a940a2, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 433678, guid: 9db3510909207734195de22d52a940a2, type: 2}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 9db3510909207734195de22d52a940a2, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1001 &723684073
 Prefab:
   m_ObjectHideFlags: 0
@@ -406,4 +448,4 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
