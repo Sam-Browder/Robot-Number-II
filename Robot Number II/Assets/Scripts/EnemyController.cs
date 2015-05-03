@@ -26,6 +26,7 @@ public class EnemyController : MonoBehaviour, ICharacter {
 	public bool isPatroling;
 	public bool facingLeft;
 	public bool facingRight;
+	public bool playerSpotted;
 	
 	//control case in AI method
 	public int controlCase;
@@ -39,6 +40,7 @@ public class EnemyController : MonoBehaviour, ICharacter {
 	private float attackTimer = 0.0f;
 	public float attackSpeed;
 	public float jumpTime;
+	public float spottedTime;
 	
 	public float visionDistance;
 
@@ -79,7 +81,7 @@ public class EnemyController : MonoBehaviour, ICharacter {
 		float xDistToPlayer = Mathf.Abs (this.transform.position.x - this.player.GetPosition ().x);
 		float yDistToPlayer = Mathf.Abs (this.transform.position.x - this.player.GetPosition ().x);
 		this.distanceToPlayer = Mathf.Sqrt(Mathf.Pow(2, xDistToPlayer) + Mathf.Pow(2, yDistToPlayer));
-
+		
 
 		anim.SetBool("Grounded", grounded);
 		anim.SetFloat ("Speed", Mathf.Abs(rb2d.velocity.x));
@@ -157,24 +159,30 @@ public class EnemyController : MonoBehaviour, ICharacter {
 		//public bool isPatroling;
 
 		//determines the direction to the player
-		this.controlCase = 0;
+		if (this.transform.position.x < this.player.GetPosition ().x) {
+			this.directionToPlayer = 1;
+		} else {
+			this.directionToPlayer = -1;
+		}
+
+		if (this.playerInLineOfSight || this.standingOnPlayer || this.standingUnderPlayer) {
+			this.playerSpotted=true;
+			this.spottedTime = this.time;
+		}else if(this.spottedTime < this.time - 4f){
+			this.playerSpotted=false;
+		}
 
 
 		if (this.grounded) {
 			this.canDoubleJump = true;
-			if (this.transform.position.x < this.player.GetPosition ().x) {
-				this.directionToPlayer = 1;
-				this.facingRight = true;
-				this.facingLeft = false;
-			} else {
-				this.directionToPlayer = -1;
-				this.facingRight = false;
-				this.facingLeft = true;
+
+			if (this.playerSpotted) {
+				this.direction = this.directionToPlayer;
 			}
 
-			if (this.distanceToPlayer > this.visionDistance) {
+			if (!this.playerSpotted) {
 				Patrol ();
-			} else if (!this.standingOnPlayer && !this.standingUnderPlayer){
+			} else if (!this.standingOnPlayer && !this.standingUnderPlayer) {
 				this.isPatroling = false;
 				this.direction = this.directionToPlayer;
 			}
@@ -187,6 +195,7 @@ public class EnemyController : MonoBehaviour, ICharacter {
 				this.shouldMove = true;
 			}
 		}
+		
 
 
 		if (this.facingObsticle) {
