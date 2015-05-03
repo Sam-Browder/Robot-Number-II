@@ -6,6 +6,7 @@ public class Player : MonoBehaviour, ICharacter {
 	//floats
 	public float maxSpeed = 3;
 	public float speed = 50f;
+	public float currentSpeed;
 	public float jumpPower = 200f;
 	public float climbPower = 5;
 	
@@ -19,8 +20,10 @@ public class Player : MonoBehaviour, ICharacter {
 	//refrences
 	private Rigidbody2D rb2d;
 	private Animator anim;
-	private CharacterAttack playerAttack;
+	private CharacterAbility playerAbility;
 	private CharacterDefense playerDefense;
+
+	private ArrayList effects = new ArrayList();
 	
 	
 	// Use this for initialization
@@ -28,12 +31,14 @@ public class Player : MonoBehaviour, ICharacter {
 		this.canClimb = false;
 		rb2d = gameObject.GetComponent<Rigidbody2D> ();
 		anim = gameObject.GetComponent<Animator> ();
-		this.playerAttack = gameObject.GetComponentInChildren<CharacterAttack> ();
+		this.playerAbility = gameObject.GetComponentInChildren<CharacterAbility> ();
 		this.playerDefense = gameObject.GetComponentInChildren<CharacterDefense> ();
-		IAttack projectile = new ProjectileAttack ();
-		IAttack lazer = new LazerAttack ();
-		this.playerAttack.SetPrimaryAttack (projectile);
-		this.playerAttack.SetSecondaryAttack (lazer);
+		IAbility projectile = new BasicAttack ("Projectile",10f,10f,10f,10f);
+		IEffect cripple = new CrippleEffect (1f,20f,0f);
+		projectile.AddEffect (cripple);
+		this.playerAbility.SetAbility(projectile,0);
+		this.playerAbility.SetAbility(projectile,1);
+		this.currentSpeed = speed;
 	}
 	
 	// Update is called once per frame
@@ -55,12 +60,14 @@ public class Player : MonoBehaviour, ICharacter {
 		}
 		if (Input.GetButtonDown ("Fire1")) {
 			//this.projspawner.ShootProjOne();
-			this.playerAttack.DoAttack();
+			this.playerAbility.ExecuteAbility(0);
 		}
 		if (Input.GetButtonDown ("Fire2")) {
 			//this.projspawner.ShootProjTwo();
-			this.playerAttack.SwapAttack();
+			this.playerAbility.ExecuteAbility(1);
 		}
+
+		EffectExpiration ();
 
 	}
 	
@@ -79,7 +86,7 @@ public class Player : MonoBehaviour, ICharacter {
 		
 		//moves player
 		float h = Input.GetAxis ("Horizontal");
-		rb2d.AddForce ((Vector2.right * speed) * h);
+		rb2d.AddForce ((Vector2.right * this.currentSpeed) * h);
 		
 		//limits the speed
 		if (rb2d.velocity.x > maxSpeed) {
@@ -135,13 +142,6 @@ public class Player : MonoBehaviour, ICharacter {
 	public void Die(){
 		Application.LoadLevel(Application.loadedLevel);
 	}
-
-	public void ApplyDefense(IAttack attack) {
-		this.playerDefense.DoDefense (attack);
-	}
-
-	
-
 	
 	public void SetCanClimb(bool canClmb){
 		this.canClimb = canClmb;
@@ -201,6 +201,49 @@ public class Player : MonoBehaviour, ICharacter {
 		} else {
 			this.SetCanClimb (false);
 			this.SetGravity (1);
+		}
+	}
+
+	public void ApplyAbility(IAbility ability){
+		ability.ApplyAbility (this);
+	}
+
+	public void AddEffect(IEffect effect) {
+		this.effects.Add (effect);
+		CalculateSpeed ();
+	}
+	
+	public IDefenseBehavior GetDefense(){
+		return this.playerDefense;
+	}
+	
+	public void CalculateSpeed(){
+		float flatValue = 0f;
+		float percentage = 0f;
+		for (int i = 0; i < this.effects.Count; i++) {
+			IEffect effect = (IEffect) this.effects [i];
+			if (effect.GetType() == typeof(CrippleEffect)) {
+				CrippleEffect ce = (CrippleEffect) effect;
+				flatValue += ce.GetFlatValue();
+				percentage += ce.GetPercentage();
+			}
+		}
+		this.currentSpeed = (this.speed - flatValue) * (1 - percentage);
+		
+		if (currentSpeed < 0)
+			this.currentSpeed = 0;
+		
+		print ("Current speed is " + this.currentSpeed);
+	}
+
+	public void EffectExpiration(){
+		for (int i = 0; i < this.effects.Count; i++) {
+			IEffect effect = (IEffect)this.effects [i];
+			if (effect.IsExpired ()) {
+				this.effects.RemoveAt (i);
+				print (i + " removed");
+				CalculateSpeed ();
+			}
 		}
 	}
 

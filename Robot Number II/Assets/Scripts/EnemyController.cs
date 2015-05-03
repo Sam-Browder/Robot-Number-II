@@ -6,6 +6,7 @@ public class EnemyController : MonoBehaviour, ICharacter {
 	//floats
 	public float maxSpeed = 3;
 	public float speed = 50f;
+	public float currentSpeed;
 	public float jumpPower = 200f;
 	public int numOfJumps = 2;
 	public float minDistFromPlayer = 2f;
@@ -34,7 +35,6 @@ public class EnemyController : MonoBehaviour, ICharacter {
 	private Animator anim;
 	
 	//Game values
-	private float health =100;
 	private float time = 0.0f;
 	private float attackTimer = 0.0f;
 	public float attackSpeed;
@@ -47,7 +47,10 @@ public class EnemyController : MonoBehaviour, ICharacter {
 	private float distanceToPlayer;
 	private int directionToPlayer;
 	//private ProjSpawner projspawner;
-	private CharacterAttack enemyAttack;
+	private CharacterAbility enemyAbility;
+	private CharacterDefense enemyDefense;
+
+	private ArrayList effects = new ArrayList();
 	
 	
 	
@@ -58,11 +61,14 @@ public class EnemyController : MonoBehaviour, ICharacter {
 		rb2d = gameObject.GetComponent<Rigidbody2D> ();
 		anim = gameObject.GetComponent<Animator> ();
 		//this.projspawner = gameObject.GetComponentInChildren<ProjSpawner> ();
-		this.enemyAttack = gameObject.GetComponentInChildren<CharacterAttack> ();
-		IAttack projectile = new ProjectileAttack ();
-		IAttack lazer = new LazerAttack ();
-		this.enemyAttack.SetPrimaryAttack (projectile);
-		this.enemyAttack.SetSecondaryAttack (lazer);
+		this.enemyAbility = gameObject.GetComponentInChildren<CharacterAbility> ();
+		this.enemyDefense = gameObject.GetComponentInChildren<CharacterDefense> ();
+		IAbility projectile = new BasicAttack ("Projectile",10f,10f,10f,10f);
+		IEffect cripple = new CrippleEffect (1f,49f,0f);
+		projectile.AddEffect (cripple);
+		this.enemyAbility.SetAbility(projectile,0);
+		this.enemyAbility.SetAbility(projectile,1);
+		this.currentSpeed = speed;
 		this.canClimb = false;
 	}
 	
@@ -92,9 +98,11 @@ public class EnemyController : MonoBehaviour, ICharacter {
 
 				
 		
-		if (health <= 0.0) {
+		if (this.enemyDefense.GetHealth() <= 0.0) {
 			Die();
 		}
+
+		EffectExpiration ();
 		
 		AI ();
 		UpdateSprite ();		
@@ -117,7 +125,7 @@ public class EnemyController : MonoBehaviour, ICharacter {
 		//moves player
 		float h = direction;
 		if (this.shouldMove) {
-			rb2d.AddForce ((Vector2.right * speed) * h);
+			rb2d.AddForce ((Vector2.right * this.currentSpeed) * h);
 		}
 		
 		
@@ -189,7 +197,7 @@ public class EnemyController : MonoBehaviour, ICharacter {
 		if (this.playerInLineOfSight){
 			if (attackTimer > this.attackSpeed) {
 				attackTimer = 0;
-				this.enemyAttack.DoAttack();
+				this.enemyAbility.ExecuteAbility(0);
 			}
 		}
 
@@ -230,15 +238,6 @@ public class EnemyController : MonoBehaviour, ICharacter {
 		Destroy (gameObject);
 	}
 
-	public void ApplyDefense(IAttack attack) {
-		//this.playerDefense.doDefense (attack, this);
-	}
-	
-	
-	public void ApplyDamage(float damage){
-		this.health = this.health - damage;
-	}
-	
 	public void SetGrounded(bool grd){
 		this.grounded = grd;
 	}
@@ -368,6 +367,49 @@ public class EnemyController : MonoBehaviour, ICharacter {
 			this.grounded = false;
 		}
 		
+	}
+
+	public void ApplyAbility(IAbility ability){
+		ability.ApplyAbility (this);
+	}
+
+	public void AddEffect(IEffect effect) {
+		this.effects.Add (effect);
+		CalculateSpeed ();
+	}
+	
+	public IDefenseBehavior GetDefense(){
+		return this.enemyDefense;
+	}
+	
+	public void CalculateSpeed(){
+		float flatValue = 0f;
+		float percentage = 0f;
+		for (int i = 0; i < this.effects.Count; i++) {
+			IEffect effect = (IEffect) this.effects [i];
+			if (effect.GetType() == typeof(CrippleEffect)) {
+				CrippleEffect ce = (CrippleEffect) effect;
+				flatValue += ce.GetFlatValue();
+				percentage += ce.GetPercentage();
+			}
+		}
+		this.currentSpeed = (this.speed - flatValue) * (1 - percentage);
+		
+		if (currentSpeed < 0)
+			this.currentSpeed = 0;
+		
+		print ("Current speed is " + this.currentSpeed);
+	}
+	
+	public void EffectExpiration(){
+		for (int i = 0; i < this.effects.Count; i++) {
+			IEffect effect = (IEffect)this.effects [i];
+			if (effect.IsExpired ()) {
+				this.effects.RemoveAt (i);
+				print (i + " removed");
+				CalculateSpeed ();
+			}
+		}
 	}
 
 	

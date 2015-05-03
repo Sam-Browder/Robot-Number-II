@@ -8,7 +8,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 453864}
-  - 114: {fileID: 11480052}
+  - 114: {fileID: 11409630}
   m_Layer: 8
   m_Name: Projectile Spawner
   m_TagString: Player
@@ -107,6 +107,17 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11409630
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 153772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 438ac6aacd4165445961ada080ee3308, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11462434
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -116,17 +127,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6725e242c93803144bc708b1674bd08b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &11480052
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 153772}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9cf6ddfd3140b54ba1d5f5e7e9442de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &11481408
@@ -142,6 +142,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxSpeed: 3
   speed: 50
+  currentSpeed: 0
   jumpPower: 200
   climbPower: 5
   grounded: 0

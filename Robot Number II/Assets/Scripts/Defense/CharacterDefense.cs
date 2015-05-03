@@ -7,29 +7,26 @@ public class CharacterDefense : MonoBehaviour,IDefenseBehavior {
 	private ICharacter character;
 	private float health = 100f;
 	private float shieldAmount = 0;
-	ArrayList Defenses = new ArrayList();
+
 	private float EMResistance = 60f;
 	private float ThermalResistance = 60f;
 	private float KineticResistance = 60f;
 	private float ExplosiveResistance = 60f;
 
-	public void DoDefense(IAttack attack){
-		float damage = DamageCalculation (attack);
-		ApplyDamage (damage);
-	}
+	ArrayList Defenses = new ArrayList();
 
 	public void ApplyDefenseEffect(IDefense defense){
 		defense.ExecuteDefense (this);
 	}
 	public void RemoveDefenseEffect(IDefense defense){}
 
-	public float DamageCalculation(IAttack attack){
+	public float DamageCalculation(float EM, float Thermal, float Kinetic, float Explosive){
 		float finalDamage = 0;
 
-		finalDamage = finalDamage + attack.GetEMDamage() - (this.EMResistance / 10);
-		finalDamage = finalDamage + attack.GetThermalDamage() - (this.ThermalResistance / 10);
-		finalDamage = finalDamage + attack.GetKineticDamage() - (this.KineticResistance / 10);
-		finalDamage = finalDamage + attack.GetExplosiveDamage() - (this.ExplosiveResistance / 10);
+		finalDamage = finalDamage + EM - (this.EMResistance / 10);
+		finalDamage = finalDamage + Thermal - (this.ThermalResistance / 10);
+		finalDamage = finalDamage + Kinetic - (this.KineticResistance / 10);
+		finalDamage = finalDamage + Explosive - (this.ExplosiveResistance / 10);
 
 		this.shieldAmount = this.shieldAmount - finalDamage;
 		if (this.shieldAmount >= 0) 
@@ -46,6 +43,14 @@ public class CharacterDefense : MonoBehaviour,IDefenseBehavior {
 
 	public void ApplyDamage(float damage){
 		this.health = this.health - damage;
+	}
+
+	public void ApplyEffect(IAbility ability) {
+		/*ArrayList effects = ability.GetEffects ();
+		for (int i = 0; i < effects.Count; i++) {
+			IEffect effect = (IEffect) effects [i];
+			effect.ApplyEffect();
+		}*/
 	}
 
 	public float GetHealth() {

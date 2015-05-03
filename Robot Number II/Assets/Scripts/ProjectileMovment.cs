@@ -9,7 +9,7 @@ public class ProjectileMovment : MonoBehaviour {
 	private int characterDirection;
 	//private int damage = 10;
 	private string characterTag;
-	private IAttack attack;
+	private IAbility attack;
 	// Use this for initialization
 
 	void Start () {
@@ -58,7 +58,7 @@ public class ProjectileMovment : MonoBehaviour {
 		if (other.tag.CompareTo (this.characterTag) != 0 && other.tag.CompareTo ("Ground") != 0 
 		    && other.tag.CompareTo ("Projectile") != 0 && other.tag.CompareTo ("Objective") != 0 
 		    && other.tag.CompareTo ("DeathBox") != 0 && other.tag.CompareTo ("Rope") != 0) {
-			other.SendMessage ("ApplyDefense", this.attack);
+			other.SendMessage ("ApplyAbility", this.attack);
 			Destroy (gameObject);
 		} 
 
@@ -69,7 +69,7 @@ public class ProjectileMovment : MonoBehaviour {
 		this.character = character;
 	}
 
-	public void SetAttack(IAttack attack) {
+	public void SetAttack(IAbility attack) {
 		this.attack = attack;
 	}
 
