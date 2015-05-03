@@ -12,11 +12,14 @@ public class CharacterAbility : MonoBehaviour,IAbilityBehavior {
 	public void ExecuteAbility(int index){
 		IAbility ability = (IAbility) this.abilities [index];
 		if (ability.GetType () == typeof(BasicAttack)) {
-			GameObject proj = (GameObject) Instantiate(Resources.Load(ability.GetAbility()));
+			GameObject proj = (GameObject)Instantiate (Resources.Load (ability.GetAbility ()));
 			
 			proj.transform.position = this.transform.position;
-			proj.SendMessage("SetCharacter", gameObject.GetComponentInParent<ICharacter> ());
-			proj.SendMessage("SetAttack", ability);
+			proj.SendMessage ("SetCharacter", gameObject.GetComponentInParent<ICharacter> ());
+			proj.SendMessage ("SetAttack", ability);
+		} else {
+			ICharacter character = gameObject.GetComponentInParent<ICharacter> ();
+			ability.ApplyAbility (character);
 		}
 	}
 

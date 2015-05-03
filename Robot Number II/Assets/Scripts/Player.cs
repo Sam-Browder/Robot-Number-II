@@ -14,6 +14,7 @@ public class Player : MonoBehaviour, ICharacter {
 	public bool grounded;
 	public bool canDoubleJump;
 	public bool canClimb;
+	public bool isStun;
 	
 	public int direction = 1;
 	
@@ -29,21 +30,29 @@ public class Player : MonoBehaviour, ICharacter {
 	// Use this for initialization
 	void Start () {
 		this.canClimb = false;
+		this.isStun = false;
 		rb2d = gameObject.GetComponent<Rigidbody2D> ();
 		anim = gameObject.GetComponent<Animator> ();
 		this.playerAbility = gameObject.GetComponentInChildren<CharacterAbility> ();
 		this.playerDefense = gameObject.GetComponentInChildren<CharacterDefense> ();
 		IAbility projectile = new BasicAttack ("Projectile",10f,10f,10f,10f);
+		IAbility jetPack = new JetPack (500f);
+		IAbility rush = new Rush (4000f);
 		IEffect cripple = new CrippleEffect (1f,20f,0f);
 		projectile.AddEffect (cripple);
 		this.playerAbility.SetAbility(projectile,0);
-		this.playerAbility.SetAbility(projectile,1);
+		this.playerAbility.SetAbility (rush,1);
+		//this.playerAbility.SetAbility(projectile,1);
 		this.currentSpeed = speed;
 	}
 	
 	// Update is called once per frame
 	//public Transform testProj;
 	void Update () {
+
+		if (this.isStun)
+			return;
+
 		Grounded ();
 		Rope ();
 
@@ -74,10 +83,18 @@ public class Player : MonoBehaviour, ICharacter {
 	// do all physics in here
 	void FixedUpdate()
 	{
+
 		Vector3 easeVelocity = rb2d.velocity;
 		easeVelocity.y = rb2d.velocity.y;
 		easeVelocity.z = 0.0f;
 		easeVelocity.x *= 0.80f;
+
+		if (this.isStun) {
+			easeVelocity.x = 0f;
+			rb2d.velocity = easeVelocity;
+			return;
+		}
+
 		//Physics2D.IgnoreLayerCollision (LayerMask.NameToLayer ("Player"), LayerMask.NameToLayer ("Ground"), false);// && ((Input.GetAxis("Vertical") > 0.1f) || (Input.GetAxis("Vertical") < -0.1f)) );
 		//fake friction
 		if (grounded) {
@@ -135,6 +152,7 @@ public class Player : MonoBehaviour, ICharacter {
 			direction = 1;
 		}
 	}
+
 	void Respawn(){
 		Application.LoadLevel(Application.loadedLevel);
 	}
@@ -169,6 +187,10 @@ public class Player : MonoBehaviour, ICharacter {
 
 	public void SetGravity(float grav) {
 			rb2d.gravityScale = grav;
+	}
+
+	public Rigidbody2D GetRB2D(){
+		return this.rb2d;
 	}
 
 	void Grounded(){
@@ -210,16 +232,17 @@ public class Player : MonoBehaviour, ICharacter {
 
 	public void AddEffect(IEffect effect) {
 		this.effects.Add (effect);
-		CalculateSpeed ();
+		CheckStatus ();
 	}
 	
 	public IDefenseBehavior GetDefense(){
 		return this.playerDefense;
 	}
 	
-	public void CalculateSpeed(){
+	public void CheckStatus(){
 		float flatValue = 0f;
 		float percentage = 0f;
+		bool stun = false;
 		for (int i = 0; i < this.effects.Count; i++) {
 			IEffect effect = (IEffect) this.effects [i];
 			if (effect.GetType() == typeof(CrippleEffect)) {
@@ -227,14 +250,19 @@ public class Player : MonoBehaviour, ICharacter {
 				flatValue += ce.GetFlatValue();
 				percentage += ce.GetPercentage();
 			}
+			if (effect.GetType() == typeof(StunEffect)) {
+				stun = true;
+			}
 		}
+
 		this.currentSpeed = (this.speed - flatValue) * (1 - percentage);
+		this.isStun = stun;
 		
 		if (currentSpeed < 0)
 			this.currentSpeed = 0;
-		
-		print ("Current speed is " + this.currentSpeed);
+
 	}
+
 
 	public void EffectExpiration(){
 		for (int i = 0; i < this.effects.Count; i++) {
@@ -242,7 +270,7 @@ public class Player : MonoBehaviour, ICharacter {
 			if (effect.IsExpired ()) {
 				this.effects.RemoveAt (i);
 				print (i + " removed");
-				CalculateSpeed ();
+				CheckStatus ();
 			}
 		}
 	}

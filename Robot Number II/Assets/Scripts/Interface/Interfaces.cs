@@ -11,10 +11,12 @@ public interface ICharacter{
 	string GetTag();
 	Vector3 GetPosition();
 	bool GetCanClimb();
+	Rigidbody2D GetRB2D();
+
 
 	void ApplyAbility(IAbility ability);
 	void AddEffect(IEffect effect);
-	void CalculateSpeed();
+	void CheckStatus();
 	void EffectExpiration();
 	IDefenseBehavior GetDefense();
 }

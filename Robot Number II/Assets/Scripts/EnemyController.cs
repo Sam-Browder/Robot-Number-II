@@ -67,7 +67,9 @@ public class EnemyController : MonoBehaviour, ICharacter {
 		this.enemyDefense = gameObject.GetComponentInChildren<CharacterDefense> ();
 		IAbility projectile = new BasicAttack ("Projectile",10f,10f,10f,10f);
 		IEffect cripple = new CrippleEffect (1f,49f,0f);
-		projectile.AddEffect (cripple);
+		IEffect stun = new StunEffect (2f);
+		//projectile.AddEffect (cripple);
+		projectile.AddEffect (stun);
 		this.enemyAbility.SetAbility(projectile,0);
 		this.enemyAbility.SetAbility(projectile,1);
 		this.currentSpeed = speed;
@@ -215,14 +217,11 @@ public class EnemyController : MonoBehaviour, ICharacter {
 		} else if (this.noGround && !this.canMakeJump) {
 			this.shouldMove = false;
 		}
-		
 
+	}
 
-
-
-
-
-	
+	public Rigidbody2D GetRB2D(){
+		return this.rb2d;
 	}
 	
 	void UpdateSprite(){
@@ -384,14 +383,14 @@ public class EnemyController : MonoBehaviour, ICharacter {
 
 	public void AddEffect(IEffect effect) {
 		this.effects.Add (effect);
-		CalculateSpeed ();
+		CheckStatus ();
 	}
 	
 	public IDefenseBehavior GetDefense(){
 		return this.enemyDefense;
 	}
 	
-	public void CalculateSpeed(){
+	public void CheckStatus(){
 		float flatValue = 0f;
 		float percentage = 0f;
 		for (int i = 0; i < this.effects.Count; i++) {
@@ -416,7 +415,7 @@ public class EnemyController : MonoBehaviour, ICharacter {
 			if (effect.IsExpired ()) {
 				this.effects.RemoveAt (i);
 				print (i + " removed");
-				CalculateSpeed ();
+				CheckStatus ();
 			}
 		}
 	}
