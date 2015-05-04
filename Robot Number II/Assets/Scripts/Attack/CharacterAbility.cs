@@ -1,9 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class CharacterAbility : MonoBehaviour,IAbilityBehavior {
+public class CharacterAbility : MonoBehaviour {
 
 	ArrayList abilities = new ArrayList();
+	//ArrayList animations = new ArrayList();
 	// Use this for initialization
 	void Start () {}
 	// Update is called once per frame
@@ -11,14 +12,15 @@ public class CharacterAbility : MonoBehaviour,IAbilityBehavior {
 
 	public void ExecuteAbility(int index){
 		IAbility ability = (IAbility) this.abilities [index];
+		ICharacter character = gameObject.GetComponentInParent<ICharacter> ();
 		if (ability.GetType () == typeof(BasicAttack)) {
-			GameObject proj = (GameObject)Instantiate (Resources.Load (ability.GetAbility ()));
-			
-			proj.transform.position = this.transform.position;
-			proj.SendMessage ("SetCharacter", gameObject.GetComponentInParent<ICharacter> ());
-			proj.SendMessage ("SetAttack", ability);
+			IAnim proj = gameObject.GetComponentInChildren<ProjectileAnim> ();
+			proj.Animate (ability, character);
+		} else if (ability.GetType () == typeof(Rush)) {
+			IAnim rush = gameObject.GetComponentInChildren<RushAnim> ();
+			rush.Animate(ability,character);
+			ability.ApplyAbility(character);
 		} else {
-			ICharacter character = gameObject.GetComponentInParent<ICharacter> ();
 			ability.ApplyAbility (character);
 		}
 	}

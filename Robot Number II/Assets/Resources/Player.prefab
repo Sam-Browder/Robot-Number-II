@@ -9,6 +9,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 453864}
   - 114: {fileID: 11409630}
+  - 114: {fileID: 11432548}
+  - 114: {fileID: 11479962}
   m_Layer: 8
   m_Name: Projectile Spawner
   m_TagString: Player
@@ -118,6 +120,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 438ac6aacd4165445961ada080ee3308, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11432548
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 153772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 399e93e98eec09748ad2daec491a7acc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11462434
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -127,6 +140,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6725e242c93803144bc708b1674bd08b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &11479962
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 153772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfd7fa1c067fc5d41abcf8cfa1cab4e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &11481408
@@ -148,6 +172,7 @@ MonoBehaviour:
   grounded: 0
   canDoubleJump: 0
   canClimb: 0
+  isStun: 0
   direction: 1
 --- !u!212 &21294084
 SpriteRenderer:

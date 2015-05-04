@@ -30,6 +30,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 475470}
   - 114: {fileID: 11442476}
+  - 114: {fileID: 11448252}
   m_Layer: 9
   m_Name: Projectile Spawner
   m_TagString: Ground
@@ -149,9 +150,11 @@ MonoBehaviour:
   isPatroling: 0
   facingLeft: 0
   facingRight: 0
+  playerSpotted: 0
   controlCase: 0
   attackSpeed: 1
   jumpTime: 0
+  spottedTime: 0
   visionDistance: 10
   direction: 1
 --- !u!114 &11442476
@@ -163,6 +166,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 438ac6aacd4165445961ada080ee3308, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &11448252
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 179592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 399e93e98eec09748ad2daec491a7acc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!212 &21209372
