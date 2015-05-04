@@ -21,7 +21,7 @@ public class TestMenu : MonoBehaviour {
 	}
 	
 	public void startGame() {
-		Application.LoadLevel ("StartingLevel");
+		Application.LoadLevel(1);
 	}
 
 	public void pressedWeaponButton(Button button) {
