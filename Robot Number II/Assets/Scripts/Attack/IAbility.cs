@@ -8,5 +8,6 @@ public interface IAbility{
 	void AddEffect(IEffect effect);
 	void RemoveEffect(IEffect effect);
 	void ApplyAbility(ICharacter character);
+	bool Cooldown();
 
 }

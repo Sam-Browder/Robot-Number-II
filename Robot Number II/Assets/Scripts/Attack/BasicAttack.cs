@@ -8,15 +8,19 @@ public class BasicAttack : IAbility {
 	private float ThermalDamage;
 	private float KineticDamage;
 	private float ExplosiveDamage;
+	private float cd;
+	private float cde;
 
 	private ArrayList effects = new ArrayList(); 
 
-	public BasicAttack(string attack, float EMDamage, float ThermalDamage, float KineticDamage, float ExplosiveDamage){
+	public BasicAttack(string attack, float EMDamage, float ThermalDamage, float KineticDamage, float ExplosiveDamage, float cd){
 		this.ability = attack;
 		this.EMDamage = EMDamage;
 		this.ThermalDamage = ThermalDamage;
 		this.KineticDamage = KineticDamage;
 		this.ExplosiveDamage = ExplosiveDamage;
+		this.cd = cd;
+		this.cde = Time.time;
 	}
 
 	public string GetAbility() {
@@ -33,6 +37,15 @@ public class BasicAttack : IAbility {
 
 	public void RemoveEffect(IEffect effect){
 		this.effects.Remove (effect);
+	}
+
+	public bool Cooldown() {
+		if (Time.time > this.cde) {
+			this.cde = Time.time + this.cd;
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	public void ApplyAbility(ICharacter character){

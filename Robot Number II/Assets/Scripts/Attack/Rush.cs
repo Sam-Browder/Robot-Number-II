@@ -5,11 +5,15 @@ public class Rush : IAbility {
 	
 	private string ability = "JetPack";
 	private float rushPower;
+	private float cd;
+	private float cde;
 	
 	private ArrayList effects = new ArrayList(); 
 	
-	public Rush(float rushPower){
+	public Rush(float rushPower, float cd){
 		this.rushPower = rushPower;
+		this.cd = cd;
+		this.cde = Time.time;
 	}
 	
 	public string GetAbility() {
@@ -26,6 +30,15 @@ public class Rush : IAbility {
 	
 	public void RemoveEffect(IEffect effect){
 		this.effects.Remove (effect);
+	}
+
+	public bool Cooldown() {
+		if (Time.time > this.cde) {
+			this.cde = Time.time + this.cd;
+			return true;
+		} else {
+			return false;
+		}
 	}
 	
 	public void ApplyAbility(ICharacter character){

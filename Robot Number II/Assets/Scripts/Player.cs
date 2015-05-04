@@ -9,6 +9,7 @@ public class Player : MonoBehaviour, ICharacter {
 	public float currentSpeed;
 	public float jumpPower = 200f;
 	public float climbPower = 5;
+	public float gcd = 0.5f;
 	
 	//booleans
 	public bool grounded;
@@ -35,17 +36,11 @@ public class Player : MonoBehaviour, ICharacter {
 		anim = gameObject.GetComponent<Animator> ();
 		this.playerAbility = gameObject.GetComponentInChildren<CharacterAbility> ();
 		this.playerDefense = gameObject.GetComponentInChildren<CharacterDefense> ();
-		IAbility projectile = new BasicAttack ("Projectile",10f,10f,10f,10f);
-		IAbility jetPack = new JetPack (500f);
-		IAbility rush = new Rush (4000f);
-		IEffect cripple = new CrippleEffect (1f,20f,0f);
-		projectile.AddEffect (cripple);
-		this.playerAbility.SetAbility(projectile,0);
-		this.playerAbility.SetAbility (rush,1);
-		//this.playerAbility.SetAbility(projectile,1);
-		this.currentSpeed = speed;
+
+		InitializeCharacter ();
 	}
-	
+
+
 	// Update is called once per frame
 	//public Transform testProj;
 	void Update () {
@@ -64,16 +59,29 @@ public class Player : MonoBehaviour, ICharacter {
 		}
 		
 		UpdateSprite ();
+
 		if (Input.GetButtonDown ("Jump")){
-			Jump();		
+			Jump();
 		}
-		if (Input.GetButtonDown ("Fire1")) {
-			//this.projspawner.ShootProjOne();
-			this.playerAbility.ExecuteAbility(0);
+		if (Input.GetKey(KeyCode.Q)) {
+			if(GlobalCooldown()){
+				this.playerAbility.ExecuteAbility(0);
+			}
 		}
-		if (Input.GetButtonDown ("Fire2")) {
-			//this.projspawner.ShootProjTwo();
-			this.playerAbility.ExecuteAbility(1);
+		if (Input.GetKey(KeyCode.W)) {
+			if(GlobalCooldown()){
+				this.playerAbility.ExecuteAbility(1);
+			}
+		}
+		if (Input.GetKey(KeyCode.E)) {
+			if(GlobalCooldown()){
+				this.playerAbility.ExecuteAbility(2);
+			}
+		}
+		if (Input.GetKey(KeyCode.R)) {
+			if(GlobalCooldown()){
+				this.playerAbility.ExecuteAbility(3);
+			}
 		}
 
 		EffectExpiration ();
@@ -156,6 +164,45 @@ public class Player : MonoBehaviour, ICharacter {
 	void Respawn(){
 		Application.LoadLevel(Application.loadedLevel);
 	}
+
+	public void InitializeCharacter(){
+		string[] weaponData = GameObject.FindGameObjectWithTag ("Global").gameObject.GetComponent<TestMenu>().weaponData;
+		IAbility ab;
+		for (int i = 0; i < weaponData.Length; i++) {
+			switch (weaponData [i]) {
+			case "Projectile":
+				ab = new BasicAttack ("Projectile", 10f, 10f, 10f, 10f, 0f);
+				break;
+			case "Lazer":
+				ab = new BasicAttack ("Lazer", 10f, 10f, 10f, 10f, 0f);
+				break;
+			case "JetPack":
+				ab = new JetPack (500f, 5f);
+				break;
+			case "Rush":
+				ab = new Rush (4000f, 3f);
+				break;
+			default:
+				ab = new BasicAttack ("Projectile", 0f, 0f, 0f, 0f, 0f);
+				break;
+			}
+			this.playerAbility.SetAbility (ab, i);
+		}
+
+		IEffect cripple = new CrippleEffect (1f, 20f, 0f);
+		this.currentSpeed = speed;
+		this.gcd = Time.time;
+	}
+
+	public bool GlobalCooldown(){
+		if (Time.time > this.gcd) {
+			this.gcd = Time.time + 0.5f;
+			return true;
+		} else {
+			return false;
+		}
+	}
+
 	
 	public void Die(){
 		Application.LoadLevel(Application.loadedLevel);

@@ -13,15 +13,16 @@ public class CharacterAbility : MonoBehaviour {
 	public void ExecuteAbility(int index){
 		IAbility ability = (IAbility) this.abilities [index];
 		ICharacter character = gameObject.GetComponentInParent<ICharacter> ();
-		if (ability.GetType () == typeof(BasicAttack)) {
+		if (ability.GetType () == typeof(BasicAttack) && ability.Cooldown()) {
 			IAnim proj = gameObject.GetComponentInChildren<ProjectileAnim> ();
 			proj.Animate (ability, character);
-		} else if (ability.GetType () == typeof(Rush)) {
+		} else if (ability.GetType () == typeof(Rush) && ability.Cooldown()) {
 			IAnim rush = gameObject.GetComponentInChildren<RushAnim> ();
 			rush.Animate(ability,character);
 			ability.ApplyAbility(character);
 		} else {
-			ability.ApplyAbility (character);
+			if (ability.Cooldown())
+				ability.ApplyAbility (character);
 		}
 	}
 

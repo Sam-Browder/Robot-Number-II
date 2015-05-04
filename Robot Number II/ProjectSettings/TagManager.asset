@@ -11,6 +11,7 @@ TagManager:
   - Objective
   - DeathBox
   - Rope
+  - Global
   layers:
   - Default
   - TransparentFX
