@@ -69,7 +69,7 @@ public class EnemyController : MonoBehaviour, ICharacter {
 		IEffect cripple = new CrippleEffect (1f,49f,0f);
 		IEffect stun = new StunEffect (2f);
 		//projectile.AddEffect (cripple);
-		projectile.AddEffect (stun);
+		//projectile.AddEffect (stun);
 		this.enemyAbility.SetAbility(projectile,0);
 		this.enemyAbility.SetAbility(projectile,1);
 		this.currentSpeed = speed;
