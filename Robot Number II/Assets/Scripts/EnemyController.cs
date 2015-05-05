@@ -178,17 +178,21 @@ public class EnemyController : MonoBehaviour, ICharacter {
 		if (this.grounded) {
 			this.canDoubleJump = true;
 
-			if (this.playerSpotted) {
-				this.direction = this.directionToPlayer;
-			}
-
-			if (!this.playerSpotted) {
-				Patrol ();
-			} else if (!this.standingOnPlayer && !this.standingUnderPlayer) {
-				this.isPatroling = false;
-				this.direction = this.directionToPlayer;
-			}
-
+			if(this.standingOnPlayer || this.standingUnderPlayer){
+				this.direction = this.direction;
+				}else{
+					if (this.playerSpotted) {
+						this.direction = this.directionToPlayer;
+					}
+					
+					if (!this.playerSpotted) {
+						Patrol ();
+					} else if (!this.standingOnPlayer && !this.standingUnderPlayer) {
+						this.isPatroling = false;
+						this.direction = this.directionToPlayer;
+					}
+					
+				}
 
 
 			if (this.tooCloseToPlayer && !this.standingOnPlayer && !this.standingUnderPlayer) {
@@ -196,6 +200,9 @@ public class EnemyController : MonoBehaviour, ICharacter {
 			} else {
 				this.shouldMove = true;
 			}
+
+
+			
 		}
 		
 
