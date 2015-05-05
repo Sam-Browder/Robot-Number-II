@@ -189,7 +189,7 @@ public class Player : MonoBehaviour, ICharacter {
 			this.playerAbility.SetAbility (ab, i);
 		}
 
-		IEffect cripple = new CrippleEffect (1f, 20f, 0f);
+		//IEffect cripple = new CrippleEffect (1f, 20f, 0f);
 		this.currentSpeed = speed;
 		this.gcd = Time.time;
 	}
@@ -280,6 +280,10 @@ public class Player : MonoBehaviour, ICharacter {
 	public void AddEffect(IEffect effect) {
 		this.effects.Add (effect);
 		CheckStatus ();
+	}
+
+	public ArrayList GetEffects(){
+		return this.effects;
 	}
 	
 	public IDefenseBehavior GetDefense(){

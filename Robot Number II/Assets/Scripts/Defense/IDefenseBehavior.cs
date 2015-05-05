@@ -2,12 +2,12 @@ using UnityEngine;
 using System.Collections;
 
 public interface IDefenseBehavior{
-
-	void ApplyDefenseEffect(IDefense defense);
-	void RemoveDefenseEffect(IDefense defense);
-	float DamageCalculation(float EM, float Thermal, float Kinetic, float Explosive);
+	
 	void ChargeShield(float shieldAmount);
-	void ApplyDamage(float attack);
+	void RestoreHealth(float healthAmount);
+	void ApplyDamage(float EM, float Thermal, float Kinetic, float Explosive);
+	float TypeDamageCalculation(float damage, float resist);
 	float GetHealth();
+	void shieldRegeneration();
 }
 

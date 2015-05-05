@@ -50,8 +50,7 @@ public class BasicAttack : IAbility {
 
 	public void ApplyAbility(ICharacter character){
 		IDefenseBehavior defense = character.GetDefense ();
-		float damage = defense.DamageCalculation (this.EMDamage, this.ThermalDamage, this.KineticDamage, this.ExplosiveDamage);
-		defense.ApplyDamage (damage);
+		defense.ApplyDamage (this.EMDamage, this.ThermalDamage, this.KineticDamage, this.ExplosiveDamage);
 
 		for (int i = 0; i < effects.Count; i++) {
 			IEffect effect = (IEffect) effects [i];

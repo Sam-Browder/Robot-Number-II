@@ -66,8 +66,8 @@ public class EnemyController : MonoBehaviour, ICharacter {
 		this.enemyAbility = gameObject.GetComponentInChildren<CharacterAbility> ();
 		this.enemyDefense = gameObject.GetComponentInChildren<CharacterDefense> ();
 		IAbility projectile = new BasicAttack ("Projectile",10f,10f,10f,10f, 0f);
-		IEffect cripple = new CrippleEffect (1f,49f,0f);
-		IEffect stun = new StunEffect (2f);
+		//IEffect cripple = new CrippleEffect (1f,49f,0f);
+		//IEffect stun = new StunEffect (2f);
 		//projectile.AddEffect (cripple);
 		//projectile.AddEffect (stun);
 		this.enemyAbility.SetAbility(projectile,0);
@@ -384,6 +384,10 @@ public class EnemyController : MonoBehaviour, ICharacter {
 	public void AddEffect(IEffect effect) {
 		this.effects.Add (effect);
 		CheckStatus ();
+	}
+
+	public ArrayList GetEffects(){
+		return this.effects;
 	}
 	
 	public IDefenseBehavior GetDefense(){

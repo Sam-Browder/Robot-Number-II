@@ -16,6 +16,7 @@ public interface ICharacter{
 
 	void ApplyAbility(IAbility ability);
 	void AddEffect(IEffect effect);
+	ArrayList GetEffects();
 	void CheckStatus();
 	void EffectExpiration();
 	IDefenseBehavior GetDefense();
