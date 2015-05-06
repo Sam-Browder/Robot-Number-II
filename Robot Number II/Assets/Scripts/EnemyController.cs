@@ -51,6 +51,7 @@ public class EnemyController : MonoBehaviour, ICharacter {
 	//private ProjSpawner projspawner;
 	private CharacterAbility enemyAbility;
 	private CharacterDefense enemyDefense;
+	private FittingMenu fit;
 
 	private ArrayList effects = new ArrayList();
 	
@@ -429,6 +430,14 @@ public class EnemyController : MonoBehaviour, ICharacter {
 				CheckStatus ();
 			}
 		}
+	}
+
+	public FittingMenu GetFitting(){
+		return this.fit;
+	}
+
+	public CharacterAbility GetAbilities(){
+		return this.enemyAbility;
 	}
 
 	

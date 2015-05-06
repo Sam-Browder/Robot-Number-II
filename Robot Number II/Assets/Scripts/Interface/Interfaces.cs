@@ -20,6 +20,8 @@ public interface ICharacter{
 	void CheckStatus();
 	void EffectExpiration();
 	IDefenseBehavior GetDefense();
+	CharacterAbility GetAbilities();
+	FittingMenu GetFitting();
 }
 
 abstract public class Nondamageable{

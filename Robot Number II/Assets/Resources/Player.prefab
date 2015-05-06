@@ -32,6 +32,7 @@ GameObject:
   - 50: {fileID: 5005042}
   - 114: {fileID: 11481408}
   - 114: {fileID: 11462434}
+  - 114: {fileID: 11436576}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -131,6 +132,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 399e93e98eec09748ad2daec491a7acc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11436576
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 188138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 621b5422ac38fe0458c231662873e5da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11462434
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -169,6 +181,7 @@ MonoBehaviour:
   currentSpeed: 0
   jumpPower: 200
   climbPower: 5
+  gcd: .5
   grounded: 0
   canDoubleJump: 0
   canClimb: 0

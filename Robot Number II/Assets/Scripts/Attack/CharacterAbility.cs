@@ -6,7 +6,11 @@ public class CharacterAbility : MonoBehaviour {
 	ArrayList abilities = new ArrayList();
 	//ArrayList animations = new ArrayList();
 	// Use this for initialization
-	void Start () {}
+	void Start () {
+		for (int i = 0; i < 6; i++) {
+			this.abilities.Add (new NonAbility ());
+		}
+	}
 	// Update is called once per frame
 	void Update () {}
 
@@ -21,12 +25,14 @@ public class CharacterAbility : MonoBehaviour {
 			rush.Animate(ability,character);
 			ability.ApplyAbility(character);
 		} else {
-			if (ability.Cooldown())
-				ability.ApplyAbility (character);
+			if (ability != null){
+				if (ability.Cooldown())
+					ability.ApplyAbility (character);
+			}
 		}
 	}
 
 	public void SetAbility(IAbility ability, int index){
-		this.abilities.Insert (index, ability);
+		this.abilities [index] = ability;
 	}
 }

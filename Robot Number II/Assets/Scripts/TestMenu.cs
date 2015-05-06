@@ -14,7 +14,7 @@ public class TestMenu : MonoBehaviour {
 	void Start () {
 		DontDestroyOnLoad(transform.gameObject);
 		testMessage = "Try and find me";
-		availableWeapons = new string[] {"Projectile", "Lazer","JetPack","Rush"};
+		availableWeapons = new string[] {"Projectile", "Lazer","BurstJump","Rush"};
 		weaponData = new string[] {availableWeapons [0], availableWeapons [1], availableWeapons [2], availableWeapons [3]};
 		buttonTracker = new int[] {0, 0, 0, 0};
 		armorData = new double[] {1.0, 1.0, 1.0, 1.0};

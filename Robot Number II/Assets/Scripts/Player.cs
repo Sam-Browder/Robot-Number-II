@@ -24,6 +24,7 @@ public class Player : MonoBehaviour, ICharacter {
 	private Animator anim;
 	private CharacterAbility playerAbility;
 	private CharacterDefense playerDefense;
+	private FittingMenu fit;
 
 	private ArrayList effects = new ArrayList();
 	
@@ -36,6 +37,10 @@ public class Player : MonoBehaviour, ICharacter {
 		anim = gameObject.GetComponent<Animator> ();
 		this.playerAbility = gameObject.GetComponentInChildren<CharacterAbility> ();
 		this.playerDefense = gameObject.GetComponentInChildren<CharacterDefense> ();
+
+		//this.fit = gameObject.GetComponentInChildren<FittingMenu> ();
+		//this.fit.EquipWeapon (new LazerCannon ());
+		//this.fit.SetAbility ();
 
 		InitializeCharacter ();
 	}
@@ -176,8 +181,8 @@ public class Player : MonoBehaviour, ICharacter {
 			case "Lazer":
 				ab = new BasicAttack ("Lazer", 10f, 10f, 10f, 10f, 0f);
 				break;
-			case "JetPack":
-				ab = new JetPack (500f, 5f);
+			case "BurstJump":
+				ab = new BurstJump (500f, 5f);
 				break;
 			case "Rush":
 				ab = new Rush (4000f, 3f);
@@ -324,6 +329,14 @@ public class Player : MonoBehaviour, ICharacter {
 				CheckStatus ();
 			}
 		}
+	}
+
+	public FittingMenu GetFitting(){
+		return this.fit;
+	}
+
+	public CharacterAbility GetAbilities(){
+		return this.playerAbility;
 	}
 
 
