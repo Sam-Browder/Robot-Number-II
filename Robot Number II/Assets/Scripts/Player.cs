@@ -9,6 +9,7 @@ public class Player : MonoBehaviour, ICharacter {
 	public float currentSpeed;
 	public float jumpPower = 200f;
 	public float climbPower = 5;
+	public float defaultGcd = 0.5f;
 	public float gcd = 0.5f;
 	
 	//booleans
@@ -39,7 +40,7 @@ public class Player : MonoBehaviour, ICharacter {
 		this.playerDefense = gameObject.GetComponentInChildren<CharacterDefense> ();
 
 		//this.fit = gameObject.GetComponentInChildren<FittingMenu> ();
-		//this.fit.EquipWeapon (new LazerCannon ());
+		//this.fit.EquipWeapon (new LightingLazer());
 		//this.fit.SetAbility ();
 
 		InitializeCharacter ();
@@ -68,22 +69,22 @@ public class Player : MonoBehaviour, ICharacter {
 		if (Input.GetButtonDown ("Jump")){
 			Jump();
 		}
-		if (Input.GetKey(KeyCode.Q)) {
+		if (Input.GetKeyDown(KeyCode.Q)) {
 			if(GlobalCooldown()){
 				this.playerAbility.ExecuteAbility(0);
 			}
 		}
-		if (Input.GetKey(KeyCode.W)) {
+		if (Input.GetKeyDown(KeyCode.W)) {
 			if(GlobalCooldown()){
 				this.playerAbility.ExecuteAbility(1);
 			}
 		}
-		if (Input.GetKey(KeyCode.E)) {
+		if (Input.GetKeyDown(KeyCode.E)) {
 			if(GlobalCooldown()){
 				this.playerAbility.ExecuteAbility(2);
 			}
 		}
-		if (Input.GetKey(KeyCode.R)) {
+		if (Input.GetKeyDown(KeyCode.R)) {
 			if(GlobalCooldown()){
 				this.playerAbility.ExecuteAbility(3);
 			}
@@ -201,7 +202,7 @@ public class Player : MonoBehaviour, ICharacter {
 
 	public bool GlobalCooldown(){
 		if (Time.time > this.gcd) {
-			this.gcd = Time.time + 0.5f;
+			this.gcd = Time.time + this.defaultGcd;
 			return true;
 		} else {
 			return false;
@@ -299,6 +300,7 @@ public class Player : MonoBehaviour, ICharacter {
 		float flatValue = 0f;
 		float percentage = 0f;
 		bool stun = false;
+		float gcd = 0.5f;
 		for (int i = 0; i < this.effects.Count; i++) {
 			IEffect effect = (IEffect) this.effects [i];
 			if (effect.GetType() == typeof(CrippleEffect)) {
@@ -309,10 +311,16 @@ public class Player : MonoBehaviour, ICharacter {
 			if (effect.GetType() == typeof(StunEffect)) {
 				stun = true;
 			}
+			if (effect.GetType() == typeof(GcdEffect)){
+				GcdEffect ge = (GcdEffect) effect;
+				if (gcd > ge.GetGcd())
+					gcd = ge.GetGcd();
+			}
 		}
 
 		this.currentSpeed = (this.speed - flatValue) * (1 - percentage);
 		this.isStun = stun;
+		this.defaultGcd = gcd;
 		
 		if (currentSpeed < 0)
 			this.currentSpeed = 0;
