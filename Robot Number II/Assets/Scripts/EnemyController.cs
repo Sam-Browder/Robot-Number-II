@@ -252,7 +252,10 @@ public class EnemyController : MonoBehaviour, ICharacter {
 	}
 
 	public void Die(){
-		GameObject.FindGameObjectWithTag ("Global").gameObject.GetComponent<TestMenu> ().money += this.cashValue;
+		GameObject globalData = GameObject.FindGameObjectWithTag ("Global");
+		if(globalData != null) {
+			globalData.gameObject.GetComponent<TestMenu> ().money += this.cashValue;
+		}
 		Destroy (gameObject);
 	}
 
