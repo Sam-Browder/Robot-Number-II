@@ -9,6 +9,7 @@ public class EnemyController : MonoBehaviour, ICharacter {
 	public float currentSpeed;
 	public float jumpPower = 200f;
 	public int numOfJumps = 2;
+	private int cashValue = 50;
 	public float minDistFromPlayer = 2f;
 	
 	//booleans
@@ -251,6 +252,7 @@ public class EnemyController : MonoBehaviour, ICharacter {
 	}
 
 	public void Die(){
+		GameObject.FindGameObjectWithTag ("Global").gameObject.GetComponent<TestMenu> ().money += this.cashValue;
 		Destroy (gameObject);
 	}
 

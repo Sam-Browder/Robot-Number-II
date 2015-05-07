@@ -9,13 +9,15 @@ public class TestMenu : MonoBehaviour {
 	public string[] weaponData;
 	private int[] buttonTracker;
 	public double[] armorData;
+	public int money;
 
 	// Use this for initialization
 	void Start () {
 		DontDestroyOnLoad(transform.gameObject);
+		money = 0;
 		testMessage = "Try and find me";
 		availableWeapons = new string[] {"Projectile", "Lazer","BurstJump","Rush"};
-		weaponData = new string[] {availableWeapons [0], availableWeapons [1], availableWeapons [2], availableWeapons [3]};
+		weaponData = new string[] {availableWeapons [0], availableWeapons [0], availableWeapons [0], availableWeapons [0]};
 		buttonTracker = new int[] {0, 0, 0, 0};
 		armorData = new double[] {1.0, 1.0, 1.0, 1.0};
 	}

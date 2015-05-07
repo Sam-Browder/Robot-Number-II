@@ -172,7 +172,13 @@ public class Player : MonoBehaviour, ICharacter {
 	}
 
 	public void InitializeCharacter(){
-		string[] weaponData = GameObject.FindGameObjectWithTag ("Global").gameObject.GetComponent<TestMenu>().weaponData;
+		GameObject globalData = GameObject.FindGameObjectWithTag ("Global");
+		string[] weaponData;
+		if (globalData == null) {
+			weaponData = new string[] {"Projectile", "Lazer","BurstJump","Rush"};
+		} else {
+			weaponData = globalData.gameObject.GetComponent<TestMenu>().weaponData;
+		}
 		IAbility ab;
 		for (int i = 0; i < weaponData.Length; i++) {
 			switch (weaponData [i]) {
