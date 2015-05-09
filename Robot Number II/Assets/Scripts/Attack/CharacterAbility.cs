@@ -33,6 +33,9 @@ public class CharacterAbility : MonoBehaviour {
 	}
 
 	public void SetAbility(IAbility ability, int index){
-		this.abilities [index] = ability;
+		if (index < this.abilities.Count)
+			this.abilities [index] = ability;
+		else
+			this.abilities.Insert (index, ability);
 	}
 }
