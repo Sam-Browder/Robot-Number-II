@@ -10,6 +10,7 @@ public class TestMenu : MonoBehaviour {
 	private int[] buttonTracker;
 	public double[] armorData;
 	public int money;
+	public Text budget;
 
 	// Use this for initialization
 	void Start () {
@@ -35,16 +36,25 @@ public class TestMenu : MonoBehaviour {
 	}
 
 	public void pressedUpArmor(Text armorText) {
+		double budgetValue = double.Parse (this.budget.text) + 0.1;
+		this.budget.text = budgetValue.ToString();
 		double armorValue = double.Parse (armorText.text);
 		armorValue += 0.1;
+		int armorID = int.Parse (armorText.name) % 4;
+		armorData [armorID] = armorValue;
 		armorText.text = armorValue.ToString ();
 	}
 
 	public void pressedDownArmor(Text armorText) {
+		double budgetValue = double.Parse (this.budget.text);
 		double armorValue = double.Parse (armorText.text);
-		int armorID = int.Parse (armorText.name) % 4;
-		armorValue -= 0.1;
-		armorText.text = armorValue.ToString ();
-		armorData [armorID] = armorValue;
+		if (budgetValue > 0 && armorValue > 0) {
+			int armorID = int.Parse (armorText.name) % 4;
+			armorValue -= 0.1;
+			armorText.text = armorValue.ToString ();
+			armorData [armorID] = armorValue;
+			budgetValue -= 0.1;
+			this.budget.text = budgetValue.ToString();
+		}
 	}
 }

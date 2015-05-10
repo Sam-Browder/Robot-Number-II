@@ -12,6 +12,7 @@ TagManager:
   - DeathBox
   - Rope
   - Global
+  - Menu
   layers:
   - Default
   - TransparentFX
