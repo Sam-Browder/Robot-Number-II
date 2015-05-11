@@ -70,24 +70,16 @@ public class Player : MonoBehaviour, ICharacter {
 			Jump();
 		}
 		if (Input.GetKeyDown(KeyCode.Q)) {
-			if(GlobalCooldown()){
-				this.playerAbility.ExecuteAbility(0);
-			}
+			this.playerAbility.ExecuteAbility(0);
 		}
 		if (Input.GetKeyDown(KeyCode.W)) {
-			if(GlobalCooldown()){
-				this.playerAbility.ExecuteAbility(1);
-			}
+			this.playerAbility.ExecuteAbility(1);
 		}
 		if (Input.GetKeyDown(KeyCode.E)) {
-			if(GlobalCooldown()){
-				this.playerAbility.ExecuteAbility(2);
-			}
+			this.playerAbility.ExecuteAbility(2);
 		}
 		if (Input.GetKeyDown(KeyCode.R)) {
-			if(GlobalCooldown()){
-				this.playerAbility.ExecuteAbility(3);
-			}
+			this.playerAbility.ExecuteAbility(3);
 		}
 
 		EffectExpiration ();
@@ -183,10 +175,10 @@ public class Player : MonoBehaviour, ICharacter {
 		for (int i = 0; i < weaponData.Length; i++) {
 			switch (weaponData [i]) {
 			case "Projectile":
-				ab = new BasicAttack ("Projectile", 10f, 10f, 10f, 10f, 0f);
+				ab = new BasicAttack ("Projectile", 10f, 10f, 10f, 10f, 0.5f);
 				break;
 			case "Lazer":
-				ab = new BasicAttack ("Lazer", 10f, 10f, 10f, 10f, 0f);
+				ab = new BasicAttack ("Lazer", 10f, 10f, 10f, 10f, 0.5f);
 				break;
 			case "BurstJump":
 				ab = new BurstJump (500f, 5f);
@@ -195,7 +187,7 @@ public class Player : MonoBehaviour, ICharacter {
 				ab = new Rush (4000f, 3f);
 				break;
 			default:
-				ab = new BasicAttack ("Projectile", 0f, 0f, 0f, 0f, 0f);
+				ab = new BasicAttack ("Projectile", 0f, 0f, 0f, 0f, 0.5f);
 				break;
 			}
 			this.playerAbility.SetAbility (ab, i);

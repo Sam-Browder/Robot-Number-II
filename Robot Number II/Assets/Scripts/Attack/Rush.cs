@@ -40,6 +40,14 @@ public class Rush : IAbility {
 			return false;
 		}
 	}
+
+	public float GetCd(){
+		return this.cd;
+	}
+	
+	public float GetCdEnd(){
+		return this.cde;
+	}
 	
 	public void ApplyAbility(ICharacter character){
 		Rigidbody2D rb2d = character.GetRB2D ();

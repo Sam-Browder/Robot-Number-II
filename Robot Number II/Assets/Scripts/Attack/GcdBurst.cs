@@ -39,6 +39,14 @@ public class GcdBurst : IAbility {
 			return false;
 		}
 	}
+
+	public float GetCd(){
+		return this.cd;
+	}
+	
+	public float GetCdEnd(){
+		return this.cde;
+	}
 	
 	public void ApplyAbility(ICharacter character){
 

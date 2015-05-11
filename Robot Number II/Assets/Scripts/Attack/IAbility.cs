@@ -9,5 +9,7 @@ public interface IAbility{
 	void RemoveEffect(IEffect effect);
 	void ApplyAbility(ICharacter character);
 	bool Cooldown();
+	float GetCd();
+	float GetCdEnd();
 
 }

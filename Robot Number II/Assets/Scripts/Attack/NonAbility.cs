@@ -10,7 +10,7 @@ public class NonAbility : IAbility {
 	private ArrayList effects = new ArrayList(); 
 	
 	public NonAbility(){;
-		this.cd = 3f;
+		this.cd = 0f;
 		this.cde = Time.time;
 	}
 	
@@ -37,6 +37,14 @@ public class NonAbility : IAbility {
 		} else {
 			return false;
 		}
+	}
+
+	public float GetCd(){
+		return this.cd;
+	}
+	
+	public float GetCdEnd(){
+		return Time.time;
 	}
 	
 	public void ApplyAbility(ICharacter character){

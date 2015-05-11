@@ -3,7 +3,7 @@ using System.Collections;
 
 public class CharacterAbility : MonoBehaviour {
 
-	ArrayList abilities = new ArrayList();
+	public ArrayList abilities = new ArrayList();
 	//ArrayList animations = new ArrayList();
 	// Use this for initialization
 	void Start () {

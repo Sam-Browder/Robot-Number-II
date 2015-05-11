@@ -93,6 +93,10 @@ public class CharacterDefense : MonoBehaviour,IDefenseBehavior {
 		return this.health;
 	}
 
+	public float GetShield(){
+		return this.shieldAmount;
+	}
+
 	public void shieldRegeneration(){
 		if (Time.time > this.timeEnd) {
 			if (this.shieldAmount > this.maxShieldAmount - this.shieldRegen){

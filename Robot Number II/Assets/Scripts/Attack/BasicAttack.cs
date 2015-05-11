@@ -48,6 +48,14 @@ public class BasicAttack : IAbility {
 		}
 	}
 
+	public float GetCd(){
+		return this.cd;
+	}
+
+	public float GetCdEnd(){
+		return this.cde;
+	}
+
 	public void ApplyAbility(ICharacter character){
 		IDefenseBehavior defense = character.GetDefense ();
 		defense.ApplyDamage (this.EMDamage, this.ThermalDamage, this.KineticDamage, this.ExplosiveDamage);

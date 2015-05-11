@@ -32,6 +32,14 @@ public class JetPack : IAbility {
 		this.effects.Remove (effect);
 	}
 
+	public float GetCd(){
+		return this.cd;
+	}
+	
+	public float GetCdEnd(){
+		return this.cde;
+	}
+
 	public bool Cooldown() {
 		if (Time.time > this.cde) {
 			this.cde = Time.time + this.cd;

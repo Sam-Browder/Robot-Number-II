@@ -9,5 +9,6 @@ public interface IDefenseBehavior{
 	float TypeDamageCalculation(float damage, float resist);
 	float GetHealth();
 	void shieldRegeneration();
+	float GetShield();
 }
 
