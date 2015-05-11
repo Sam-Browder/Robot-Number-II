@@ -209,7 +209,7 @@ public class Player : MonoBehaviour, ICharacter {
 
 	
 	public void Die(){
-		Application.LoadLevel(Application.loadedLevel);
+		Application.LoadLevel("GameOverScene");
 	}
 	
 	public void SetCanClimb(bool canClmb){

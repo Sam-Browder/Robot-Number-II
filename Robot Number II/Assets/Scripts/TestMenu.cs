@@ -14,6 +14,11 @@ public class TestMenu : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		GameObject oldData = GameObject.Find("oldPersistentData");
+		if (oldData != null) {
+			this.money = oldData.GetComponent<TestMenu>().money / 4;
+			Destroy (oldData);
+		}
 		DontDestroyOnLoad(transform.gameObject);
 		money = 0;
 		testMessage = "Try and find me";
@@ -48,7 +53,7 @@ public class TestMenu : MonoBehaviour {
 	public void pressedDownArmor(Text armorText) {
 		double budgetValue = double.Parse (this.budget.text);
 		double armorValue = double.Parse (armorText.text);
-		if (budgetValue > 0 && armorValue > 0) {
+		if (budgetValue > 0 && armorValue > 0.2) {
 			int armorID = int.Parse (armorText.name) % 4;
 			armorValue -= 0.1;
 			armorText.text = armorValue.ToString ();
