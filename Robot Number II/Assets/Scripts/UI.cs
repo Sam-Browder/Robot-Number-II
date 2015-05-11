@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class UI : MonoBehaviour {
@@ -14,8 +14,17 @@ public class UI : MonoBehaviour {
 		timers [3].SetIndex (3);
 
 		GameObject[] enemies = GameObject.FindGameObjectsWithTag ("Enemy");
-		EnemyHealth eh = gameObject.GetComponentInChildren<EnemyHealth> ();
-		eh.SetObj (enemies [1]);
+		for (int i = 0; i < enemies.Length; i++) {
+			GameObject newEnemyHealthBar = (GameObject)Instantiate (Resources.Load ("EnemyHealthBar"));
+			newEnemyHealthBar.transform.SetParent (this.transform);
+			EnemyHealthBG eHBG = newEnemyHealthBar.gameObject.GetComponentInChildren<EnemyHealthBG> ();
+			eHBG.SetObj (enemies [i]);
+			EnemyHealth eH = newEnemyHealthBar.gameObject.GetComponentInChildren<EnemyHealth> ();
+			eH.transform.SetParent(this.transform);
+			eH.SetObj (enemies [i]);
+		}
+
+
 	}
 	
 	// Update is called once per frame

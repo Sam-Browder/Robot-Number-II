@@ -7,6 +7,7 @@ public class EnemyHealth : MonoBehaviour {
 	private GameObject enemy;
 	private RectTransform trans;
 	private float characterHeight = 40f;
+	private float healthBarDelta = 15f;
 	
 	// Use this for initialization
 	void Start () {
@@ -20,14 +21,19 @@ public class EnemyHealth : MonoBehaviour {
 			Image image = GetComponent<Image> ();
 			Vector3 cpos = Camera.main.WorldToViewportPoint (this.enemy.transform.position);
 			
-			this.transform.position = new Vector3 (this.trans.position.x + cpos.x * this.trans.rect.width - this.trans.sizeDelta.x / 2, this.trans.position.y + cpos.y * this.trans.rect.height - this.trans.sizeDelta.y / 2 + this.characterHeight);
-			image.fillAmount = this.enemy.gameObject.GetComponentInChildren<ICharacter> ().GetDefense ().GetShield () / 50f;
+			this.transform.position = new Vector3 (this.healthBarDelta + this.trans.position.x + cpos.x * this.trans.rect.width - this.trans.sizeDelta.x / 2, this.trans.position.y + cpos.y * this.trans.rect.height - this.trans.sizeDelta.y / 2 + this.characterHeight);
+			image.fillAmount = this.enemy.gameObject.GetComponentInChildren<ICharacter> ().GetDefense ().GetHealth () / 100f;
+		} else {
+			Destroy (this.gameObject);
 		}
-
 
 	}
 
 	public void SetObj(GameObject enemy){
 		this.enemy = enemy;
+	}
+
+	public GameObject GetObj(){
+		return this.enemy;
 	}
 }

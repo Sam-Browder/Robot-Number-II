@@ -51,7 +51,7 @@ public class EnemyController : MonoBehaviour, ICharacter {
 	private int directionToPlayer;
 	//private ProjSpawner projspawner;
 	private CharacterAbility enemyAbility;
-	private CharacterDefense enemyDefense;
+	private EnemyDefense enemyDefense;
 	private FittingMenu fit;
 
 	private ArrayList effects = new ArrayList();
@@ -66,7 +66,7 @@ public class EnemyController : MonoBehaviour, ICharacter {
 		anim = gameObject.GetComponent<Animator> ();
 		//this.projspawner = gameObject.GetComponentInChildren<ProjSpawner> ();
 		this.enemyAbility = gameObject.GetComponentInChildren<CharacterAbility> ();
-		this.enemyDefense = gameObject.GetComponentInChildren<CharacterDefense> ();
+		this.enemyDefense = gameObject.GetComponentInChildren<EnemyDefense> ();
 		IAbility projectile = new BasicAttack ("Projectile",10f,10f,10f,10f, 0f);
 		//IEffect cripple = new CrippleEffect (1f,49f,0f);
 		//IEffect stun = new StunEffect (2f);
@@ -256,6 +256,16 @@ public class EnemyController : MonoBehaviour, ICharacter {
 		if(globalData != null) {
 			globalData.gameObject.GetComponent<TestMenu> ().money += this.cashValue;
 		}
+
+		/*EnemyHealth[] health = GameObject.FindObjectsOfType<EnemyHealth> ();
+		EnemyHealthBG[] healthBG = GameObject.FindObjectsOfType<EnemyHealthBG> ();
+		for (int i = 0; i < health.Length; i++) {
+			if (health [i].gameObject == this.gameObject) {
+				Destroy (health [i]);
+				Destroy (healthBG [i]);
+			}
+		}*/
+
 		Destroy (gameObject);
 	}
 
