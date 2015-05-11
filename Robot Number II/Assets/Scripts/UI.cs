@@ -16,11 +16,6 @@ public class UI : MonoBehaviour {
 		GameObject[] enemies = GameObject.FindGameObjectsWithTag ("Enemy");
 		EnemyHealth eh = gameObject.GetComponentInChildren<EnemyHealth> ();
 		eh.SetObj (enemies [1]);
-
-		HealthBar hb = gameObject.GetComponentInChildren<HealthBar> ();
-		hb.SetObj (player);
-		ShieldBar sb = gameObject.GetComponentInChildren<ShieldBar> ();
-		sb.SetObj (player);
 	}
 	
 	// Update is called once per frame
