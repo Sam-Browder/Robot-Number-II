@@ -16,7 +16,6 @@ public class SkillTimer : MonoBehaviour {
 	void Update () {
 		Image image = GetComponent<Image> ();
 		if (this.ability != null && this.ability.abilities [index] != null) {
-			print ("lol");
 			IAbility ability = (IAbility)this.ability.abilities [index];
 			image.fillAmount = (ability.GetCdEnd () - Time.time) / ability.GetCd ();
 		}

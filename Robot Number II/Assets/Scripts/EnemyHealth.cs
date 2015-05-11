@@ -6,23 +6,28 @@ public class EnemyHealth : MonoBehaviour {
 
 	private GameObject enemy;
 	private RectTransform trans;
-	private float midX;
-	private float midY;
+	private float characterHeight = 40f;
 	
 	// Use this for initialization
 	void Start () {
-		this.enemy = GameObject.FindGameObjectWithTag ("Enemy");
 		this.trans = (RectTransform)this.transform.parent;
 
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		midX = this.trans.position.x + this.trans.rect.width/2;
-		midY = this.trans.position.y;
-		Image image = GetComponent<Image> ();
-		Vector3 cpos = Camera.main.WorldToViewportPoint (this.enemy.transform.position);
-		this.transform.position = new Vector3 (cpos.x * midX, cpos.y * midY);
-		image.fillAmount = this.enemy.gameObject.GetComponentInChildren<ICharacter>().GetDefense ().GetShield() / 50f;
+		if (this.enemy != null) {
+			Image image = GetComponent<Image> ();
+			Vector3 cpos = Camera.main.WorldToViewportPoint (this.enemy.transform.position);
+			
+			this.transform.position = new Vector3 (this.trans.position.x + cpos.x * this.trans.rect.width - this.trans.sizeDelta.x / 2, this.trans.position.y + cpos.y * this.trans.rect.height - this.trans.sizeDelta.y / 2 + this.characterHeight);
+			image.fillAmount = this.enemy.gameObject.GetComponentInChildren<ICharacter> ().GetDefense ().GetShield () / 50f;
+		}
+
+
+	}
+
+	public void SetObj(GameObject enemy){
+		this.enemy = enemy;
 	}
 }

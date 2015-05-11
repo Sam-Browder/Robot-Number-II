@@ -8,12 +8,18 @@ public class ShieldBar : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
-		this.player = GameObject.FindGameObjectWithTag ("Player").gameObject.GetComponentInChildren<ICharacter> ();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		Image image = GetComponent<Image> ();
-		image.fillAmount = this.player.GetDefense ().GetShield() / 50f;
+		this.player = GameObject.FindGameObjectWithTag ("Player").gameObject.GetComponentInChildren<ICharacter>();
+		if (this.player != null) {
+			Image image = GetComponent<Image> ();
+			image.fillAmount = this.player.GetDefense ().GetShield () / 50f;
+		}
+	}
+
+	public void SetObj(GameObject obj){
+		this.player = obj.gameObject.GetComponentInChildren<ICharacter> ();
 	}
 }
