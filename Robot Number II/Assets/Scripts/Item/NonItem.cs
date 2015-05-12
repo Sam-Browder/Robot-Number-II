@@ -3,7 +3,7 @@ using System.Collections;
 
 public class NonItem : IItem {
 	
-	private string item = "Non";
+	private string item = "None";
 	private string slot;
 	private IAbility primary;
 	private IAbility secondary;

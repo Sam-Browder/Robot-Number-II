@@ -11,6 +11,7 @@ GameObject:
   - 114: {fileID: 11409630}
   - 114: {fileID: 11432548}
   - 114: {fileID: 11479962}
+  - 114: {fileID: 11406580}
   m_Layer: 8
   m_Name: Projectile Spawner
   m_TagString: Player
@@ -47,7 +48,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 188138}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.09417295, y: 1.35157466, z: 0}
+  m_LocalPosition: {x: 5.15437698, y: .902077317, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 453864}
@@ -110,6 +111,17 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11406580
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 153772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 449d07ab28367594f820678e15b4a36c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11409630
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -181,6 +193,7 @@ MonoBehaviour:
   currentSpeed: 0
   jumpPower: 200
   climbPower: 5
+  defaultGcd: .5
   gcd: .5
   grounded: 0
   canDoubleJump: 0

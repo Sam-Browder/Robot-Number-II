@@ -167,7 +167,7 @@ public class Player : MonoBehaviour, ICharacter {
 		GameObject globalData = GameObject.FindGameObjectWithTag ("Global");
 		string[] weaponData;
 		if (globalData == null) {
-			weaponData = new string[] {"Projectile", "Lazer","BurstJump","Rush"};
+			weaponData = new string[] {"Projectile", "Lazer","BurstJump","SpeedBurst"};
 		} else {
 			weaponData = globalData.gameObject.GetComponent<TestMenu>().weaponData;
 		}
@@ -186,14 +186,15 @@ public class Player : MonoBehaviour, ICharacter {
 			case "Rush":
 				ab = new Rush (4000f, 3f);
 				break;
+			case "SpeedBurst":
+				ab = new SpeedBurst(-2f,5f);
+				break;
 			default:
 				ab = new BasicAttack ("Projectile", 0f, 0f, 0f, 0f, 0.5f);
 				break;
 			}
 			this.playerAbility.SetAbility (ab, i);
 		}
-
-		//IEffect cripple = new CrippleEffect (1f, 20f, 0f);
 		this.currentSpeed = speed;
 		this.gcd = Time.time;
 	}
@@ -309,19 +310,15 @@ public class Player : MonoBehaviour, ICharacter {
 			if (effect.GetType() == typeof(StunEffect)) {
 				stun = true;
 			}
-			if (effect.GetType() == typeof(GcdEffect)){
-				GcdEffect ge = (GcdEffect) effect;
-				if (gcd > ge.GetGcd())
-					gcd = ge.GetGcd();
-			}
 		}
 
 		this.currentSpeed = (this.speed - flatValue) * (1 - percentage);
 		this.isStun = stun;
 		this.defaultGcd = gcd;
 		
-		if (currentSpeed < 0)
+		if (currentSpeed < 0) {
 			this.currentSpeed = 0;
+		}
 
 	}
 
@@ -331,7 +328,6 @@ public class Player : MonoBehaviour, ICharacter {
 			IEffect effect = (IEffect)this.effects [i];
 			if (effect.IsExpired ()) {
 				this.effects.RemoveAt (i);
-				print (i + " removed");
 				CheckStatus ();
 			}
 		}

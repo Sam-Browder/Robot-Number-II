@@ -37,6 +37,21 @@ public class FittingMenu : MonoBehaviour {
 		}
 	}
 
+	public string WeaponInfo(){
+		string result = "";
+		if (this.primaryWeapon.IsDoubleHand())
+			result += "WEAPON: " + this.primaryWeapon.GetItem () + "\n";
+		else 
+			result += "WEAPON: " + this.primaryWeapon.GetItem () + ", " + this.secondaryWeapon.GetItem () + "\n";
+
+		result += "DEFENSE SYSTEM: " + this.defenseSystem.GetItem () + "\n";
+		result += "OFFENSE SYSTEM: " + this.offenseSystem.GetItem () + "\n";
+		result += "UTILITY 1: " + this.primaryUtil.GetItem () + "\n";
+		result += "UTILITY 2: " + this.secondaryUtil.GetItem () + "\n";
+
+		return result;
+	}
+
 	public void EquipDefense(IItem item){
 		this.defenseSystem = item;
 	}
@@ -56,25 +71,25 @@ public class FittingMenu : MonoBehaviour {
 	public void SetAbility(){
 		ICharacter character = gameObject.GetComponentInParent<ICharacter> ();
 		CharacterAbility abilities = character.GetAbilities();
-		if (this.primaryWeapon.GetItem() != "Non") {
+		if (this.primaryWeapon.GetItem() != "None") {
 			if (this.primaryWeapon.IsDoubleHand ()) {
 				abilities.SetAbility(this.primaryWeapon.GetPrimaryAbility(),0);
 				abilities.SetAbility(this.primaryWeapon.GetSecondaryAbility(),1);
 			} else {
 				abilities.SetAbility(this.primaryWeapon.GetPrimaryAbility(),0);
-				if (this.secondaryWeapon.GetItem() != "Non"){
+				if (this.secondaryWeapon.GetItem() != "None"){
 					abilities.SetAbility(this.secondaryWeapon.GetPrimaryAbility(),1);
 				}
 			}
 		}
 
-		if (this.defenseSystem.GetItem() != "Non")
+		if (this.defenseSystem.GetItem() != "None")
 			abilities.SetAbility (this.defenseSystem.GetPrimaryAbility (), 2);
-		if (this.offenseSystem.GetItem() != "Non")
+		if (this.offenseSystem.GetItem() != "None")
 			abilities.SetAbility (this.offenseSystem.GetPrimaryAbility (), 3);
-		if (this.primaryUtil.GetItem() != "Non")
+		if (this.primaryUtil.GetItem() != "None")
 			abilities.SetAbility (this.primaryUtil.GetPrimaryAbility (), 4);
-		if (this.secondaryUtil.GetItem() != "Non")
+		if (this.secondaryUtil.GetItem() != "None")
 			abilities.SetAbility (this.secondaryUtil.GetPrimaryAbility (), 5);
 
 	}
