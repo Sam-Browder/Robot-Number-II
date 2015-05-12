@@ -166,10 +166,13 @@ public class Player : MonoBehaviour, ICharacter {
 	public void InitializeCharacter(){
 		GameObject globalData = GameObject.FindGameObjectWithTag ("Global");
 		string[] weaponData;
+		double[] armorData;
 		if (globalData == null) {
 			weaponData = new string[] {"Projectile", "Lazer","BurstJump","SpeedBurst"};
+			armorData = new double[] {1.0, 1.0, 1.0, 1.0};
 		} else {
 			weaponData = globalData.gameObject.GetComponent<TestMenu>().weaponData;
+			armorData = globalData.gameObject.GetComponent<TestMenu>().armorData;
 		}
 		IAbility ab;
 		for (int i = 0; i < weaponData.Length; i++) {
@@ -195,6 +198,8 @@ public class Player : MonoBehaviour, ICharacter {
 			}
 			this.playerAbility.SetAbility (ab, i);
 		}
+		this.playerDefense.SetResistance (armorData [0], armorData [1], armorData [2], armorData [3]);
+
 		this.currentSpeed = speed;
 		this.gcd = Time.time;
 	}

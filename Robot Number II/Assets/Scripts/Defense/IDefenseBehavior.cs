@@ -10,5 +10,6 @@ public interface IDefenseBehavior{
 	float GetHealth();
 	void shieldRegeneration();
 	float GetShield();
+	void SetResistance(double EM, double Thermal, double Kinetic, double Explosive);
 }
 

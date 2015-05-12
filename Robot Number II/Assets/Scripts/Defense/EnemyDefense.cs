@@ -107,6 +107,13 @@ public class EnemyDefense : MonoBehaviour,IDefenseBehavior {
 			this.timeEnd = Time.time + this.shieldInterval;
 		}
 	}
+
+	public void SetResistance(double EM, double Thermal, double Kinetic, double Explosive){
+		this.EMResistance = 60f * (float) EM;
+		this.ThermalResistance = 60f * (float) Thermal;
+		this.KineticResistance = 60f * (float) Kinetic;
+		this.ExplosiveResistance = 60f * (float) Explosive;
+	}
 	
 }
 
