@@ -9,7 +9,8 @@ public class NonAbility : IAbility {
 	
 	private ArrayList effects = new ArrayList(); 
 	
-	public NonAbility(){;
+	public NonAbility(){
+		this.ability = "None";
 		this.cd = 0f;
 		this.cde = Time.time;
 	}

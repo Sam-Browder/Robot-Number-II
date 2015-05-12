@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 01d50007af2b0034887dce3f97442f97
-timeCreated: 1431365363
+guid: e8e8a4300dc667948b0206cc6e6b5af2
+timeCreated: 1431429256
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: EnemyHealthBarTexture_0
+    21300000: Grenade_0
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -50,15 +50,15 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: EnemyHealthBarTexture_0
+    - name: Grenade_0
       rect:
         serializedVersion: 2
-        x: 5
-        y: 28
-        width: 42
-        height: 14
+        x: 17
+        y: 26
+        width: 17
+        height: 17
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 

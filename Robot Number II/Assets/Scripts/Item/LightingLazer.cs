@@ -6,7 +6,7 @@ public class LightingLazer : IItem {
 	private string item = "LightingLazer";
 	private string slot = "weapon";
 	private IAbility primary = new BasicAttack("Lazer", 10f, 10f, 10f, 10f, 0f);
-	private IAbility secondary;
+	private IAbility secondary = new NonAbility();
 	private bool isDoubleHand = true;
 	private bool isOffHand = false;
 	

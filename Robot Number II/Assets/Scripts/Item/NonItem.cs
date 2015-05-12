@@ -4,14 +4,15 @@ using System.Collections;
 public class NonItem : IItem {
 	
 	private string item = "None";
-	private string slot;
-	private IAbility primary;
-	private IAbility secondary;
-	private bool isDoubleHand;
-	private bool isOffHand;
+	private string slot = "None";
+	private IAbility primary = new NonAbility();
+	private IAbility secondary = new NonAbility ();
+	private bool isDoubleHand = false;
+	private bool isOffHand = false;
 	
 	
-	public NonItem (){}
+	public NonItem (){
+	}
 	
 	public string GetItem(){
 		return this.item;

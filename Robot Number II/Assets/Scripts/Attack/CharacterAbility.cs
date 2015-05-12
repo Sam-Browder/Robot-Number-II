@@ -28,6 +28,9 @@ public class CharacterAbility : MonoBehaviour {
 			IAnim jump = gameObject.GetComponentInChildren<BurstJumpAnim> ();
 			jump.Animate (new BasicAttack ("Projectile", 2.5f, 2.5f, 2.5f, 2.5f, 0.5f), character);
 			ability.ApplyAbility (character);
+		} else if (ability.GetType () == typeof(GrenadeToss) && ability.Cooldown ()) {
+			IAnim toss = gameObject.GetComponentInChildren<GrenadeTossAnim> ();
+			toss.Animate (ability, character);
 		} else {
 			if (ability != null){
 				if (ability.Cooldown())

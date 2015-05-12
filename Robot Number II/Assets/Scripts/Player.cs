@@ -25,7 +25,7 @@ public class Player : MonoBehaviour, ICharacter {
 	private Animator anim;
 	private CharacterAbility playerAbility;
 	private CharacterDefense playerDefense;
-	private FittingMenu fit;
+	private FittingMenu fit = null;
 
 	private ArrayList effects = new ArrayList();
 	
@@ -191,6 +191,9 @@ public class Player : MonoBehaviour, ICharacter {
 				break;
 			case "SpeedBurst":
 				ab = new SpeedBurst(-2f,5f);
+				break;
+			case "GrenadeToss":
+				ab = new GrenadeToss(30f,30f,30f,30f,6f);
 				break;
 			default:
 				ab = new BasicAttack ("Projectile", 0f, 0f, 0f, 0f, 0.5f);

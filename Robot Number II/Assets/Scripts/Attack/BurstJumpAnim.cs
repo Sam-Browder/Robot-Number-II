@@ -16,7 +16,7 @@ public class BurstJumpAnim : MonoBehaviour, IAnim {
 	// Update is called once per frame
 	void Update () {
 		if (this.isBurst) {
-			if (this.count >= 100)
+			if (this.count >= this.numOfSpark)
 				this.isBurst = false;
 
 			GameObject proj = (GameObject)Instantiate (Resources.Load ("Spark"));

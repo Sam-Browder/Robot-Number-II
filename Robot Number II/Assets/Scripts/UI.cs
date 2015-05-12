@@ -5,7 +5,7 @@ public class UI : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		GameObject player = GameObject.FindGameObjectWithTag ("Player");
+//		GameObject player = GameObject.FindGameObjectWithTag ("Player");
 
 		SkillTimer[] timers = gameObject.GetComponentsInChildren<SkillTimer>();
 		timers [0].SetIndex (0);

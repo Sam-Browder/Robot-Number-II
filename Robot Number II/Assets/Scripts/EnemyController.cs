@@ -52,7 +52,7 @@ public class EnemyController : MonoBehaviour, ICharacter {
 	//private ProjSpawner projspawner;
 	private CharacterAbility enemyAbility;
 	private EnemyDefense enemyDefense;
-	private FittingMenu fit;
+	private FittingMenu fit = null;
 
 	private ArrayList effects = new ArrayList();
 	
