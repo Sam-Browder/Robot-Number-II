@@ -22,7 +22,7 @@ public class TestMenu : MonoBehaviour {
 		DontDestroyOnLoad(transform.gameObject);
 		money = 50;
 		testMessage = "Try and find me";
-		availableWeapons = new string[] {"Projectile", "Lazer","BurstJump","Rush", "SpeedBurst", "GrenadeToss"};
+		availableWeapons = new string[] {"Projectile", "Lazer","BurstJump","Rush", "SpeedBurst", "GrenadeToss", "DeathLazer"};
 		weaponData = new string[] {availableWeapons [0], availableWeapons [0], availableWeapons [0], availableWeapons [0]};
 		buttonTracker = new int[] {0, 0, 0, 0};
 		armorData = new double[] {1.0, 1.0, 1.0, 1.0};

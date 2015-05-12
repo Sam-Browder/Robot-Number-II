@@ -12,6 +12,7 @@ public class UI : MonoBehaviour {
 		timers [1].SetIndex (1);
 		timers [2].SetIndex (2);
 		timers [3].SetIndex (3);
+		timers [4].SetIndex (4);
 
 		GameObject[] enemies = GameObject.FindGameObjectsWithTag ("Enemy");
 		for (int i = 0; i < enemies.Length; i++) {

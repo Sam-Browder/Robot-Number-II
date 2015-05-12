@@ -195,6 +195,9 @@ public class Player : MonoBehaviour, ICharacter {
 			case "GrenadeToss":
 				ab = new GrenadeToss(30f,30f,30f,30f,6f);
 				break;
+			case "DeathLazer":
+				ab = new DeathLazer(5f,5f,5f,5f,5f);
+				break;
 			default:
 				ab = new BasicAttack ("Projectile", 0f, 0f, 0f, 0f, 0.5f);
 				break;

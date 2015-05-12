@@ -7,8 +7,6 @@ public interface IItem{
 	string GetSlot();
 	IAbility GetPrimaryAbility();
 	IAbility GetSecondaryAbility();
-	bool IsDoubleHand();
-	bool IsOffHand();
 
 }
 

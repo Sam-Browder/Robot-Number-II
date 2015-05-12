@@ -7,9 +7,6 @@ public class LazerCannon : IItem {
 	private string slot = "weapon";
 	private IAbility primary = new BasicAttack("Lazer", 10f, 10f, 10f, 10f, 0f);
 	private IAbility secondary = new NonAbility ();
-	private bool isDoubleHand = true;
-	private bool isOffHand = false;
-
 
 	public LazerCannon (){}
 
@@ -27,14 +24,6 @@ public class LazerCannon : IItem {
 
 	public IAbility GetSecondaryAbility(){
 		return this.secondary;
-	}
-
-	public bool IsDoubleHand(){
-		return this.isDoubleHand;
-	}
-
-	public bool IsOffHand(){
-		return this.isOffHand;
 	}
 
 

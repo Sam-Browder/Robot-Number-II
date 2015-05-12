@@ -7,7 +7,7 @@ public class CharacterAbility : MonoBehaviour {
 	//ArrayList animations = new ArrayList();
 	// Use this for initialization
 	void Start () {
-		for (int i = 0; i < 6; i++) {
+		for (int i = 0; i < 5; i++) {
 			this.abilities.Add (new NonAbility ());
 		}
 	}
@@ -31,6 +31,9 @@ public class CharacterAbility : MonoBehaviour {
 		} else if (ability.GetType () == typeof(GrenadeToss) && ability.Cooldown ()) {
 			IAnim toss = gameObject.GetComponentInChildren<GrenadeTossAnim> ();
 			toss.Animate (ability, character);
+		} else if (ability.GetType () == typeof(DeathLazer) && ability.Cooldown ()) {
+			IAnim lazer = gameObject.GetComponentInChildren<DeathLazerAnim> ();
+			lazer.Animate (ability, character);
 		} else {
 			if (ability != null){
 				if (ability.Cooldown())

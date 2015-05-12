@@ -1,14 +1,10 @@
 fileFormatVersion: 2
-guid: 2092aea59cadfc44fb3e3806f8bb1c89
-timeCreated: 1431441539
+guid: c947ddba2891f6d4ab8c3ab46ff3472f
+timeCreated: 1431440871
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: SkillTimer_0
-    21300002: SkillTimer_1
-    21300004: SkillTimer_2
-    21300006: SkillTimer_3
-    21300008: SkillTimer_4
+    21300000: DeathLazer_0
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -34,7 +30,7 @@ TextureImporter:
   textureFormat: -3
   maxTextureSize: 2048
   textureSettings:
-    filterMode: 0
+    filterMode: -1
     aniso: 16
     mipBias: -1
     wrapMode: 1
@@ -54,53 +50,13 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: SkillTimer_0
+    - name: DeathLazer_0
       rect:
         serializedVersion: 2
-        x: 6
-        y: 43
-        width: 17
-        height: 15
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: SkillTimer_1
-      rect:
-        serializedVersion: 2
-        x: 35
-        y: 43
-        width: 17
-        height: 15
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: SkillTimer_2
-      rect:
-        serializedVersion: 2
-        x: 20
-        y: 26
-        width: 17
-        height: 15
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: SkillTimer_3
-      rect:
-        serializedVersion: 2
-        x: 5
-        y: 11
-        width: 17
-        height: 15
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: SkillTimer_4
-      rect:
-        serializedVersion: 2
-        x: 35
-        y: 11
-        width: 17
-        height: 15
+        x: 11
+        y: 25
+        width: 43
+        height: 18
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
