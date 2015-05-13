@@ -116,7 +116,9 @@ public class EnemyController : MonoBehaviour, ICharacter {
 	
 	// do all physics in here
 	void FixedUpdate()
-	{
+	{	
+		transform.rotation = Quaternion.AngleAxis(30, Vector3.up);
+
 		Vector3 easeVelocity = rb2d.velocity;
 		easeVelocity.y = rb2d.velocity.y;
 		easeVelocity.z = 0.0f;

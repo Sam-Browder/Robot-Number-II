@@ -89,6 +89,8 @@ public class Player : MonoBehaviour, ICharacter {
 	// do all physics in here
 	void FixedUpdate()
 	{
+		//sets the player verticle
+		transform.rotation = Quaternion.AngleAxis(30, Vector3.up);
 
 		Vector3 easeVelocity = rb2d.velocity;
 		easeVelocity.y = rb2d.velocity.y;
