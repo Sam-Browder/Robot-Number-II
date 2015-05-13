@@ -93,21 +93,28 @@ public class Player : MonoBehaviour, ICharacter {
 		//sets the player verticle
 		transform.rotation = Quaternion.AngleAxis(30, Vector3.up);
 
-		Vector3 easeVelocity = rb2d.velocity;
-		easeVelocity.y = rb2d.velocity.y;
-		easeVelocity.z = 0.0f;
-		easeVelocity.x *= 0.80f;
+		Vector3 groundedEaseVelocity = rb2d.velocity;
+		groundedEaseVelocity.y = rb2d.velocity.y;
+		groundedEaseVelocity.z = 0.0f;
+		groundedEaseVelocity.x *= 0.80f;
+
+		Vector3 airEaseVelocity = rb2d.velocity;
+		airEaseVelocity.y = rb2d.velocity.y;
+		airEaseVelocity.z = 0.0f;
+		airEaseVelocity.x *= 0.95f;
 
 		if (this.isStun) {
-			easeVelocity.x = 0f;
-			rb2d.velocity = easeVelocity;
+			groundedEaseVelocity.x = 0f;
+			rb2d.velocity = groundedEaseVelocity;
 			return;
 		}
 
 		//Physics2D.IgnoreLayerCollision (LayerMask.NameToLayer ("Player"), LayerMask.NameToLayer ("Ground"), false);// && ((Input.GetAxis("Vertical") > 0.1f) || (Input.GetAxis("Vertical") < -0.1f)) );
 		//fake friction
 		if (grounded) {
-			rb2d.velocity = easeVelocity;
+			rb2d.velocity = groundedEaseVelocity;
+		} else {
+			rb2d.velocity = airEaseVelocity;
 		}
 		
 		//moves player
@@ -237,6 +244,10 @@ public class Player : MonoBehaviour, ICharacter {
 	
 	public void SetGrounded(bool grd){
 		this.grounded = grd;
+	}
+
+	public void SetYVelocity(float vertVel){
+		rb2d.velocity = new Vector2(rb2d.velocity.x, vertVel);
 	}
 	
 	public int GetDirection(){

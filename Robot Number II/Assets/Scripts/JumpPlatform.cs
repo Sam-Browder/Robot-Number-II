@@ -3,7 +3,6 @@ using System.Collections;
 
 public class JumpPlatform : MonoBehaviour {
 
-	private float jumpPower = 1000f;
 	// Use this for initialization
 	void Start () {
 	

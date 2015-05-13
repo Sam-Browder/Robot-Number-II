@@ -14,7 +14,7 @@ public class ProjectileSpark : MonoBehaviour {
 		//this.characterDirection = character.GetDirection();
 		this.characterTag = this.character.GetTag ();
 		float x = Random.Range (-1.0f, 1.0f);
-		float y = Random.Range (-1.0f, 1.0f);
+		float y = Random.Range (-1.0f, -0.5f);
 		direction = new Vector3(x, y, 0);
 		
 	}
