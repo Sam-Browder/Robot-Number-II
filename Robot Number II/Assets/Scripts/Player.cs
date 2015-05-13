@@ -139,6 +139,10 @@ public class Player : MonoBehaviour, ICharacter {
 			}			
 		}
 	}
+
+	public void SuperJump(int force){
+		rb2d.AddForce (Vector2.up * force);
+	}
 	
 	void Climb(){
 		if (canClimb) {
