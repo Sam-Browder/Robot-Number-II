@@ -51,6 +51,7 @@ public class Player : MonoBehaviour, ICharacter {
 	//public Transform testProj;
 	void Update () {
 
+
 		if (this.isStun)
 			return;
 
@@ -140,7 +141,7 @@ public class Player : MonoBehaviour, ICharacter {
 		}
 	}
 
-	public void SuperJump(int force){
+	public void SuperJump(float force){
 		rb2d.AddForce (Vector2.up * force);
 	}
 	

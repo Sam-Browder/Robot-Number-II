@@ -28,6 +28,7 @@ public class EnemyController : MonoBehaviour, ICharacter {
 	public bool facingLeft;
 	public bool facingRight;
 	public bool playerSpotted;
+	public bool isStuck;
 	
 	//control case in AI method
 	public int controlCase;
@@ -101,6 +102,7 @@ public class EnemyController : MonoBehaviour, ICharacter {
 		LineOfSight ();
 		CanMakeJump();
 		TooCloseToPlayer ();
+		checkIsStuck();
 
 				
 		
@@ -183,7 +185,9 @@ public class EnemyController : MonoBehaviour, ICharacter {
 			this.canDoubleJump = true;
 
 			if(this.standingOnPlayer || this.standingUnderPlayer){
+
 				this.direction = this.direction;
+
 				}else{
 					if (this.playerSpotted) {
 						this.direction = this.directionToPlayer;
@@ -227,6 +231,10 @@ public class EnemyController : MonoBehaviour, ICharacter {
 			this.Jump ();
 		} else if (this.noGround && !this.canMakeJump) {
 			this.shouldMove = false;
+		}
+
+		if (this.isStuck) {
+			this.direction = this.direction * -1;
 		}
 
 	}
@@ -400,6 +408,15 @@ public class EnemyController : MonoBehaviour, ICharacter {
 			this.grounded = false;
 		}
 		
+	}
+
+	void checkIsStuck(){
+		if (this.shouldMove && Mathf.Abs(this.rb2d.velocity.x) < .01) {
+			this.isStuck = true;
+		} else {
+			this.isStuck = false;
+		}
+
 	}
 
 	public void ApplyAbility(IAbility ability){
