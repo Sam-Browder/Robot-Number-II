@@ -1,0 +1,275 @@
+fileFormatVersion: 2
+guid: aa85c9b2cb9fe15499e41d5cdd5f0b60
+timeCreated: 1431554365
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: new prites (4)_0
+    21300002: new prites (4)_1
+    21300004: new prites (4)_2
+    21300006: new prites (4)_3
+    21300008: new prites (4)_4
+    21300010: new prites (4)_5
+    21300012: new prites (4)_6
+    21300014: new prites (4)_7
+    21300016: new prites (4)_8
+    21300018: new prites (4)_9
+    21300020: new prites (4)_10
+    21300022: new prites (4)_11
+    21300024: new prites (4)_12
+    21300026: new prites (4)_13
+    21300028: new prites (4)_14
+    21300030: new prites (4)_15
+    21300032: new prites (4)_16
+    21300034: new prites (4)_17
+    21300036: new prites (4)_18
+    21300038: new prites (4)_19
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 0
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 18
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: new prites (4)_0
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 118
+        width: 11
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: new prites (4)_1
+      rect:
+        serializedVersion: 2
+        x: 43
+        y: 118
+        width: 15
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: new prites (4)_2
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 118
+        width: 29
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: new prites (4)_3
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 114
+        width: 45
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: new prites (4)_4
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 19
+        width: 11
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: new prites (4)_5
+      rect:
+        serializedVersion: 2
+        x: 21
+        y: 53
+        width: 12
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: new prites (4)_6
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 18
+        width: 7
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: new prites (4)_7
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 18
+        width: 12
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: new prites (4)_8
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 53
+        width: 12
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: new prites (4)_9
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 56
+        width: 11
+        height: 35
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: new prites (4)_10
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 10
+        width: 3
+        height: 58
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: new prites (4)_11
+      rect:
+        serializedVersion: 2
+        x: 119
+        y: 38
+        width: 24
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: new prites (4)_12
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 19
+        width: 13
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: new prites (4)_13
+      rect:
+        serializedVersion: 2
+        x: 161
+        y: 30
+        width: 13
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: new prites (4)_14
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 8
+        width: 29
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: new prites (4)_15
+      rect:
+        serializedVersion: 2
+        x: 163
+        y: 19
+        width: 27
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: new prites (4)_16
+      rect:
+        serializedVersion: 2
+        x: 163
+        y: 48
+        width: 24
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: new prites (4)_17
+      rect:
+        serializedVersion: 2
+        x: 165
+        y: 55
+        width: 24
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: new prites (4)_18
+      rect:
+        serializedVersion: 2
+        x: 177
+        y: 30
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: new prites (4)_19
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 56
+        width: 11
+        height: 35
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
