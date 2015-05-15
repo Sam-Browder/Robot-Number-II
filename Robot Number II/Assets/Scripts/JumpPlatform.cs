@@ -3,9 +3,11 @@ using System.Collections;
 
 public class JumpPlatform : MonoBehaviour {
 
+	private int jumpPower = 100;
+
 	// Use this for initialization
 	void Start () {
-	
+
 	}
 	
 	// Update is called once per frame
