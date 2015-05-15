@@ -3,6 +3,10 @@ using System.Collections;
 
 public class StartMenu : MonoBehaviour {
 
+	public string[] availableUtility;
+	public string[] availableDefense;
+	public string[] utilityData;
+	public string[] defenseData;
 	public string[] availableWeapons;
 	public string[] weaponData;
 	private int[] buttonTracker;
