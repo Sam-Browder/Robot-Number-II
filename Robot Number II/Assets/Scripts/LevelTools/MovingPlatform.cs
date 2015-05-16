@@ -4,9 +4,11 @@ using System.Collections;
 public class MovingPlatform : MonoBehaviour {
 	public GameObject blueNode;
 	public GameObject orangeNode;
-	public float pathSlope;
+	private float pathSlope;
 	private float direction = 1.0f;
 	private Rigidbody2D rb2d;
+	public float speedScale;
+	private float time;
 
 
 	private float y1;
@@ -27,17 +29,17 @@ public class MovingPlatform : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		this.time += Time.deltaTime;
 		
 	}
 
 	void FixedUpdate()
 	{
-		this.rb2d.velocity =new Vector2 ((this.x2 - this.x1)*this.direction , (this.y2 - this.y1)*this.direction);
+		this.rb2d.velocity =new Vector2 ((this.x2 - this.x1)*this.direction*speedScale , (this.y2 - this.y1)*this.direction)*speedScale;
 	}
 
-	void OnTriggerEnter2D (Collider2D other)
-	{
-		if (other.gameObject.CompareTag ("PlatformNode")) {
+	public void Reverse(){
+		if (this.time > 1) {
 			this.direction = this.direction * -1;
 		}
 	}

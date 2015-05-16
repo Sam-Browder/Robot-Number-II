@@ -67,7 +67,7 @@ public class Portal : MonoBehaviour {
 
 				other.transform.position = newPos;
 
-				Debug.Log (this.playerAngle);
+				//Debug.Log (this.playerAngle);
 
 				//Debug.Log (other.attachedRigidbody.velocity.magnitude);
 

@@ -11,12 +11,14 @@ public class Player : MonoBehaviour, ICharacter {
 	public float climbPower = 5;
 	public float defaultGcd = 0.5f;
 	public float gcd = 0.5f;
+	private float platformVelocity;
 	
 	//booleans
 	public bool grounded;
 	public bool canDoubleJump;
 	public bool canClimb;
 	public bool isStun;
+	private bool onPlatform;
 	
 	public int direction = 1;
 	
@@ -101,7 +103,7 @@ public class Player : MonoBehaviour, ICharacter {
 		Vector3 airEaseVelocity = rb2d.velocity;
 		airEaseVelocity.y = rb2d.velocity.y;
 		airEaseVelocity.z = 0.0f;
-		airEaseVelocity.x *= .98f;
+		airEaseVelocity.x *= .8f;
 
 		if (this.isStun) {
 			groundedEaseVelocity.x = 0f;
@@ -120,17 +122,34 @@ public class Player : MonoBehaviour, ICharacter {
 		//moves player
 		float h = Input.GetAxis ("Horizontal");
 		rb2d.AddForce ((Vector2.right * this.currentSpeed) * h);
-		
-		//limits the speed
-		if (rb2d.velocity.x > maxSpeed) {
-			rb2d.velocity = new Vector2 (maxSpeed, rb2d.velocity.y);
-		}
-		if (rb2d.velocity.x < -maxSpeed) {
-			rb2d.velocity = new Vector2 (-maxSpeed, rb2d.velocity.y);
+
+
+		if (this.onPlatform) {
+			//Debug.Log(this.platformVelocity);
+			this.rb2d.velocity = new Vector2 (this.rb2d.velocity.x , this.rb2d.velocity.y);//+ this.platformVelocity
+		} else {
+
+			if(this.grounded){
+			
+				//limits the speed
+				if (rb2d.velocity.x > maxSpeed) {
+					rb2d.velocity = new Vector2 (maxSpeed, rb2d.velocity.y);
+				}
+				if (rb2d.velocity.x < -maxSpeed) {
+					rb2d.velocity = new Vector2 (-maxSpeed, rb2d.velocity.y);
+				}
+			}
+
+			
+
 		}
 		
 
 		Climb ();
+
+		//Debug.Log(this.platformVelocity);
+		//Debug.Log(this.onPlatform);
+
 
 	}
 	
@@ -374,6 +393,17 @@ public class Player : MonoBehaviour, ICharacter {
 	public CharacterAbility GetAbilities(){
 		return this.playerAbility;
 	}
+
+	public void SetPlatformVelocity(float vel){
+		this.platformVelocity = vel;
+	}
+
+	public void SetOnPlatform(bool bol){
+		this.onPlatform = bol;
+	}
+
+
+
 
 
 
