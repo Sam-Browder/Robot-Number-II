@@ -58,7 +58,6 @@ MonoBehaviour:
   rotationSpeed: 1
   numberOfLevels: 0
   maxLevel: 0
-  maxEnemiesLeft: 0
 --- !u!212 &21276184
 SpriteRenderer:
   m_ObjectHideFlags: 1

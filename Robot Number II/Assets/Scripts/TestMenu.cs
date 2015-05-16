@@ -11,6 +11,9 @@ public class TestMenu : MonoBehaviour {
 	public double[] armorData;
 	public int money;
 	public Text budget;
+	public string activeWeapon;
+	public string activeDefense;
+	public string activeUtility;
 
 	// Use this for initialization
 	void Start () {
@@ -61,5 +64,17 @@ public class TestMenu : MonoBehaviour {
 			budgetValue -= 0.1;
 			this.budget.text = budgetValue.ToString();
 		}
+	}
+
+	public void ActiveWeapon(Button button){
+		this.activeWeapon = button.name;
+	}
+
+	public void ActiveDefense(Button button){
+		this.activeDefense = button.name;
+	}
+
+	public void ActiveUtility(Button button){
+		this.activeUtility = button.name;
 	}
 }
