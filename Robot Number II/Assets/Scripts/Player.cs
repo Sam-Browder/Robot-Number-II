@@ -126,7 +126,7 @@ public class Player : MonoBehaviour, ICharacter {
 
 		if (this.onPlatform) {
 			//Debug.Log(this.platformVelocity);
-			this.rb2d.velocity = new Vector2 (this.rb2d.velocity.x , this.rb2d.velocity.y);//+ this.platformVelocity
+			this.rb2d.velocity = new Vector2 (this.rb2d.velocity.x +this.platformVelocity, this.rb2d.velocity.y);//+ this.platformVelocity
 		} else {
 
 			if(this.grounded){

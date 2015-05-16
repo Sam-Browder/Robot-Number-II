@@ -17,6 +17,7 @@ public class MovingPlatform : MonoBehaviour {
 	private float x2;
 	// Use this for initialization
 	void Start () {
+
 		this.rb2d = gameObject.GetComponent<Rigidbody2D> ();
 		this.transform.position = this.blueNode.transform.position;
 		this.y1 = this.blueNode.transform.position.y;
@@ -42,5 +43,9 @@ public class MovingPlatform : MonoBehaviour {
 		if (this.time > 1) {
 			this.direction = this.direction * -1;
 		}
+	}
+
+	public float getSpeedScale(){
+		return this.speedScale;
 	}
 }
