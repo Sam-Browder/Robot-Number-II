@@ -59,9 +59,9 @@ GameObject:
   - 4: {fileID: 410318}
   - 61: {fileID: 6108360}
   - 114: {fileID: 11455664}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PortalEntrance
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

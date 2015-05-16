@@ -82,7 +82,7 @@ public class Player : MonoBehaviour, ICharacter {
 		if (Input.GetKeyDown(KeyCode.R)) {
 			this.playerAbility.ExecuteAbility(3);
 		}
-
+		DrawVelocity ();
 		EffectExpiration ();
 
 	}
@@ -101,7 +101,7 @@ public class Player : MonoBehaviour, ICharacter {
 		Vector3 airEaseVelocity = rb2d.velocity;
 		airEaseVelocity.y = rb2d.velocity.y;
 		airEaseVelocity.z = 0.0f;
-		airEaseVelocity.x *= .96f;
+		airEaseVelocity.x *= .98f;
 
 		if (this.isStun) {
 			groundedEaseVelocity.x = 0f;
@@ -289,6 +289,11 @@ public class Player : MonoBehaviour, ICharacter {
 			this.grounded = false;
 		}
 
+	}
+
+	void DrawVelocity(){
+		Vector3 currentPos = this.transform.position;
+		Debug.DrawLine(currentPos, new Vector3(currentPos.x + rb2d.velocity.x,currentPos.y + rb2d.velocity.y,0),Color.red);
 	}
 
 	void Rope(){

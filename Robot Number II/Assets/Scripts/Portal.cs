@@ -7,8 +7,8 @@ public class Portal : MonoBehaviour {
 	private Vector3 newPos;
 	private Vector2 oldVeloctiy;
 	private Vector2 newVelocity;
-	private float angle;
-	private float Magnitude;
+	//private float angle;
+	//private float Magnitude;
 	private float playerAngle;
 	private float degreesToRadians;
 	private float radiansToDegrees;
@@ -47,7 +47,7 @@ public class Portal : MonoBehaviour {
 						this.playerAngle = 90f*degreesToRadians;
 					}
 				}else{
-					this.playerAngle =Mathf.Atan((ovy*this.degreesToRadians)/(ovx*this.degreesToRadians));
+					this.playerAngle =Mathf.Atan(ovy/ovx);
 				}
 				this.destPortal.SendMessage ("setActiveFalse");
 
@@ -58,15 +58,17 @@ public class Portal : MonoBehaviour {
 
 
 
-				float theta = Mathf.PI+ (portalTwoAngle-portalOneAngle);
+				float theta = Mathf.PI + portalTwoAngle - portalOneAngle; //this.playerAngle;//portalOneAngle;//
 				float x = ovx * Mathf.Cos (theta) - ovy * Mathf.Sin(theta);
 				float y = ovx * Mathf.Sin (theta) + ovy * Mathf.Cos(theta);
 				this.newVelocity = new Vector2(x, y);
 
+				other.attachedRigidbody.velocity = this.newVelocity;
+
 				other.transform.position = newPos;
 
-				//Debug.Log (other.attachedRigidbody.velocity.magnitude);
-				other.attachedRigidbody.velocity = this.newVelocity;
+				Debug.Log (this.playerAngle);
+
 				//Debug.Log (other.attachedRigidbody.velocity.magnitude);
 
 
