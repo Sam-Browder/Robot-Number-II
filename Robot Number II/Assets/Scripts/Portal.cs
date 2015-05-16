@@ -8,7 +8,12 @@ public class Portal : MonoBehaviour {
 	private Vector2 oldVeloctiy;
 	private Vector2 newVelocity;
 	private float angle;
+	private float Magnitude;
+	private float playerAngle;
+	private float degreesToRadians;
+	private float radiansToDegrees;
 	public GameObject destPortal;
+	//public GameObject destPortalEntrance;
 	//private Component thisExit;
 	private Component destExit;
 	private bool active = true;
@@ -16,39 +21,14 @@ public class Portal : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-
-		//this.thisExit = this.gameObject.GetComponentInChildren<PortalExit> ();
-
+		this.degreesToRadians = Mathf.PI/180;
+		this.radiansToDegrees = 57.2957795f;
 
 		this.destExit = this.destPortal.GetComponentInChildren<PortalExit> ();
-
-
 		this.newPos = this.destExit.transform.position;
 
-		Quaternion destRotation = this.destPortal.transform.rotation;
-		Quaternion currentRotation = this.transform.rotation;
-
-		float currentAngle = Quaternion.Angle (currentRotation, Quaternion.identity);
-		float destAngle = Quaternion.Angle (destRotation, Quaternion.identity);
-
-		//this.angle = 180.0f + destAngle-currentAngle;//Quaternion.Angle (destRotation,currentRotation); //Quaternion.identity);//
-
-
-		//this.newPos = this.destPortal.transform.position;
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
 	}
 
-	public void setActiveFalse(){
-		this.active = false;
-	}
-
-	public void setActiveTrue(){
-		this.active = true;
-	}
 
 	void OnTriggerEnter2D (Collider2D other)
 	{
@@ -57,26 +37,41 @@ public class Portal : MonoBehaviour {
 			if (this.active){
 
 				this.oldVeloctiy = other.attachedRigidbody.velocity;
-				Quaternion destRotation = this.destPortal.transform.rotation;
-
-				//float playerAngle = Quaternion.Angle(other.transform.rotation, Quaternion.identity);
-				float playerAngle = Quaternion.Angle(Quaternion.LookRotation(this.oldVeloctiy, Vector2.up), Quaternion.identity);
-				float destAngle = Quaternion.Angle (destRotation, Quaternion.identity);
-
+				float ovx = this.oldVeloctiy.x;
+				float ovy = this.oldVeloctiy.y;
+			
+				if(ovx == 0.0f){
+					if(ovy>0.0f){
+						this.playerAngle = 270f*degreesToRadians;
+					}else{
+						this.playerAngle = 90f*degreesToRadians;
+					}
+				}else{
+					this.playerAngle =Mathf.Atan((ovy*this.degreesToRadians)/(ovx*this.degreesToRadians));
+				}
 				this.destPortal.SendMessage ("setActiveFalse");
 
-				this.angle = destAngle - playerAngle;
-				//this.angle = Vector2.Angle(other.attachedRigidbody.velocity, this.destPortal.transform.
 
 
-				Debug.Log (this.oldVeloctiy);
-				this.newVelocity = Quaternion.Euler (0, 0, angle) * this.oldVeloctiy;
-				Debug.Log (this.newVelocity);
-				other.attachedRigidbody.velocity = this.newVelocity;//velocity.Set(0, 20);//this.newVelocity.x*2, this.newVelocity.y*2);
+				float portalOneAngle = this.gameObject.transform.rotation.eulerAngles.z* this.degreesToRadians;
+				float portalTwoAngle = this.destPortal.transform.rotation.eulerAngles.z* this.degreesToRadians;
 
 
+
+				float theta = Mathf.PI+ (portalTwoAngle-portalOneAngle);
+				float x = ovx * Mathf.Cos (theta) - ovy * Mathf.Sin(theta);
+				float y = ovx * Mathf.Sin (theta) + ovy * Mathf.Cos(theta);
+				this.newVelocity = new Vector2(x, y);
 
 				other.transform.position = newPos;
+
+				//Debug.Log (other.attachedRigidbody.velocity.magnitude);
+				other.attachedRigidbody.velocity = this.newVelocity;
+				//Debug.Log (other.attachedRigidbody.velocity.magnitude);
+
+
+
+
 			}
 
 
@@ -93,6 +88,14 @@ public class Portal : MonoBehaviour {
 		}
 		
 	}
+	public void setActiveFalse(){
+		this.active = false;
+	}
+
+	public void setActiveTrue(){
+		this.active = true;
+	}
+
 }
 
 

@@ -101,7 +101,7 @@ public class Player : MonoBehaviour, ICharacter {
 		Vector3 airEaseVelocity = rb2d.velocity;
 		airEaseVelocity.y = rb2d.velocity.y;
 		airEaseVelocity.z = 0.0f;
-		airEaseVelocity.x *= 0.95f;
+		airEaseVelocity.x *= .96f;
 
 		if (this.isStun) {
 			groundedEaseVelocity.x = 0f;
