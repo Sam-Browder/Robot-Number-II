@@ -32,8 +32,8 @@ public class FittingMenu : MonoBehaviour {
 
 	public string WeaponInfo(){
 		string result = "";
-		result += "WEAPON: " + this.weapon.GetItem () + "\n";
-		result += "DEFENSE SYSTEM : " + this.defense.GetItem () + "\n";
+		result += "WEAPON: " + this.weapon.GetItem () + "\n\n";
+		result += "DEFENSE: " + this.defense.GetItem () + "\n\n";
 		result += "UTILITY : " + this.utility.GetItem () + "\n";
 
 		return result;

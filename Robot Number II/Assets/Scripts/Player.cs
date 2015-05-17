@@ -41,9 +41,12 @@ public class Player : MonoBehaviour, ICharacter {
 		this.playerAbility = gameObject.GetComponentInChildren<CharacterAbility> ();
 		this.playerDefense = gameObject.GetComponentInChildren<CharacterDefense> ();
 
-		//this.fit = gameObject.GetComponentInChildren<FittingMenu> ();
-		//this.fit.EquipWeapon (new LightingLazer());
-		//this.fit.SetAbility ();
+		this.fit = gameObject.GetComponentInChildren<FittingMenu> ();
+		TestMenu global = GameObject.FindObjectOfType<TestMenu> ();
+		this.fit.Equip (global.activeWeapon);
+		this.fit.Equip (global.activeDefense);
+		this.fit.Equip (global.activeUtility);
+		this.fit.SetAbility ();
 
 		InitializeCharacter ();
 	}
