@@ -86,10 +86,7 @@ public class CharacterDefense : MonoBehaviour,IDefenseBehavior {
 	}
 
 	public void RestoreHealth(float healthAmount){
-		if (this.health + healthAmount >= this.maxHealth)
-			this.health = this.maxHealth;
-		else
-			this.health += healthAmount;
+		this.health += healthAmount;
 	}
 
 	public float GetHealth() {

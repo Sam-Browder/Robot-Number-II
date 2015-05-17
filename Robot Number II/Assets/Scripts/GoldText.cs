@@ -3,18 +3,18 @@ using UnityEngine.UI;
 using System.Collections;
 
 public class GoldText : MonoBehaviour {
-
+	
+	private int money;
 	private Text txt;
-	private TestMenu global;
 	
 	// Use this for initialization
 	void Start () {
-		this.global = GameObject.FindObjectOfType<TestMenu> ();
+		this.money = GameObject.FindObjectOfType<TestMenu> ().money;
 		this.txt = GetComponent<Text> ();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		txt.text = ""+this.global.money;
+		txt.text = ""+this.money;
 	}
 }

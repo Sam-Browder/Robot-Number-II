@@ -5,8 +5,8 @@ public class LazerCannon : IItem {
 
 	private string item = "LazerCannon";
 	private string slot = "weapon";
-	private IAbility primary = new BasicAttack("Lazer", 15f, 10f, 0f, 0f, 0.5f);
-	private IAbility secondary = new DeathLazer(20f,10f,0f,0f,15f);
+	private IAbility primary = new BasicAttack("Lazer", 10f, 10f, 10f, 10f, 0f);
+	private IAbility secondary = new NonAbility ();
 
 	public LazerCannon (){}
 
