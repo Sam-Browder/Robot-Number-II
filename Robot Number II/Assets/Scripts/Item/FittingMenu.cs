@@ -5,7 +5,6 @@ public class FittingMenu : MonoBehaviour {
 	
 	private IItem weapon = new NonItem();
 	private IItem defense = new NonItem();
-	private IItem offense = new NonItem();
 	private IItem utility = new NonItem();
 
 	// Use this for initialization
@@ -23,9 +22,6 @@ public class FittingMenu : MonoBehaviour {
 		case "defense":
 			this.defense = item;
 			break;
-		case "offense":
-			this.offense = item;
-			break;
 		case "utility":
 			this.utility = item;
 			break;
@@ -38,7 +34,6 @@ public class FittingMenu : MonoBehaviour {
 		string result = "";
 		result += "WEAPON: " + this.weapon.GetItem () + "\n";
 		result += "DEFENSE SYSTEM : " + this.defense.GetItem () + "\n";
-		result += "OFFENSE SYSTEM : " + this.offense.GetItem () + "\n";
 		result += "UTILITY : " + this.utility.GetItem () + "\n";
 
 		return result;
@@ -50,7 +45,6 @@ public class FittingMenu : MonoBehaviour {
 		abilities.SetAbility(this.weapon.GetPrimaryAbility(),0);
 		abilities.SetAbility(this.weapon.GetSecondaryAbility(),1);
 		abilities.SetAbility (this.defense.GetPrimaryAbility (), 2);
-		abilities.SetAbility (this.offense.GetPrimaryAbility (), 3);
 		abilities.SetAbility (this.utility.GetPrimaryAbility (), 4);
 
 	}

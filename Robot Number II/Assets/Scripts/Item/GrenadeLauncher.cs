@@ -1,14 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class LazerCannon : IItem {
+public class GrenadeLauncher : IItem {
 
-	private string item = "LazerCannon";
+	private string item = "GrenadeLauncher";
 	private string slot = "weapon";
-	private IAbility primary = new BasicAttack("Lazer", 15f, 10f, 0f, 0f, 0.5f);
-	private IAbility secondary = new DeathLazer(20f,10f,0f,0f,15f);
+	private IAbility primary = new BasicAttack("Projectile", 0f, 5f, 10f, 10f, 0.5f);
+	private IAbility secondary = new GrenadeToss(0f,10f,20f,20f,10f);
 
-	public LazerCannon (){}
+	public GrenadeLauncher (){}
 
 	public string GetItem(){
 		return this.item;
