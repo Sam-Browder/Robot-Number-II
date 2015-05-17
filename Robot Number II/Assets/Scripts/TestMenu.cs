@@ -11,9 +11,9 @@ public class TestMenu : MonoBehaviour {
 	public double[] armorData;
 	public int money;
 	public Text budget;
-	public IItem activeWeapon;
-	public IItem activeDefense;
-	public IItem activeUtility;
+	public string activeWeapon;
+	public string activeDefense;
+	public string activeUtility;
 
 	// Use this for initialization
 	void Start () {
@@ -29,9 +29,6 @@ public class TestMenu : MonoBehaviour {
 		weaponData = new string[] {availableWeapons [0], availableWeapons [0], availableWeapons [0], availableWeapons [0]};
 		buttonTracker = new int[] {0, 0, 0, 0};
 		armorData = new double[] {1.0, 1.0, 1.0, 1.0};
-		this.activeWeapon = new NonItem ();
-		this.activeDefense = new NonItem ();
-		this.activeUtility = new NonItem ();
 	}
 	
 	public void startGame() {
@@ -70,47 +67,14 @@ public class TestMenu : MonoBehaviour {
 	}
 
 	public void ActiveWeapon(Button button){
-		switch (button.name) {
-		case "LazerCannon":
-			this.activeWeapon = new LazerCannon ();
-			break;
-		case "GrenadeLauncher":
-			this.activeWeapon = new GrenadeLauncher ();
-			break;
-		default:
-			this.activeWeapon = new LazerCannon ();
-			break;
-		}
+		this.activeWeapon = button.name;
 	}
 
 	public void ActiveDefense(Button button){
-		switch (button.name) {
-		case "ResistanceEnhancement":
-			this.activeDefense = new ResistanceEnhancement ();
-			break;
-		case "MedicalKit":
-			this.activeDefense = new MedicalKit ();
-			break;
-		default:
-			this.activeDefense = new ResistanceEnhancement ();
-			break;
-		}
+		this.activeDefense = button.name;
 	}
 
 	public void ActiveUtility(Button button){
-		switch (button.name) {
-		case "JumpPack":
-			this.activeUtility = new JumpPack ();
-			break;
-		case "SpeedBoots": 
-			this.activeUtility = new SpeedBoots ();
-			break;
-		case "RushBoots":
-			this.activeUtility = new RushBoots ();
-			break;
-		default:
-			this.activeUtility = new JumpPack ();
-			break;
-		}
+		this.activeUtility = button.name;
 	}
 }

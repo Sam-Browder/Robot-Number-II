@@ -166,27 +166,7 @@ Prefab:
       propertyPath: m_Pivot.y
       value: .5
       objectReference: {fileID: 0}
-    - target: {fileID: 11489422, guid: b8e0fe795b1d8eb4684500956bda4a69, type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1953287260}
-    - target: {fileID: 11401710, guid: b8e0fe795b1d8eb4684500956bda4a69, type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1953287260}
-    - target: {fileID: 11425626, guid: b8e0fe795b1d8eb4684500956bda4a69, type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1953287260}
-    - target: {fileID: 11456158, guid: b8e0fe795b1d8eb4684500956bda4a69, type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1953287260}
-    - target: {fileID: 11432114, guid: b8e0fe795b1d8eb4684500956bda4a69, type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1953287260}
-    - target: {fileID: 11419350, guid: b8e0fe795b1d8eb4684500956bda4a69, type: 2}
+    - target: {fileID: 11439608, guid: b8e0fe795b1d8eb4684500956bda4a69, type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1953287260}
@@ -194,12 +174,49 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1060698817}
-    - target: {fileID: 11439608, guid: b8e0fe795b1d8eb4684500956bda4a69, type: 2}
+    - target: {fileID: 11419350, guid: b8e0fe795b1d8eb4684500956bda4a69, type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1953287260}
-    m_RemovedComponents:
-    - {fileID: 11453750, guid: b8e0fe795b1d8eb4684500956bda4a69, type: 2}
+    - target: {fileID: 11432114, guid: b8e0fe795b1d8eb4684500956bda4a69, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1953287260}
+    - target: {fileID: 11456158, guid: b8e0fe795b1d8eb4684500956bda4a69, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1953287260}
+    - target: {fileID: 11425626, guid: b8e0fe795b1d8eb4684500956bda4a69, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1953287260}
+    - target: {fileID: 11401710, guid: b8e0fe795b1d8eb4684500956bda4a69, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1953287260}
+    - target: {fileID: 11489422, guid: b8e0fe795b1d8eb4684500956bda4a69, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1953287260}
+    - target: {fileID: 11477290, guid: b8e0fe795b1d8eb4684500956bda4a69, type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 6164266829adb604a85f1e3be773e229,
+        type: 3}
+    - target: {fileID: 11477290, guid: b8e0fe795b1d8eb4684500956bda4a69, type: 2}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11411710, guid: b8e0fe795b1d8eb4684500956bda4a69, type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c9596714a59ef2248bc2dec6399da2e4,
+        type: 3}
+    - target: {fileID: 11411710, guid: b8e0fe795b1d8eb4684500956bda4a69, type: 2}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b8e0fe795b1d8eb4684500956bda4a69, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &37579309
@@ -1178,12 +1195,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 638699453}
---- !u!114 &641609725 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 11476330, guid: b8e0fe795b1d8eb4684500956bda4a69,
-    type: 2}
-  m_PrefabInternal: {fileID: 6080319}
-  m_Script: {fileID: 11500000, guid: 79fa0cc436cd8cb4689c3c49733acd44, type: 3}
 --- !u!1 &711049724
 GameObject:
   m_ObjectHideFlags: 0
@@ -1366,46 +1377,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 744849084}
---- !u!1 &755095491 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 165964, guid: b8e0fe795b1d8eb4684500956bda4a69, type: 2}
-  m_PrefabInternal: {fileID: 6080319}
---- !u!114 &755095492
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 755095491}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1862395651, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 641609725}
-          m_MethodName: DisplayTooltip
-          m_Mode: 2
-          m_Arguments:
-            m_ObjectArgument: {fileID: 755095493}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI,
-              Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
-        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
---- !u!114 &755095493 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 11419350, guid: b8e0fe795b1d8eb4684500956bda4a69,
-    type: 2}
-  m_PrefabInternal: {fileID: 6080319}
-  m_Script: {fileID: 1392445389, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
 --- !u!1 &758821699
 GameObject:
   m_ObjectHideFlags: 0
@@ -1607,46 +1578,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 893121745}
---- !u!1 &921256181 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 103932, guid: b8e0fe795b1d8eb4684500956bda4a69, type: 2}
-  m_PrefabInternal: {fileID: 6080319}
---- !u!114 &921256182
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 921256181}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1862395651, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 641609725}
-          m_MethodName: DisplayTooltip
-          m_Mode: 2
-          m_Arguments:
-            m_ObjectArgument: {fileID: 921256183}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI,
-              Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
-        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
---- !u!114 &921256183 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 11432114, guid: b8e0fe795b1d8eb4684500956bda4a69,
-    type: 2}
-  m_PrefabInternal: {fileID: 6080319}
-  m_Script: {fileID: 1392445389, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
 --- !u!1 &1001619898
 GameObject:
   m_ObjectHideFlags: 0
@@ -2748,46 +2679,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1213413625}
---- !u!1 &1239010520 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 164984, guid: b8e0fe795b1d8eb4684500956bda4a69, type: 2}
-  m_PrefabInternal: {fileID: 6080319}
---- !u!114 &1239010521
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1239010520}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1862395651, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 641609725}
-          m_MethodName: DisplayTooltip
-          m_Mode: 2
-          m_Arguments:
-            m_ObjectArgument: {fileID: 1239010522}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI,
-              Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
-        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
---- !u!114 &1239010522 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 11456158, guid: b8e0fe795b1d8eb4684500956bda4a69,
-    type: 2}
-  m_PrefabInternal: {fileID: 6080319}
-  m_Script: {fileID: 1392445389, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
 --- !u!1 &1306759946
 GameObject:
   m_ObjectHideFlags: 0
@@ -3291,46 +3182,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1541712759}
---- !u!1 &1697767418 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 120568, guid: b8e0fe795b1d8eb4684500956bda4a69, type: 2}
-  m_PrefabInternal: {fileID: 6080319}
---- !u!114 &1697767419
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1697767418}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1862395651, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 641609725}
-          m_MethodName: DisplayTooltip
-          m_Mode: 2
-          m_Arguments:
-            m_ObjectArgument: {fileID: 1697767420}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI,
-              Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
-        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
---- !u!114 &1697767420 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 11489422, guid: b8e0fe795b1d8eb4684500956bda4a69,
-    type: 2}
-  m_PrefabInternal: {fileID: 6080319}
-  m_Script: {fileID: 1392445389, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
 --- !u!1 &1701284132
 GameObject:
   m_ObjectHideFlags: 0
@@ -3458,46 +3309,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1731901774}
---- !u!1 &1743323942 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 112786, guid: b8e0fe795b1d8eb4684500956bda4a69, type: 2}
-  m_PrefabInternal: {fileID: 6080319}
---- !u!114 &1743323943
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1743323942}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1862395651, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 641609725}
-          m_MethodName: DisplayTooltip
-          m_Mode: 2
-          m_Arguments:
-            m_ObjectArgument: {fileID: 1743323944}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI,
-              Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
-        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
---- !u!114 &1743323944 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 11439608, guid: b8e0fe795b1d8eb4684500956bda4a69,
-    type: 2}
-  m_PrefabInternal: {fileID: 6080319}
-  m_Script: {fileID: 1392445389, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
 --- !u!1 &1751496316
 GameObject:
   m_ObjectHideFlags: 0
@@ -3928,46 +3739,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1848217347}
---- !u!1 &1930242545 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 165438, guid: b8e0fe795b1d8eb4684500956bda4a69, type: 2}
-  m_PrefabInternal: {fileID: 6080319}
---- !u!114 &1930242546
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1930242545}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1862395651, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 641609725}
-          m_MethodName: DisplayTooltip
-          m_Mode: 2
-          m_Arguments:
-            m_ObjectArgument: {fileID: 1930242547}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI,
-              Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
-        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
---- !u!114 &1930242547 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 11401710, guid: b8e0fe795b1d8eb4684500956bda4a69,
-    type: 2}
-  m_PrefabInternal: {fileID: 6080319}
-  m_Script: {fileID: 1392445389, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
 --- !u!1 &1942010350
 GameObject:
   m_ObjectHideFlags: 0
@@ -4068,6 +3839,9 @@ MonoBehaviour:
   armorData: []
   money: 0
   budget: {fileID: 1942010352}
+  activeWeapon: 
+  activeDefense: 
+  activeUtility: 
 --- !u!4 &1953287261
 Transform:
   m_ObjectHideFlags: 0
@@ -4597,43 +4371,3 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2107645753}
---- !u!1 &2130211332 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 165200, guid: b8e0fe795b1d8eb4684500956bda4a69, type: 2}
-  m_PrefabInternal: {fileID: 6080319}
---- !u!114 &2130211333
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2130211332}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1862395651, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 641609725}
-          m_MethodName: DisplayTooltip
-          m_Mode: 2
-          m_Arguments:
-            m_ObjectArgument: {fileID: 2130211334}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI,
-              Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
-        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
---- !u!114 &2130211334 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 11425626, guid: b8e0fe795b1d8eb4684500956bda4a69,
-    type: 2}
-  m_PrefabInternal: {fileID: 6080319}
-  m_Script: {fileID: 1392445389, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
