@@ -7,6 +7,11 @@ public interface IItem{
 	string GetSlot();
 	IAbility GetPrimaryAbility();
 	IAbility GetSecondaryAbility();
+	bool IsOwned();
+	int GetPrice();
+	void Buy();
+	string GetTooltip();
+
 
 }
 

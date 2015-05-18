@@ -7,6 +7,8 @@ public class LazerCannon : IItem {
 	private string slot = "weapon";
 	private IAbility primary = new BasicAttack("Lazer", 15f, 10f, 0f, 0f, 0.5f);
 	private IAbility secondary = new DeathLazer(20f,10f,0f,0f,15f);
+	private bool isOwned = false;
+	private int price = 1;
 
 	public LazerCannon (){}
 
@@ -24,6 +26,29 @@ public class LazerCannon : IItem {
 
 	public IAbility GetSecondaryAbility(){
 		return this.secondary;
+	}
+
+	public bool IsOwned(){
+		return this.isOwned;
+	}
+
+	public int GetPrice(){
+		return this.price;
+	}
+
+	public void Buy(){
+		this.isOwned = true;
+	}
+
+	public string GetTooltip(){
+		string tooltip = this.item + "\n";
+		tooltip += "PRICE: " + this.price + "\n";
+		if (this.isOwned)
+			tooltip += "OWNED";
+		else
+			tooltip += "NOT OWNED";
+		
+		return tooltip;
 	}
 
 

@@ -14,6 +14,7 @@ public class TestMenu : MonoBehaviour {
 	public IItem activeWeapon;
 	public IItem activeDefense;
 	public IItem activeUtility;
+	public ItemLibrary library;
 
 	// Use this for initialization
 	void Start () {
@@ -32,6 +33,7 @@ public class TestMenu : MonoBehaviour {
 		this.activeWeapon = new NonItem ();
 		this.activeDefense = new NonItem ();
 		this.activeUtility = new NonItem ();
+		this.library = new ItemLibrary ();
 	}
 	
 	public void startGame() {
@@ -70,7 +72,9 @@ public class TestMenu : MonoBehaviour {
 	}
 
 	public void ActiveWeapon(Button button){
-		switch (button.name) {
+		if (this.library.GetItem (button.name).IsOwned())
+			this.activeWeapon = this.library.GetItem (button.name);
+		/*switch (button.name) {
 		case "LazerCannon":
 			this.activeWeapon = new LazerCannon ();
 			break;
@@ -80,11 +84,13 @@ public class TestMenu : MonoBehaviour {
 		default:
 			this.activeWeapon = new LazerCannon ();
 			break;
-		}
+		}*/
 	}
 
 	public void ActiveDefense(Button button){
-		switch (button.name) {
+		if (this.library.GetItem (button.name).IsOwned())
+			this.activeDefense = this.library.GetItem (button.name);
+		/*switch (button.name) {
 		case "ResistanceEnhancement":
 			this.activeDefense = new ResistanceEnhancement ();
 			break;
@@ -94,11 +100,13 @@ public class TestMenu : MonoBehaviour {
 		default:
 			this.activeDefense = new ResistanceEnhancement ();
 			break;
-		}
+		}*/
 	}
 
 	public void ActiveUtility(Button button){
-		switch (button.name) {
+		if (this.library.GetItem (button.name).IsOwned())
+			this.activeUtility = this.library.GetItem (button.name);
+		/*switch (button.name) {
 		case "JumpPack":
 			this.activeUtility = new JumpPack ();
 			break;
@@ -111,6 +119,14 @@ public class TestMenu : MonoBehaviour {
 		default:
 			this.activeUtility = new JumpPack ();
 			break;
+		}*/
+	}
+
+	public void BuyItem(Button button){
+		if (!this.library.GetItem (button.name).IsOwned () && (this.money - this.library.GetItem (button.name).GetPrice () >= 0)) {
+			this.library.GetItem (button.name).Buy ();
+			this.money -= this.library.GetItem (button.name).GetPrice ();
 		}
+
 	}
 }
