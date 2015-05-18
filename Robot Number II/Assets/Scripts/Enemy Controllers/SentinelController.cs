@@ -207,7 +207,7 @@ public class SentinelController : MonoBehaviour, ICharacter {
 			this.directionToPlayer = -1;
 		}
 		
-		if (this.distanceToPlayer < this.visionDistance) {
+		if (this.distanceToPlayer < this.visionDistance+1) {
 			this.playerSpotted=true;
 			this.spottedTime = this.time;
 		}else if(this.spottedTime < this.time - 4f){
@@ -237,7 +237,7 @@ public class SentinelController : MonoBehaviour, ICharacter {
 			this.shouldMove = true;
 		}
 
-		if (this.isHittingCeiling) {
+		if (this.isHittingCeiling && this.transform.position.y < this.player.GetPosition().y) {
 			this.unitDirectionVector = new Vector2(this.direction, 0f);
 		}
 
