@@ -18,6 +18,6 @@ public class ItemInfo : MonoBehaviour {
 	}
 
 	public void DisplayTooltip(Button button){
-		this.txt.text = button.name;
+		this.txt.text = this.global.library.GetItem (button.name).GetTooltip ();
 	}
 }

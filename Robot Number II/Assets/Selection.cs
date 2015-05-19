@@ -15,9 +15,22 @@ public class Selection : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		string t = "Current Weapon: \n" + this.global.activeWeapon.GetItem() + "\n\n";
-		t += "Current Defense: \n" + this.global.activeDefense.GetItem() + "\n\n";
-		t += "Current Utility: \n" + this.global.activeUtility.GetItem() + "\n";
+		string weapon = "None";
+		string defense = "None";
+		string utility = "None";
+
+		if (this.global.activeWeapon.IsOwned())
+			weapon = this.global.activeWeapon.GetItem ();
+
+		if (this.global.activeDefense.IsOwned())
+			defense = this.global.activeDefense.GetItem ();
+
+		if (this.global.activeUtility.IsOwned())
+			utility = this.global.activeUtility.GetItem ();
+
+		string t = "Current Weapon: \n" + weapon + "\n\n";
+		t += "Current Defense: \n" + defense + "\n\n";
+		t += "Current Utility: \n" + utility + "\n";
 		this.txt.text = t;
 	}
 }

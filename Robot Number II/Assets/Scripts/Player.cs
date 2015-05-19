@@ -211,35 +211,7 @@ public class Player : MonoBehaviour, ICharacter {
 			armorData = globalData.gameObject.GetComponent<TestMenu>().armorData;
 		}
 		IAbility ab;
-		for (int i = 0; i < weaponData.Length; i++) {
-			switch (weaponData [i]) {
-			case "Projectile":
-				ab = new BasicAttack ("Projectile", 10f, 10f, 10f, 10f, 0.5f);
-				break;
-			case "Lazer":
-				ab = new BasicAttack ("Lazer", 10f, 10f, 10f, 10f, 0.5f);
-				break;
-			case "BurstJump":
-				ab = new BurstJump (500f, 5f);
-				break;
-			case "Rush":
-				ab = new Rush (4000f, 3f);
-				break;
-			case "SpeedBurst":
-				ab = new SpeedBurst(-2f,5f);
-				break;
-			case "GrenadeToss":
-				ab = new GrenadeToss(30f,30f,30f,30f,6f);
-				break;
-			case "DeathLazer":
-				ab = new DeathLazer(5f,5f,5f,5f,5f);
-				break;
-			default:
-				ab = new BasicAttack ("Projectile", 0f, 0f, 0f, 0f, 0.5f);
-				break;
-			}
-			this.playerAbility.SetAbility (ab, i);
-		}
+
 		this.playerDefense.SetResistance (armorData [0], armorData [1], armorData [2], armorData [3]);
 
 		this.currentSpeed = speed;
