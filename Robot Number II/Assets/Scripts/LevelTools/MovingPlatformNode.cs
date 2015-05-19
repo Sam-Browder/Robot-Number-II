@@ -18,4 +18,7 @@ public class MovingPlatformNode : MonoBehaviour {
 			other.SendMessage("Reverse");
 		}
 	}
+	public void ApplyAbility(IAbility ability){
+		//do nothing
+	}
 }

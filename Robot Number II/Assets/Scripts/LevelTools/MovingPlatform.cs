@@ -48,4 +48,8 @@ public class MovingPlatform : MonoBehaviour {
 	public float getSpeedScale(){
 		return this.speedScale;
 	}
+
+	public void ApplyAbility(IAbility ability){
+		//do nothing
+	}
 }
