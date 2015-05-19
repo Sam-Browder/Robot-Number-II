@@ -8,22 +8,28 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Menu.unity
   - enabled: 1
-    path: Assets/Scenes/SquareLevel.unity
-  - enabled: 1
-    path: Assets/Scenes/JumpPortals2.unity
-  - enabled: 1
     path: Assets/Scenes/LongLevel.unity
   - enabled: 1
     path: Assets/Scenes/TallLevel.unity
   - enabled: 1
+    path: Assets/Scenes/JumpPortals1.unity
+  - enabled: 1
+    path: Assets/Scenes/JumpPortals2.unity
+  - enabled: 1
+    path: Assets/Scenes/GatesPlatforms1.unity
+  - enabled: 1
+    path: Assets/Scenes/GatesPlatforms2.unity
+  - enabled: 0
+    path: Assets/Scenes/SquareLevel.unity
+  - enabled: 0
     path: Assets/Scenes/AI_Testing.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/StartingLevel.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/IsGithubWorkingScene.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/SecondaryTesting Ground.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/ThirdTestingGround.unity
   - enabled: 1
     path: Assets/Scenes/GameOverScene.unity
