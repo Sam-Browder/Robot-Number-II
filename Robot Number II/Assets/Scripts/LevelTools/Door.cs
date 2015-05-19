@@ -17,10 +17,10 @@ public class Door : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-		if(enemy==null){
-			Physics2D.IgnoreCollision (this.gameObject.GetComponent<BoxCollider2D>(), GameObject.Find("Player").GetComponent<BoxCollider2D>());
+		Physics2D.IgnoreLayerCollision (LayerMask.NameToLayer ("Player"), LayerMask.NameToLayer ("Door"), enemy == null);
+		Physics2D.IgnoreLayerCollision (LayerMask.NameToLayer ("Enemy"), LayerMask.NameToLayer ("Door"), enemy == null);
 
-			this.anim.SetBool ("enemyKilled", enemy == null);
-		}
+		this.anim.SetBool ("enemyKilled", enemy == null);
 	}
+
 }

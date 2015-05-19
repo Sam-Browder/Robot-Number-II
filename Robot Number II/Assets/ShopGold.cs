@@ -2,7 +2,7 @@
 using UnityEngine.UI;
 using System.Collections;
 
-public class GoldText : MonoBehaviour {
+public class ShopGold : MonoBehaviour {
 	
 	private Text txt;
 	private TestMenu global;
@@ -15,7 +15,7 @@ public class GoldText : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		txt.text = ""+this.global.money;
+		txt.text = "Available Gold: "+this.global.money;
 	}
 }
 
