@@ -7,6 +7,7 @@ public class GameOverScript : MonoBehaviour {
 		GameObject persistentData = GameObject.FindGameObjectWithTag ("Global");
 		if (persistentData != null) {
 			persistentData.name = "oldPersistentData";
+			persistentData.GetComponent<TestMenu>().money = persistentData.GetComponent<TestMenu>().money / 4;
 		}
 		Application.LoadLevel("Menu");
 	}

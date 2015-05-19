@@ -22,7 +22,7 @@ public class TestMenu : MonoBehaviour {
 		this.nextLevel = 1;
 		GameObject oldData = GameObject.Find("oldPersistentData");
 		if (oldData != null) {
-			this.money = oldData.GetComponent<TestMenu>().money / 4;
+			this.money = oldData.GetComponent<TestMenu>().money;
 			this.nextLevel = oldData.GetComponent<TestMenu>().nextLevel;
 			Destroy (oldData);
 		}
