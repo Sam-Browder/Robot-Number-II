@@ -4,7 +4,8 @@ using UnityEngine.UI;
 
 public class TestMenu : MonoBehaviour {
 
-	public string testMessage;
+
+	public int nextLevel;
 	public string[] availableWeapons;
 	public string[] weaponData;
 	private int[] buttonTracker;
@@ -18,14 +19,15 @@ public class TestMenu : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		this.nextLevel = 1;
 		GameObject oldData = GameObject.Find("oldPersistentData");
 		if (oldData != null) {
 			this.money = oldData.GetComponent<TestMenu>().money / 4;
+			this.nextLevel = oldData.GetComponent<TestMenu>().nextLevel;
 			Destroy (oldData);
 		}
 		DontDestroyOnLoad(transform.gameObject);
 		money = 50;
-		testMessage = "Try and find me";
 		availableWeapons = new string[] {"Projectile", "Lazer","BurstJump","Rush", "SpeedBurst", "GrenadeToss", "DeathLazer"};
 		weaponData = new string[] {availableWeapons [0], availableWeapons [0], availableWeapons [0], availableWeapons [0]};
 		buttonTracker = new int[] {0, 0, 0, 0};
@@ -34,10 +36,10 @@ public class TestMenu : MonoBehaviour {
 		this.activeDefense = new NonItem ();
 		this.activeUtility = new NonItem ();
 		this.library = new ItemLibrary ();
-	}
+		}
 	
 	public void startGame() {
-		Application.LoadLevel(1);
+		Application.LoadLevel(this.nextLevel);
 	}
 
 	public void pressedWeaponButton(Button button) {
