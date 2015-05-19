@@ -8,7 +8,7 @@ public class GrenadeLauncher : IItem {
 	private IAbility primary = new BasicAttack("Projectile", 0f, 5f, 10f, 10f, 0.5f);
 	private IAbility secondary = new GrenadeToss(0f,10f,20f,20f,10f);
 	private bool isOwned = false;
-	private int price = 1;
+	private int price = 20;
 
 	public GrenadeLauncher (){}
 
@@ -42,6 +42,7 @@ public class GrenadeLauncher : IItem {
 
 	public string GetTooltip(){
 		string tooltip = this.item + "\n";
+		tooltip += "Projectile shoot, Grenade toss\n";
 		tooltip += "PRICE: " + this.price + "\n";
 		if (this.isOwned)
 			tooltip += "OWNED";

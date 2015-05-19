@@ -8,7 +8,7 @@ public class RushBoots : IItem {
 	private IAbility primary = new Rush (500f, 3f);
 	private IAbility secondary = new NonAbility();
 	private bool isOwned = false;
-	private int price = 1;
+	private int price = 30;
 	
 	public RushBoots (){}
 	
@@ -42,6 +42,7 @@ public class RushBoots : IItem {
 
 	public string GetTooltip(){
 		string tooltip = this.item + "\n";
+		tooltip += "Strong sprint\n";
 		tooltip += "PRICE: " + this.price + "\n";
 		if (this.isOwned)
 			tooltip += "OWNED";

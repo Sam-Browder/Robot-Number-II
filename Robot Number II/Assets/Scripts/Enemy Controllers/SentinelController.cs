@@ -73,7 +73,7 @@ public class SentinelController : MonoBehaviour, ICharacter {
 		//this.projspawner = gameObject.GetComponentInChildren<ProjSpawner> ();
 		this.enemyAbility = gameObject.GetComponentInChildren<CharacterAbility> ();
 		this.enemyDefense = gameObject.GetComponentInChildren<EnemyDefense> ();
-		IAbility projectile = new BasicAttack ("Projectile",10f,10f,10f,10f, 0f);
+		IAbility projectile = new BasicAttack ("Lazer",10f,10f,10f,10f, 0f);
 		//IEffect cripple = new CrippleEffect (1f,49f,0f);
 		//IEffect stun = new StunEffect (2f);
 		//projectile.AddEffect (cripple);

@@ -34,6 +34,9 @@ public class CharacterAbility : MonoBehaviour {
 		} else if (ability.GetType () == typeof(DeathLazer) && ability.Cooldown ()) {
 			IAnim lazer = gameObject.GetComponentInChildren<DeathLazerAnim> ();
 			lazer.Animate (ability, character);
+		} else if (ability.GetType () == typeof(MeleeAttack) && ability.Cooldown ()) {
+			IAnim melee = gameObject.GetComponentInChildren<MeleeAnim> ();
+			melee.Animate (ability, character);
 		} else {
 			if (ability != null){
 				if (ability.Cooldown())

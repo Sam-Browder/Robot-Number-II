@@ -8,7 +8,7 @@ public class JumpPack : IItem {
 	private IAbility primary = new BurstJump(50f,5f);
 	private IAbility secondary = new NonAbility();
 	private bool isOwned = false;
-	private int price = 1;
+	private int price = 40;
 
 	public JumpPack (){}
 	
@@ -42,6 +42,7 @@ public class JumpPack : IItem {
 
 	public string GetTooltip(){
 		string tooltip = this.item + "\n";
+		tooltip += "Powerful Jump\n";
 		tooltip += "PRICE: " + this.price + "\n";
 		if (this.isOwned)
 			tooltip += "OWNED";

@@ -18,6 +18,11 @@ public class ItemInfo : MonoBehaviour {
 	}
 
 	public void DisplayTooltip(Button button){
-		this.txt.text = this.global.library.GetItem (button.name).GetTooltip ();
+		if (button.name == "Health")
+			this.txt.text = "PRICE: 40\nIncrease max health by 20";
+		else if (button.name == "Armor")
+			this.txt.text = "PRICE: 50\nIncrease all resistance by 10%";
+		else
+			this.txt.text = this.global.library.GetItem (button.name).GetTooltip ();
 	}
 }

@@ -204,17 +204,20 @@ public class Player : MonoBehaviour, ICharacter {
 	}
 
 	public void InitializeCharacter(){
-		GameObject globalData = GameObject.FindGameObjectWithTag ("Global");
+		TestMenu global = GameObject.FindGameObjectWithTag ("Global").gameObject.GetComponent<TestMenu>();
 		string[] weaponData;
 		double[] armorData;
-		if (globalData == null) {
+		float health;
+		if (global == null) {
 			weaponData = new string[] {"Projectile", "Lazer","BurstJump","SpeedBurst"};
 			armorData = new double[] {1.0, 1.0, 1.0, 1.0};
+			health = 100f;
 		} else {
-			weaponData = globalData.gameObject.GetComponent<TestMenu>().weaponData;
-			armorData = globalData.gameObject.GetComponent<TestMenu>().armorData;
+			weaponData = global.weaponData;
+			armorData = global.armorData;
+			health = global.health;
 		}
-		IAbility ab;
+		/*IAbility ab;
 		for (int i = 0; i < weaponData.Length; i++) {
 			switch (weaponData [i]) {
 			case "Projectile":
@@ -243,9 +246,9 @@ public class Player : MonoBehaviour, ICharacter {
 				break;
 			}
 			this.playerAbility.SetAbility (ab, i);
-		}
+		}*/
 		this.playerDefense.SetResistance (armorData [0], armorData [1], armorData [2], armorData [3]);
-
+		this.playerDefense.ResetHealth (health);
 		this.currentSpeed = speed;
 		this.gcd = Time.time;
 	}

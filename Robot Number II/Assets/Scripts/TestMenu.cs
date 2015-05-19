@@ -16,6 +16,7 @@ public class TestMenu : MonoBehaviour {
 	public IItem activeDefense;
 	public IItem activeUtility;
 	public ItemLibrary library;
+	public float health;
 
 	// Use this for initialization
 	void Start () {
@@ -36,6 +37,7 @@ public class TestMenu : MonoBehaviour {
 		this.activeDefense = new NonItem ();
 		this.activeUtility = new NonItem ();
 		this.library = new ItemLibrary ();
+		this.health = 100f;
 		}
 	
 	public void startGame() {
@@ -76,52 +78,16 @@ public class TestMenu : MonoBehaviour {
 	public void ActiveWeapon(Button button){
 		if (this.library.GetItem (button.name).IsOwned())
 			this.activeWeapon = this.library.GetItem (button.name);
-		/*switch (button.name) {
-		case "LazerCannon":
-			this.activeWeapon = new LazerCannon ();
-			break;
-		case "GrenadeLauncher":
-			this.activeWeapon = new GrenadeLauncher ();
-			break;
-		default:
-			this.activeWeapon = new LazerCannon ();
-			break;
-		}*/
 	}
 
 	public void ActiveDefense(Button button){
 		if (this.library.GetItem (button.name).IsOwned())
 			this.activeDefense = this.library.GetItem (button.name);
-		/*switch (button.name) {
-		case "ResistanceEnhancement":
-			this.activeDefense = new ResistanceEnhancement ();
-			break;
-		case "MedicalKit":
-			this.activeDefense = new MedicalKit ();
-			break;
-		default:
-			this.activeDefense = new ResistanceEnhancement ();
-			break;
-		}*/
 	}
 
 	public void ActiveUtility(Button button){
 		if (this.library.GetItem (button.name).IsOwned())
 			this.activeUtility = this.library.GetItem (button.name);
-		/*switch (button.name) {
-		case "JumpPack":
-			this.activeUtility = new JumpPack ();
-			break;
-		case "SpeedBoots": 
-			this.activeUtility = new SpeedBoots ();
-			break;
-		case "RushBoots":
-			this.activeUtility = new RushBoots ();
-			break;
-		default:
-			this.activeUtility = new JumpPack ();
-			break;
-		}*/
 	}
 
 	public void BuyItem(Button button){
@@ -130,5 +96,22 @@ public class TestMenu : MonoBehaviour {
 			this.money -= this.library.GetItem (button.name).GetPrice ();
 		}
 
+	}
+
+	public void BuyArmor(){
+		if (this.money >= 50) {
+			this.armorData [0] += 0.1f;
+			this.armorData [1] += 0.1f;
+			this.armorData [2] += 0.1f;
+			this.armorData [3] += 0.1f;
+			this.money -= 50;
+		}
+	}
+
+	public void BuyHealth(){
+		if (this.money >= 40) {
+			this.health += 20;
+			this.money -= 40;
+		}
 	}
 }

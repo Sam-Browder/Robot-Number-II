@@ -8,7 +8,7 @@ public class SpeedBoots : IItem {
 	private IAbility primary = new SpeedBurst (30f, 7f);
 	private IAbility secondary = new NonAbility();
 	private bool isOwned = false;
-	private int price = 1;
+	private int price = 10;
 	
 	public SpeedBoots (){}
 	
@@ -42,6 +42,7 @@ public class SpeedBoots : IItem {
 
 	public string GetTooltip(){
 		string tooltip = this.item + "\n";
+		tooltip += "Increase normal speed\n";
 		tooltip += "PRICE: " + this.price + "\n";
 		if (this.isOwned)
 			tooltip += "OWNED";

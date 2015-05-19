@@ -8,7 +8,7 @@ public class LazerCannon : IItem {
 	private IAbility primary = new BasicAttack("Lazer", 15f, 10f, 0f, 0f, 0.5f);
 	private IAbility secondary = new DeathLazer(20f,10f,0f,0f,15f);
 	private bool isOwned = false;
-	private int price = 1;
+	private int price = 30;
 
 	public LazerCannon (){}
 
@@ -42,6 +42,7 @@ public class LazerCannon : IItem {
 
 	public string GetTooltip(){
 		string tooltip = this.item + "\n";
+		tooltip += "Lazer shoot, Enhanced lazer\n";
 		tooltip += "PRICE: " + this.price + "\n";
 		if (this.isOwned)
 			tooltip += "OWNED";

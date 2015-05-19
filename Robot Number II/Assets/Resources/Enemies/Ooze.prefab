@@ -10,6 +10,7 @@ GameObject:
   - 4: {fileID: 418522}
   - 114: {fileID: 11404634}
   - 114: {fileID: 11404730}
+  - 114: {fileID: 11436298}
   m_Layer: 9
   m_Name: Projectile Spawner
   m_TagString: Ground
@@ -119,6 +120,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 399e93e98eec09748ad2daec491a7acc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11436298
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 110976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1edb79b8afe46d74297f4866c1d13b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11457496
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -164,7 +176,7 @@ MonoBehaviour:
   playerSpotted: 0
   isStuck: 0
   controlCase: 0
-  attackSpeed: 0
+  attackSpeed: .5
   jumpTime: 0
   spottedTime: 0
   visionDistance: 7

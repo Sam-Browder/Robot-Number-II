@@ -8,7 +8,7 @@ public class ResistanceEnhancement : IItem {
 	private IAbility primary = new DefenseEnhancement (7f);
 	private IAbility secondary = new NonAbility();
 	private bool isOwned = false;
-	private int price = 1;
+	private int price = 20;
 	
 	public ResistanceEnhancement (){}
 	
@@ -42,6 +42,7 @@ public class ResistanceEnhancement : IItem {
 
 	public string GetTooltip(){
 		string tooltip = this.item + "\n";
+		tooltip += "Increase resistance shortly\n";
 		tooltip += "PRICE: " + this.price + "\n";
 		if (this.isOwned)
 			tooltip += "OWNED";

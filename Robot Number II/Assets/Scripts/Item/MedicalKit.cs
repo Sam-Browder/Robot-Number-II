@@ -8,7 +8,7 @@ public class MedicalKit : IItem {
 	private IAbility primary = new HealthRestoration (20f, 20f);
 	private IAbility secondary = new NonAbility();
 	private bool isOwned = false;
-	private int price = 1;
+	private int price = 20;
 	
 	public MedicalKit (){}
 	
@@ -42,6 +42,7 @@ public class MedicalKit : IItem {
 
 	public string GetTooltip(){
 		string tooltip = this.item + "\n";
+		tooltip += "Health restoration\n";
 		tooltip += "PRICE: " + this.price + "\n";
 		if (this.isOwned)
 			tooltip += "OWNED";

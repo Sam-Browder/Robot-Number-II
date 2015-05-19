@@ -92,6 +92,12 @@ public class EnemyDefense : MonoBehaviour,IDefenseBehavior {
 	public float GetHealth() {
 		return this.health;
 	}
+
+	public void ResetHealth(float health){
+		this.maxHealth = health;
+		this.health = this.maxHealth;
+	}
+
 	
 	public float GetShield(){
 		return this.shieldAmount;

@@ -15,7 +15,7 @@ public class ShopGold : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		txt.text = "Available Gold: "+this.global.money;
+		txt.text = "Available Gold\n"+this.global.money;
 	}
 }
 
