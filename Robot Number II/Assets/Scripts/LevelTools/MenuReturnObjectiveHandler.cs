@@ -32,7 +32,7 @@ public class MenuReturnObjectiveHandler : MonoBehaviour {
 	{
 		if (other.gameObject.CompareTag ("Player")) {
 			GameObject persistentData = GameObject.FindGameObjectWithTag("Global");
-			persistentData.name = "oldPersistentData";
+			persistentData.name = "returnPersistentData";
 			TestMenu menuData = persistentData.GetComponent<TestMenu>();
 			menuData.nextLevel = this.nextLevel;
 			Application.LoadLevel(0);

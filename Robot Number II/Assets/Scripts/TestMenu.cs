@@ -21,14 +21,20 @@ public class TestMenu : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		this.nextLevel = 1;
+		money = 50;
 		GameObject oldData = GameObject.Find("oldPersistentData");
 		if (oldData != null) {
-			this.money = oldData.GetComponent<TestMenu>().money;
-			this.nextLevel = oldData.GetComponent<TestMenu>().nextLevel;
+			this.money += oldData.GetComponent<TestMenu>().money;
 			Destroy (oldData);
 		}
+		GameObject returnData = GameObject.Find("returnPersistentData");
+		if (returnData != null) {
+			this.money += oldData.GetComponent<TestMenu>().money;
+			this.nextLevel = oldData.GetComponent<TestMenu>().nextLevel;
+			Destroy (returnData);
+		}
+
 		DontDestroyOnLoad(transform.gameObject);
-		money = 50;
 		availableWeapons = new string[] {"Projectile", "Lazer","BurstJump","Rush", "SpeedBurst", "GrenadeToss", "DeathLazer"};
 		weaponData = new string[] {availableWeapons [0], availableWeapons [0], availableWeapons [0], availableWeapons [0]};
 		buttonTracker = new int[] {0, 0, 0, 0};
