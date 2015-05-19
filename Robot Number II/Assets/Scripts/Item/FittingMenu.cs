@@ -45,7 +45,7 @@ public class FittingMenu : MonoBehaviour {
 		abilities.SetAbility(this.weapon.GetPrimaryAbility(),0);
 		abilities.SetAbility(this.weapon.GetSecondaryAbility(),1);
 		abilities.SetAbility (this.defense.GetPrimaryAbility (), 2);
-		abilities.SetAbility (this.utility.GetPrimaryAbility (), 4);
+		abilities.SetAbility (this.utility.GetPrimaryAbility (), 3);
 
 	}
 	
