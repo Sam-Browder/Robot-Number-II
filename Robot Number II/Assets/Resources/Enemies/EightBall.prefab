@@ -1,5 +1,22 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &110468
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 429394}
+  - 114: {fileID: 11411888}
+  - 114: {fileID: 11455566}
+  m_Layer: 9
+  m_Name: Projectile Spawner
+  m_TagString: Ground
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &146304
 GameObject:
   m_ObjectHideFlags: 0
@@ -8,9 +25,11 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 417100}
+  - 50: {fileID: 5024324}
   - 212: {fileID: 21227414}
-  - 58: {fileID: 5803310}
+  - 114: {fileID: 11457266}
   - 114: {fileID: 11401696}
+  - 58: {fileID: 5803310}
   m_Layer: 9
   m_Name: EightBall
   m_TagString: Enemy
@@ -25,11 +44,39 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 146304}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -34.1399994, y: 17.0699997, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_LocalPosition: {x: -5.92999983, y: 33.8100014, z: 0}
+  m_LocalScale: {x: 1.096367, y: 1.096367, z: 1.096367}
+  m_Children:
+  - {fileID: 429394}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!4 &429394
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 110468}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -.439999998, y: -.319999993, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 417100}
+  m_RootOrder: 0
+--- !u!50 &5024324
+Rigidbody2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 146304}
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: .0500000007
+  m_GravityScale: 1
+  m_FixedAngle: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
 --- !u!58 &5803310
 CircleCollider2D:
   m_ObjectHideFlags: 1
@@ -52,6 +99,67 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3cf11a2c93977114b9240dfc8e2c503c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxSpeed: 3
+  speed: 50
+  currentSpeed: 0
+  jumpPower: 200
+  numOfJumps: 2
+  minDistFromPlayer: 2
+  grounded: 0
+  canDoubleJump: 0
+  canClimb: 0
+  facingObsticle: 0
+  noGround: 0
+  standingOnPlayer: 0
+  standingUnderPlayer: 0
+  playerInLineOfSight: 0
+  canMakeJump: 0
+  shouldMove: 1
+  tooCloseToPlayer: 0
+  isPatroling: 0
+  facingLeft: 0
+  facingRight: 0
+  playerSpotted: 0
+  isStuck: 0
+  controlCase: 0
+  attackSpeed: 1
+  jumpTime: 0
+  spottedTime: 4
+  visionDistance: 7
+  direction: 1
+--- !u!114 &11411888
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 110468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 438ac6aacd4165445961ada080ee3308, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &11455566
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 110468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 399e93e98eec09748ad2daec491a7acc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &11457266
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 146304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5953e2dab149ad42958795b1a44e732, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!212 &21227414
@@ -77,8 +185,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300006, guid: 830d28e0d9d63834fa34d886c37bd879, type: 3}
+  m_SortingOrder: 1000
+  m_Sprite: {fileID: 21300000, guid: fc6b511d5dfcdb844845063359d7a40a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &100100000
 Prefab:
