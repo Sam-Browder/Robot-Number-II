@@ -128,7 +128,7 @@ public class Player : MonoBehaviour, ICharacter {
 
 
 		if (this.onPlatform) {
-			//Debug.Log(this.platformVelocity);
+			Debug.Log(this.platformVelocity);
 			this.rb2d.velocity = new Vector2 (this.rb2d.velocity.x +this.platformVelocity, this.rb2d.velocity.y);//+ this.platformVelocity
 		} else {
 
@@ -143,13 +143,17 @@ public class Player : MonoBehaviour, ICharacter {
 				}
 			}
 
-			
 
 		}
 		
 
 		Climb ();
 
+
+		//if(this.onPlatform){
+		//	
+		//	rb2d.velocity = new Vector2(this.rb2d.velocity.x + this.platformVelocity, this.rb2d.velocity.y);
+		//}
 		//Debug.Log(this.platformVelocity);
 		//Debug.Log(this.onPlatform);
 
@@ -303,8 +307,12 @@ public class Player : MonoBehaviour, ICharacter {
 		Debug.DrawLine(startPos, endPos,Color.green);
 		bool tempGround = Physics2D.Linecast (startPos, endPos, 1 << LayerMask.NameToLayer ("Ground"));
 		bool tempEnemy = Physics2D.Linecast (startPos, endPos, 1 << LayerMask.NameToLayer ("Enemy"));
+		bool tempOnPlatform = Physics2D.Linecast (startPos, endPos, 1 << LayerMask.NameToLayer ("Platform"));
 
-		if (tempEnemy || tempGround) {
+		//this.onPlatform = tempOnPlatform;
+
+
+		if (tempEnemy || tempGround || tempOnPlatform) {
 			this.grounded = true;
 			this.canDoubleJump = true;
 		} else {

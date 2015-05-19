@@ -63,7 +63,7 @@ GameObject:
   - 61: {fileID: 6139876}
   - 50: {fileID: 5058588}
   - 114: {fileID: 11489228}
-  m_Layer: 10
+  m_Layer: 14
   m_Name: Platform
   m_TagString: Platform
   m_Icon: {fileID: 0}
