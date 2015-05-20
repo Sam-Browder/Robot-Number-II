@@ -4,6 +4,7 @@ using System.Collections;
 public class EightBallController : MonoBehaviour, ICharacter {
 
 	//floats
+	private float maxHealth = 200f;
 	public float maxSpeed = 3;
 	public float speed = 50f;
 	public float currentSpeed;

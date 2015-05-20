@@ -3,6 +3,7 @@ using System.Collections;
 
 public class OozeController : MonoBehaviour, ICharacter {
 	//floats
+	private float maxHealth = 150f;
 	public float maxSpeed = 3;
 	public float speed = 50f;
 	public float currentSpeed;
