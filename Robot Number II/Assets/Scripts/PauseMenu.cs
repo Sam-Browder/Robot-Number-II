@@ -19,11 +19,15 @@ public class PauseMenu : MonoBehaviour
 	
 	void OnGUI ()
 		{
-			if (paused == true) {
-				if (GUI.Button (new Rect (Screen.width / 2 - 100, Screen.height / 2 + 25, 250, 50), "Quit")) Application.Quit();
-			}
-			if (paused == true)
-				if (GUI.Button (new Rect (Screen.width / 2 - 100, Screen.height / 2 - 25, 250, 50), "Resume")) Unpause();
+		if (paused == true) {
+			if (GUI.Button (new Rect (Screen.width / 2 - 100, Screen.height / 2 + 25, 250, 50), "Quit")) Application.Quit();
+		}
+		if (paused == true) {
+				Mute();
+		}
+		if (paused == true) {
+				Unpause ();
+		}
 		}
 
 	void Pause()
@@ -37,5 +41,10 @@ public class PauseMenu : MonoBehaviour
 		paused = false;
 		Time.timeScale = 1.0f;
 		//Cursor.visible = false;
+	}
+	void Mute()
+	{
+		AudioSource music = GameObject.FindGameObjectWithTag ("Global").GetComponent<AudioSource> ();
+		music.mute = !music.mute;
 	}
 }
