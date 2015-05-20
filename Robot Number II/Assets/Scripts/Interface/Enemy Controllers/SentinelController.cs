@@ -10,7 +10,7 @@ public class SentinelController : MonoBehaviour, ICharacter {
 	public float currentSpeed;
 	public float jumpPower = 200f;
 	public int numOfJumps = 2;
-	private int cashValue = 50;
+	private int cashValue = 1;
 	public float minDistFromPlayer = 2f;
 	private Vector2 unitDirectionVector;
 	
