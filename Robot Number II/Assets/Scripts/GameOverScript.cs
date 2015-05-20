@@ -9,6 +9,6 @@ public class GameOverScript : MonoBehaviour {
 			persistentData.name = "oldPersistentData";
 			persistentData.GetComponent<TestMenu>().money = persistentData.GetComponent<TestMenu>().money / 4;
 		}
-		Application.LoadLevel("Menu");
+		Application.LoadLevel(0);
 	}
 }
