@@ -5,7 +5,7 @@ public class EnemyDefense : MonoBehaviour,IDefenseBehavior {
 	
 	
 	private ICharacter character;
-	private float maxHealth = 100f;
+	private float maxHealth = 30f;
 	private float health;
 	private float maxShieldAmount = 0f;
 	private float shieldAmount;
