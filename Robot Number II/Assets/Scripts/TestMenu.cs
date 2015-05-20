@@ -20,7 +20,7 @@ public class TestMenu : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		this.nextLevel = 1;
+		this.nextLevel = 3;
 		money = 50;
 		GameObject oldData = GameObject.Find("oldPersistentData");
 		if (oldData != null) {
@@ -119,5 +119,9 @@ public class TestMenu : MonoBehaviour {
 			this.health += 20;
 			this.money -= 40;
 		}
+	}
+
+	public void quitGame() {
+		Application.Quit ();
 	}
 }

@@ -4,6 +4,6 @@ using System.Collections;
 public class ExpositionScript : MonoBehaviour {
 
 	public void firstLevel() {
-		Application.LoadLevel ("LongLevel");
+		Application.LoadLevel (2);
 	}
 }
