@@ -22,6 +22,13 @@ public class TestMenu : MonoBehaviour {
 	void Start () {
 		this.nextLevel = 3;
 		money = 0;
+		this.activeWeapon = new NonItem ();
+		this.activeDefense = new NonItem ();
+		this.activeUtility = new NonItem ();
+		this.library = new ItemLibrary ();
+		this.activeWeapon = this.library.GetItem ("GrenadeLauncher");
+		this.health = 100f;
+
 		GameObject oldData = GameObject.Find("oldPersistentData");
 		if (oldData != null) {
 			this.money += oldData.GetComponent<TestMenu>().money;
@@ -29,8 +36,14 @@ public class TestMenu : MonoBehaviour {
 		}
 		GameObject returnData = GameObject.Find("returnPersistentData");
 		if (returnData != null) {
-			this.money += oldData.GetComponent<TestMenu>().money;
-			this.nextLevel = oldData.GetComponent<TestMenu>().nextLevel;
+			TestMenu data = returnData.GetComponent<TestMenu>();
+			this.money += data.money;
+			this.nextLevel = data.nextLevel;
+			this.activeWeapon = data.activeWeapon;
+			this.activeUtility = data.activeUtility;
+			this.activeDefense = data.activeDefense;
+			this.health = data.health;
+			this.library = data.library;
 			Destroy (returnData);
 		}
 
@@ -39,12 +52,7 @@ public class TestMenu : MonoBehaviour {
 		weaponData = new string[] {availableWeapons [0], availableWeapons [0], availableWeapons [0], availableWeapons [0]};
 		buttonTracker = new int[] {0, 0, 0, 0};
 		armorData = new double[] {1.0, 1.0, 1.0, 1.0};
-		this.activeWeapon = new NonItem ();
-		this.activeDefense = new NonItem ();
-		this.activeUtility = new NonItem ();
-		this.library = new ItemLibrary ();
-		this.activeWeapon = this.library.GetItem ("GrenadeLauncher");
-		this.health = 100f;
+
 		}
 	
 	public void startGame() {
