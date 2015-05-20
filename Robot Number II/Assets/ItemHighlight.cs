@@ -17,6 +17,7 @@ public class ItemHighlight : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		this.global = GameObject.FindObjectOfType<TestMenu> ();
 		if (!this.global.library.GetItem (this.item).IsOwned ())
 			this.button.image.color = Color.grey;
 		else
