@@ -27,7 +27,7 @@ public class Chest : MonoBehaviour
 
 	void OnTriggerEnter2D (Collider2D other)
 	{
-		if (other.gameObject.CompareTag ("Player")) {
+		if (other.gameObject.CompareTag ("Player") && !this.wasTouched) {
 			this.wasTouched = true;
 			this.testMenu.money += goldAmount;
 
