@@ -35,7 +35,7 @@ public class MenuReturnObjectiveHandler : MonoBehaviour {
 			persistentData.name = "returnPersistentData";
 			TestMenu menuData = persistentData.GetComponent<TestMenu>();
 			menuData.nextLevel = this.nextLevel;
-			Application.LoadLevel(0);
+			Application.LoadLevel(2);
 		}
 		
 		
