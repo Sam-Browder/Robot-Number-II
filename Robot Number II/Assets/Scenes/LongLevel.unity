@@ -1100,10 +1100,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 556785822}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b984c65d0b77f8046ad3c10a6ddf48f7, type: 3}
+  m_Script: {fileID: 11500000, guid: 3eae418f14b2273469b8dd5d66a52417, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextLevel: 0
+  nextLevel: 
   rotationSpeed: 1
   numberOfLevels: 0
   maxLevel: 0

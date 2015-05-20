@@ -9,7 +9,7 @@ public class OozeController : MonoBehaviour, ICharacter {
 	public float currentSpeed;
 	public float jumpPower = 200f;
 	public int numOfJumps = 2;
-	private int cashValue = 1;
+	private int cashValue = 4;
 	public float minDistFromPlayer = 2f;
 	
 	//booleans

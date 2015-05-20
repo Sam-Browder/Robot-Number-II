@@ -4,13 +4,13 @@ using System.Collections;
 public class EnemyController : MonoBehaviour, ICharacter {
 	
 	//floats
-	private float maxHealth = 100f;
+	private float maxHealth = 65f;
 	public float maxSpeed = 3;
 	public float speed = 50f;
 	public float currentSpeed;
 	public float jumpPower = 200f;
 	public int numOfJumps = 2;
-	private int cashValue = 1;
+	private int cashValue = 4;
 	public float minDistFromPlayer = 2f;
 	
 	//booleans
