@@ -352,11 +352,12 @@ public class EightBallController : MonoBehaviour, ICharacter {
 	
 	void LineOfSight(){
 		Vector3 currentPos = this.transform.position;
-		Vector3 startPos = new Vector3 (currentPos.x, currentPos.y +.25f, currentPos.z);
-		Vector3 endPos = new Vector3 (currentPos.x+visionDistance * this.direction, currentPos.y+.25f, currentPos.z);
+		Vector3 startPos = new Vector3 (currentPos.x, currentPos.y -.5f, currentPos.z);
+		Vector3 endPos = new Vector3 (currentPos.x+visionDistance * this.direction, currentPos.y-.5f, currentPos.z);
 		Debug.DrawLine(startPos, endPos,Color.green);
 		this.playerInLineOfSight = Physics2D.Linecast (startPos, endPos, 1 << LayerMask.NameToLayer ("Player"));
 	}
+
 	
 	void TooCloseToPlayer(){
 		if (this.distanceToPlayer < this.minDistFromPlayer){
