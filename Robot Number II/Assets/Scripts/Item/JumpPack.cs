@@ -5,7 +5,7 @@ public class JumpPack : IItem {
 	
 	private string item = "JumpPack";
 	private string slot = "utility";
-	private IAbility primary = new BurstJump(50f,5f);
+	private IAbility primary = new BurstJump(500f,5f);
 	private IAbility secondary = new NonAbility();
 	private bool isOwned = false;
 	private int price = 40;
