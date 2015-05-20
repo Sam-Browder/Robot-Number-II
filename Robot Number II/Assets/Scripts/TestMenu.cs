@@ -21,7 +21,7 @@ public class TestMenu : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		this.nextLevel = 3;
-		money = 50;
+		money = 0;
 		GameObject oldData = GameObject.Find("oldPersistentData");
 		if (oldData != null) {
 			this.money += oldData.GetComponent<TestMenu>().money;
@@ -102,6 +102,9 @@ public class TestMenu : MonoBehaviour {
 			this.money -= this.library.GetItem (button.name).GetPrice ();
 		}
 
+		if (this.library.GetItem (button.name).IsOwned ()) {
+			Debug.Log("Owned");
+		}
 	}
 
 	public void BuyArmor(){
