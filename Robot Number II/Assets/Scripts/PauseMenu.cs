@@ -23,9 +23,11 @@ public class PauseMenu : MonoBehaviour
 			if (GUI.Button (new Rect (Screen.width / 2 - 100, Screen.height / 2 + 25, 250, 50), "Quit")) Application.Quit();
 		}
 		if (paused == true) {
+			if (GUI.Button (new Rect (Screen.width / 2 - 100, Screen.height / 2 - 25, 250, 50), "Toggle Mute"))
 				Mute();
 		}
 		if (paused == true) {
+			if (GUI.Button (new Rect (Screen.width / 2 - 100, Screen.height / 2 - 75, 250, 50), "Resume"))
 				Unpause ();
 		}
 		}
