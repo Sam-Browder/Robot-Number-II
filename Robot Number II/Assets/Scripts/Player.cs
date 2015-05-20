@@ -305,8 +305,8 @@ public class Player : MonoBehaviour, ICharacter {
 
 	void Grounded(){
 		Vector3 currentPos = this.transform.position;
-		Vector3 startPos = new Vector3 (currentPos.x - .3f, currentPos.y - .5f, currentPos.z);
-		Vector3 endPos = new Vector3 (currentPos.x + .3f, currentPos.y-.5f, currentPos.z);
+		Vector3 startPos = new Vector3 (currentPos.x - .2f, currentPos.y - .5f, currentPos.z);
+		Vector3 endPos = new Vector3 (currentPos.x + .2f, currentPos.y-.5f, currentPos.z);
 		Debug.DrawLine(startPos, endPos,Color.green);
 		bool tempGround = Physics2D.Linecast (startPos, endPos, 1 << LayerMask.NameToLayer ("Ground"));
 		bool tempEnemy = Physics2D.Linecast (startPos, endPos, 1 << LayerMask.NameToLayer ("Enemy"));
