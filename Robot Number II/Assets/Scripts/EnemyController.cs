@@ -475,7 +475,9 @@ public class EnemyController : MonoBehaviour, ICharacter {
 		return this.enemyAbility;
 	}
 
-	
+	public float GetMaxHealth (){
+		return this.maxHealth;
+	}
 	
 	
 }

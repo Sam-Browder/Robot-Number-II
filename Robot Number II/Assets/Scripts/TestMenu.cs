@@ -43,6 +43,7 @@ public class TestMenu : MonoBehaviour {
 		this.activeDefense = new NonItem ();
 		this.activeUtility = new NonItem ();
 		this.library = new ItemLibrary ();
+		this.activeWeapon = this.library.GetItem ("GrenadeLauncher");
 		this.health = 100f;
 		}
 	

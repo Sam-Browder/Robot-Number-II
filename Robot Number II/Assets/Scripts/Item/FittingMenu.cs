@@ -42,10 +42,13 @@ public class FittingMenu : MonoBehaviour {
 	public void SetAbility(){
 		ICharacter character = gameObject.GetComponentInParent<ICharacter> ();
 		CharacterAbility abilities = character.GetAbilities();
-		abilities.SetAbility(this.weapon.GetPrimaryAbility(),0);
-		abilities.SetAbility(this.weapon.GetSecondaryAbility(),1);
-		abilities.SetAbility (this.defense.GetPrimaryAbility (), 2);
-		abilities.SetAbility (this.utility.GetPrimaryAbility (), 3);
+		abilities.SetAbility (this.defense.GetPrimaryAbility (), 0);
+		abilities.SetAbility (this.utility.GetPrimaryAbility (), 1);
+		abilities.SetAbility(this.weapon.GetSecondaryAbility(),2);
+		abilities.SetAbility(this.weapon.GetPrimaryAbility(),3);
+
+
+
 
 	}
 	

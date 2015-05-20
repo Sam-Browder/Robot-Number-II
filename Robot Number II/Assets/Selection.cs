@@ -15,6 +15,8 @@ public class Selection : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		this.global = GameObject.FindObjectOfType<TestMenu> ();
+
 		string weapon = "None";
 		string defense = "None";
 		string utility = "None";

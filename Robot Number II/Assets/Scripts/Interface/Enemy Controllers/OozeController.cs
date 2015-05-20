@@ -195,7 +195,7 @@ public class OozeController : MonoBehaviour, ICharacter {
 			Patrol();
 		}
 
-		if (this.playerInLineOfSight){
+		if (!this.playerInLineOfSight){
 			if (attackTimer > this.attackSpeed) {
 				attackTimer = 0;
 				this.enemyAbility.ExecuteAbility(0);
@@ -446,7 +446,10 @@ public class OozeController : MonoBehaviour, ICharacter {
 	public CharacterAbility GetAbilities(){
 		return this.enemyAbility;
 	}
-	
+
+	public float GetMaxHealth (){
+		return this.maxHealth;
+	}
 	
 	
 	

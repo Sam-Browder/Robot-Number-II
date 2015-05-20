@@ -5,7 +5,7 @@ public class EnemyDefense : MonoBehaviour,IDefenseBehavior {
 	
 	
 	private ICharacter character;
-	private float maxHealth = 100f;
+	private float maxHealth;
 	private float health;
 	private float maxShieldAmount = 0f;
 	private float shieldAmount;
@@ -20,9 +20,10 @@ public class EnemyDefense : MonoBehaviour,IDefenseBehavior {
 	
 	void Start(){
 		this.timeEnd = Time.time;
-		this.health = this.maxHealth;
 		this.shieldAmount = this.maxShieldAmount;
 		this.character = gameObject.GetComponentInParent<ICharacter> ();
+		this.maxHealth = this.character.GetMaxHealth ();
+		this.health = this.maxHealth;
 	}
 	
 	void Update(){

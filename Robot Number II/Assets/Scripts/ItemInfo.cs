@@ -15,6 +15,7 @@ public class ItemInfo : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		this.global = GameObject.FindObjectOfType<TestMenu> ();
 	}
 
 	public void DisplayTooltip(Button button){

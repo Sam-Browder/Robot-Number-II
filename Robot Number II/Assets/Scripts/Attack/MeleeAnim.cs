@@ -12,13 +12,13 @@ public class MeleeAnim : MonoBehaviour, IAnim {
 	public void Animate(IAbility ability, ICharacter character){
 		GameObject proj1 = (GameObject)Instantiate (Resources.Load ("Melee"));
 		
-		proj1.transform.position = new Vector3(this.transform.position.x + 0.7f, this.transform.position.y);
+		proj1.transform.position = new Vector3(this.transform.position.x + 0.85f, this.transform.position.y);
 		proj1.SendMessage ("SetCharacter", character);
 		proj1.SendMessage ("SetAttack", ability);
 
 		GameObject proj2 = (GameObject)Instantiate (Resources.Load ("Melee"));
 		
-		proj2.transform.position = new Vector3(this.transform.position.x - 0.7f, this.transform.position.y);
+		proj2.transform.position = new Vector3(this.transform.position.x - 0.85f, this.transform.position.y);
 		proj2.SendMessage ("SetCharacter", character);
 		proj2.SendMessage ("SetAttack", ability);
 

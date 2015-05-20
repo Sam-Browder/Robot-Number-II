@@ -5,10 +5,10 @@ public class SpeedBoots : IItem {
 	
 	private string item = "SpeedBoots";
 	private string slot = "utility";
-	private IAbility primary = new SpeedBurst (30f, 7f);
+	private IAbility primary = new SpeedBurst (-1.5f, 7f);
 	private IAbility secondary = new NonAbility();
 	private bool isOwned = false;
-	private int price = 10;
+	private int price = 20;
 	
 	public SpeedBoots (){}
 	

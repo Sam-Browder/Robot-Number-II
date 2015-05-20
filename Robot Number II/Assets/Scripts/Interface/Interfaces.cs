@@ -22,6 +22,7 @@ public interface ICharacter{
 	IDefenseBehavior GetDefense();
 	CharacterAbility GetAbilities();
 	FittingMenu GetFitting();
+	float GetMaxHealth ();
 }
 
 abstract public class Nondamageable{

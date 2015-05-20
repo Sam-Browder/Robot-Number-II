@@ -417,7 +417,9 @@ public class Player : MonoBehaviour, ICharacter {
 	}
 
 
-
+	public float GetMaxHealth (){
+		return 0;
+	}
 
 
 

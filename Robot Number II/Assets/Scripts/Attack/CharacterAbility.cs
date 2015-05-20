@@ -7,7 +7,7 @@ public class CharacterAbility : MonoBehaviour {
 	//ArrayList animations = new ArrayList();
 	// Use this for initialization
 	void Start () {
-		for (int i = 0; i < 5; i++) {
+		for (int i = 0; i < 4; i++) {
 			this.abilities.Add (new NonAbility ());
 		}
 	}
